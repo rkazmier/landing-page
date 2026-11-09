@@ -38,7 +38,8 @@ Szczegóły: `docs/process.md`.
 - Gałęzie: `issue-<numer>-<krótki-opis>`, np. `issue-12-sekcja-hero`.
 - Commity: krótkie, w trybie rozkazującym, po polsku lub angielsku, spójnie w całym repo.
 - Jedno Issue = jeden PR. Bez „przy okazji" zmian spoza zakresu Issue.
-- Kod strony leży w `src/` i `public/`. Poza nimi zmieniamy tylko dokumentację, konfigurację CI i narzędzia.- Dane w `src/data/` (`targets.json`, noclegi i atrakcje), teksty w `src/i18n/`. Każda nowa treść powstaje we wszystkich 6 językach.
+- Kod strony leży w `src/` i `public/`. Poza nimi zmieniamy tylko dokumentację, konfigurację CI i narzędzia.
+- Dane w `src/data/` (`targets.json`, noclegi i atrakcje), teksty w `src/i18n/`. Każda nowa treść powstaje we wszystkich 6 językach.
 - Dostępność (semantyczny HTML, kontrast, `alt`, nawigacja klawiaturą) i responsywność (mobile-first) są wymaganiem domyślnym.
 - Bez zewnętrznych trackerów, fontów ani skryptów bez wpisu w `docs/adr/`.
 - Żadnych sekretów, kluczy ani danych osobowych w repozytorium. To repo jest **publiczne**.
