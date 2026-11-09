@@ -1,6 +1,6 @@
 # AGENTS.md — zasady pracy agentów w tym repozytorium
 
-Projekt: **statyczna strona typu landing page**, hostowana na GitHub Pages.
+Projekt: **wielojęzyczna (pl, en, de, lt, cs, sk) statyczna strona typu landing page**, budowana w Astro (ADR 0001) i hostowana na GitHub Pages.
 Właściciel produktu: **rkazmier** (człowiek). Agenci pracują wg poniższego procesu.
 
 ## Źródło prawdy
@@ -38,7 +38,8 @@ Szczegóły: `docs/process.md`.
 - Gałęzie: `issue-<numer>-<krótki-opis>`, np. `issue-12-sekcja-hero`.
 - Commity: krótkie, w trybie rozkazującym, po polsku lub angielsku, spójnie w całym repo.
 - Jedno Issue = jeden PR. Bez „przy okazji" zmian spoza zakresu Issue.
-- Kod strony leży w `site/`. Poza `site/` zmieniamy tylko dokumentację, konfigurację CI i narzędzia.
+- Kod strony leży w `src/` i `public/`. Poza nimi zmieniamy tylko dokumentację, konfigurację CI i narzędzia. (Strona zastępcza w `site/` zniknie przy zadaniu ze szkieletem Astro.)
+- Dane w `src/data/` (`targets.json`, noclegi i atrakcje), teksty w `src/i18n/`. Każda nowa treść powstaje we wszystkich 6 językach.
 - Dostępność (semantyczny HTML, kontrast, `alt`, nawigacja klawiaturą) i responsywność (mobile-first) są wymaganiem domyślnym.
 - Bez zewnętrznych trackerów, fontów ani skryptów bez wpisu w `docs/adr/`.
 - Żadnych sekretów, kluczy ani danych osobowych w repozytorium. To repo jest **publiczne**.
@@ -46,7 +47,7 @@ Szczegóły: `docs/process.md`.
 ## Definicja „gotowe" (Definition of Done)
 
 - [ ] Wszystkie kryteria akceptacji z Issue spełnione
-- [ ] CI zielone (walidacja HTML)
+- [ ] CI zielone (build, walidacja HTML i danych)
 - [ ] Sprawdzone na szerokości mobile (~375 px) i desktop
 - [ ] Brak zmian poza zakresem Issue
 - [ ] Opis PR mówi, co i jak sprawdzono

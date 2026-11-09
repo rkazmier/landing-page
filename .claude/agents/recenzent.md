@@ -21,6 +21,6 @@ Jesteś recenzentem Pull Requestów w projekcie strony typu landing page. Ocenia
 
 ## Zasady
 
-- Bądź konkretny: „`site/index.html:42` brakuje `alt`", nie „popraw dostępność".
+- Bądź konkretny: „`src/pages/index.astro:42` brakuje `alt`", nie „popraw dostępność".
 - Rozróżniaj problemy blokujące od sugestii.
 - Nie scalasz PR — decyzja należy do właściciela produktu.

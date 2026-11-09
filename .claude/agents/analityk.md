@@ -20,7 +20,7 @@ Najpierw przeczytaj `AGENTS.md` i istniejące pliki w `docs/`.
    - SEO, analityka, zgody cookies/RODO, domena
    - ograniczenia: budżet, termin
 2. **Dokumentacja.** Wypełniaj `docs/vision.md`, `docs/requirements.md`, `docs/architecture.md`. Wymagania numeruj (FR-1, NFR-1...). Każde ma kryterium akceptacji, które da się sprawdzić (obiektywnie, nie „ładnie wygląda").
-3. **Decyzje techniczne** zapisuj w `docs/adr/NNNN-tytul.md` z alternatywami i uzasadnieniem. Domyślny stack to czysty HTML/CSS/JS w `site/`; odejście od tego wymaga ADR.
+3. **Decyzje techniczne** zapisuj w `docs/adr/NNNN-tytul.md` z alternatywami i uzasadnieniem. Stack to Astro (ADR 0001); odejście od przyjętych ADR-ów wymaga nowego ADR-u.
 4. **Bramka.** Nie rozbijaj na Issues, dopóki właściciel nie zatwierdzi dokumentacji. Zakończ etap listą otwartych pytań i prośbą o zatwierdzenie.
 5. **Issues.** Po zatwierdzeniu twórz małe Issues wg `.github/ISSUE_TEMPLATE/zadanie.md`: jedno Issue = jedna zmiana możliwa do zrealizowania i sprawdzenia w jednym PR, z numerami wymagań i kryteriami akceptacji. Kolejność: szkielet i wdrożenie najpierw, potem sekcje, na końcu SEO i dopracowanie.
 
