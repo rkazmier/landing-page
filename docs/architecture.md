@@ -1,38 +1,50 @@
 # Architektura
 
-> Szkic domyślny; analityk potwierdza lub zmienia go ADR-em.
+> Wersja robocza. Elementy oznaczone „Propozycja" czekają na potwierdzenie właściciela (zob. ADR-y).
 
 ## Stack
-- Czysty HTML, CSS i minimum JavaScript, bez kroku budowania
-- Kod strony w katalogu `site/`
-- Hosting: GitHub Pages, wdrożenie przez GitHub Actions
-- Adres docelowy: `https://rkazmier.github.io/landing-page/`
+- **Propozycja ([ADR 0001](adr/0001-generator-astro.md)):** generator stron statycznych **Astro**, wynik budowania to zwykłe pliki HTML/CSS z minimalnym JavaScriptem
+- Hosting: GitHub Pages, wdrożenie przez GitHub Actions (krok budowania przed publikacją)
+- Adres obecny: `https://rkazmier.github.io/landing-page/`
+- Adres docelowy: `https://steel-valley.pl/` (domena w GoDaddy, konfiguracja później)
 
-## Struktura repozytorium
-```
-site/                  # to, co trafia na hosting
-  index.html
-  css/
-  js/
-  img/
-docs/                  # dokumentacja (nie jest publikowana na stronie)
-.github/
-  workflows/ci.yml     # walidacja PR
-  workflows/deploy.yml # publikacja po scaleniu do main
-  ISSUE_TEMPLATE/
-.claude/agents/        # definicje agentów
-AGENTS.md              # zasady pracy
-```
+## Dlaczego nie czysty HTML
+Sześć wersji językowych oznaczałoby sześć ręcznie utrzymywanych kopii, a plan przedpola rysowany z pliku danych musiałby powstawać w przeglądarce (JavaScript), co pogarsza SEO, wydajność i wydruk. Generator rysuje plan i tabelę w czasie budowania.
 
-## Uwaga: ścieżki względne
-Strona działa pod podkatalogiem `/landing-page/`, więc w HTML używaj ścieżek **względnych** (`css/style.css`), a nie absolutnych (`/css/style.css`). Przy własnej domenie zasada nadal działa.
+## Struktura repozytorium (po przyjęciu ADR 0001)
+```
+src/
+  pages/               # strony; polski w korzeniu, pozostałe języki w /en, /de, /lt, /cs, /sk
+  components/          # nagłówek, stopka, sekcje, plan przedpola, baner językowy
+  i18n/                # teksty: pl.json, en.json, de.json, lt.json, cs.json, sk.json
+  data/
+    targets.json       # cele metalowe (ADR 0003)
+    accommodation.json # baza hotelowa i atrakcje (do rozbudowy)
+  styles/
+public/                # obrazy, fonty, robots.txt, favicon
+docs/                  # dokumentacja (nie jest publikowana)
+.github/workflows/     # ci.yml (build + walidacja), deploy.yml (publikacja)
+```
+`AGENTS.md` mówi dziś, że kod leży w `site/`. Po decyzji w sprawie ADR 0001 trzeba go zaktualizować (to zmiana dokumentacji, wymaga zgody właściciela).
+
+## Wersje językowe
+Szczegóły w [ADR 0002](adr/0002-wersje-jezykowe.md): osobne adresy, polski bez prefiksu, `hreflang`, baner sugestii na podstawie języka przeglądarki, bez przekierowań.
+
+## Dane i plan przedpola
+Szczegóły w [ADR 0003](adr/0003-dane-celow-i-plan.md): `targets.json` → walidacja schematem w CI → w czasie budowania powstaje SVG planu i tabela HTML. Wydruk przez `@media print`.
+
+## Mapa
+Statyczny obraz jako link do nawigacji w Mapach Google ([ADR 0004](adr/0004-mapa-statyczna.md)).
+
+## Adres witryny i ścieżka bazowa
+Adres witryny i ścieżka bazowa pochodzą z jednej konfiguracji (`site` i `base`). Do czasu podpięcia domeny `base` to `/landing-page`, po podpięciu `steel-valley.pl` zmienia się na `/`. Linki wewnętrzne buduje się z tej konfiguracji, nigdy na sztywno.
 
 ## Wdrożenie
-Scalenie PR do `main` uruchamia `deploy.yml`, który publikuje zawartość `site/`. Wymaga ustawienia **Settings → Pages → Source: GitHub Actions**.
+Scalenie PR do `main` uruchamia `deploy.yml`: instalacja zależności, budowanie, publikacja katalogu wynikowego na Pages. Wymaga **Settings → Pages → Source: GitHub Actions**. Podpięcie domeny własnej: wpisy DNS w GoDaddy i pole „Custom domain" w ustawieniach Pages (osobne zadanie, później).
 
-## Elementy dynamiczne (statyczna strona nie ma backendu)
-- Formularz kontaktowy: usługa zewnętrzna (np. Formspree, Web3Forms) lub link `mailto:`. Wybór zapisać w ADR.
-- Analityka: tylko rozwiązanie przyjazne prywatności i za zgodą, w ADR.
+## Budżet wydajności
+Strona ma uzyskać powyżej 90 w Lighthouse (mobile) w każdej wersji językowej. Dlatego: brak zewnętrznych zasobów, lokalne fonty w podzbiorze, obrazy AVIF/WebP z wymiarami, minimum JavaScriptu.
 
-## Kiedy zmienić stack
-Jeśli strona rozrośnie się do wielu podstron i komponentów, rozważ Astro lub Vite. Decyzja wymaga ADR i dostosowania `deploy.yml` (krok budowania).
+## Elementy, których nie ma
+- Brak backendu, formularzy i rezerwacji (strona informacyjna)
+- Brak analityki i ciasteczek ([ADR 0005](adr/0005-brak-analityki.md))
