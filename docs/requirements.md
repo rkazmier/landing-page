@@ -53,7 +53,7 @@
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI
   - [ ] Plan i tabela są widoczne bez włączonego JavaScriptu
-  - [ ] `TODO(właściciel)`: potwierdzenie przyjętego znaczenia osi: `distance_m` = odległość od linii strzału (y), `offset_right_m` = odległość od prawego wału (x) (zob. Otwarte pytania)
+  - [ ] Znaczenie osi (potwierdzone przez właściciela): `distance_m` = odległość od linii strzału (y), `offset_right_m` = odległość od prawego wału (x); romb rysowany jako kwadrat obrócony o 45°
 
 ### FR-6 — Przejrzysty wydruk planu (Must)
 - **Opis:** Odwiedzający może wydrukować plan przedpola wraz z tabelą celów.
@@ -74,10 +74,11 @@
 - **Opis:** Rozbudowana stopka w formie osobnej sekcji na końcu każdej wersji językowej: kluczowe informacje, kontakt i mapa strony.
 - **Kryteria akceptacji:**
   - [ ] Sekcja „kluczowe informacje": nazwa obiektu, adres (Morawy Wielkie 06-316), współrzędne, godziny otwarcia 9:00–18:00 codziennie (pon–nd), skrót oferty
-  - [ ] Sekcja „kontakt": telefon +48 503 911 707 jako tekst i link `tel:+48503911707` (bez formularza); e-mail dopiero po dostarczeniu przez właściciela
+  - [ ] Sekcja „kontakt": telefon +48 503 911 707 jako tekst i link `tel:+48503911707` (bez formularza); bez adresu e-mail (decyzja właściciela)
   - [ ] Sekcja „mapa strony": linki do wszystkich sekcji strony i do wszystkich 6 wersji językowych
   - [ ] Stopka jest dostępna z każdej strony i w każdej wersji językowej, w pełni przetłumaczona
-  - [ ] `TODO(właściciel)`: nazwa i dane firmy, e-mail (jeśli ma być), polityka prywatności lub informacja prawna
+  - [ ] Nazwa i dane firmy, polityka prywatności i informacja prawna zostaną dodane później (decyzja właściciela): stopka ma przygotowane na nie miejsce, a do czasu dostarczenia treści nie wyświetla pustych sekcji ani martwych linków
+  - [ ] `TODO(właściciel, później)`: nazwa i dane firmy, polityka prywatności, informacja prawna
   - [ ] Zgodność wymogów prawnych (np. informacja o wydawcy dla odbiorców z Niemiec) potwierdzona z prawnikiem — nie jest poradą analityka
 
 ### FR-9 — Charakter informacyjny (Must)
@@ -130,9 +131,10 @@
 - [ ] Do czasu dostarczenia logo używany jest logotyp tekstowy „Steel Valley Long Range"
 
 ## Rozstrzygnięte w wywiadzie
-Astro ([ADR 0001](adr/0001-generator-astro.md)), wersje językowe ([ADR 0002](adr/0002-wersje-jezykowe.md)), kształty celów i pomiar rozmiarów ([ADR 0003](adr/0003-dane-celow-i-plan.md)), mapa z OpenStreetMap i jej kadr ([ADR 0004](adr/0004-mapa-statyczna.md)), brak analityki ([ADR 0005](adr/0005-brak-analityki.md)), styl (premium, jasny motyw, mobile-first), przedpole 160 m z wałami po obwodzie, adres, telefon i godziny otwarcia.
+Astro ([ADR 0001](adr/0001-generator-astro.md)), wersje językowe ([ADR 0002](adr/0002-wersje-jezykowe.md)), kształty celów, osie planu i pomiar rozmiarów ([ADR 0003](adr/0003-dane-celow-i-plan.md)), mapa z OpenStreetMap i jej kadr ([ADR 0004](adr/0004-mapa-statyczna.md)), brak analityki ([ADR 0005](adr/0005-brak-analityki.md)), styl (premium, jasny motyw, mobile-first), przedpole 160 m z wałami po obwodzie, adres, telefon, godziny otwarcia, brak e-maila w stopce.
 
 ## Otwarte pytania (do właściciela)
-1. **Oś planu:** potwierdzenie, że `distance_m` to odległość od linii strzału (oś y), a `offset_right_m` to odległość od prawego wału (oś x, 0–160 m); czy romb rysować jako kwadrat obrócony o 45°.
-2. **Stopka:** nazwa i dane firmy, e-mail (jeśli ma być), polityka prywatności lub informacja prawna; co jeszcze ma wejść do „kluczowych informacji".
-3. **Materiały od właściciela (później):** opis obiektu i dojazdu, zdjęcia, lista dyscyplin, plan strzelnicy, logo, opis noclegów i atrakcji.
+Brak pytań blokujących zatwierdzenie dokumentacji.
+
+## Treści do dostarczenia później (nie blokują zatwierdzenia)
+Opis obiektu i dojazdu, zdjęcia, lista dyscyplin, plan strzelnicy, logo, opis noclegów i atrakcji, nazwa i dane firmy, polityka prywatności, informacja prawna.
