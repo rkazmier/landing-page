@@ -1,24 +1,26 @@
 # Wizja
 
-> Szablon do wypełnienia przez agenta-analityka na podstawie wywiadu z właścicielem produktu.
-
 ## Cel strony
-TODO(właściciel): do czego ma służyć strona, w jednym zdaniu.
+Pierwsze miejsce w rezultatach wyszukania oraz szybkość ładowania zawartości. 
 
 ## Główna akcja (CTA)
-TODO(właściciel): jedna rzecz, którą ma zrobić odwiedzający (np. napisać, zapisać się, kupić).
+Pozyskać podstawowe informacje co, gdzie, kiedy jest dostępne w ofercie.
 
 ## Odbiorcy
-TODO: kim są, jaki mają problem, skąd przychodzą.
+Strzelcy dalekodystansowi różnych dyscyplin sportowych z całej Europy mają się dowiedzieć tak wyjątkowym obiekcie i bogatej infrastrukturze.
 
 ## Zakres
-- TODO: sekcje i funkcje wchodzące w skład pierwszej wersji
+- Lokalizacja wraz z wskazaniem najlepszego dojazdu,
+- Opis przeznaczenia strzelnicy z osią 1000 metrów,
+- Rodzaje wspieranych dyscyplin sportowych,
+- Plan strzelnicy, plus wizualizacja rozmieszczonych celi metalowych na przedpolu,
+- Sekcja z opisem dostępnej bazy hotelowej oraz innych atrakcji w pobliżu.
 
 ## Poza zakresem (na razie)
-- TODO
+- linki do innych stron: sklep, zawody, wydarzenia, ...
 
 ## Miary sukcesu
-- TODO: jak poznamy, że strona działa (np. liczba zapytań, czas ładowania, wynik Lighthouse)
+- wynik w Lighthouse powyżej 90
 
 ## Ograniczenia
 - Statyczna strona na GitHub Pages (brak backendu)
