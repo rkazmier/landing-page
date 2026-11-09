@@ -37,20 +37,23 @@
   - [ ] Obraz mapy powstał z danych OpenStreetMap i ma zaznaczony punkt obiektu; pod obrazem, tekstem HTML w danym języku, widnieje „© autorzy OpenStreetMap" z linkiem do https://www.openstreetmap.org/copyright
   - [ ] Obraz jest zapisany w repozytorium (AVIF/WebP), a kafelki OSM nie są pobierane w trakcie budowania ani wyświetlania strony
   - [ ] Opis najlepszego dojazdu jest w każdej wersji językowej
-  - [ ] `TODO(właściciel)`: adres pocztowy i opis najlepszego dojazdu (treść)
+  - [ ] Adres pocztowy: Morawy Wielkie 06-316
+  - [ ] Kadr mapy obejmuje obiekt oraz drogę dojazdową od strony wschodniej z czytelnie opisaną miejscowością Łanięta
+  - [ ] `TODO(właściciel)`: opis najlepszego dojazdu (treść)
 
 ### FR-5 — Plan przedpola z danymi o celach (Must)
 - **Opis:** Uproszczony plan strzelnicy z rozmieszczeniem celów metalowych, generowany z pliku `targets.json` ([ADR 0003](adr/0003-dane-celow-i-plan.md)).
 - **Kryteria akceptacji:**
   - [ ] Dane o celach są w jednym pliku `targets.json` (tablica obiektów: `shape`, `distance_m`, `offset_right_m`, `size_cm`; kształty i sposób zapisu rozmiaru w ADR 0003)
   - [ ] Plan (SVG) powstaje z tego pliku automatycznie, a nie jest rysowany ręcznie
+  - [ ] Tło planu: przedpole o szerokości 160 m, otoczone wałem po całym obwodzie; prawy wał to x = 0, lewy x = 160 m
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
   - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie)
   - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
-  - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu) powoduje czerwone CI
+  - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI
   - [ ] Plan i tabela są widoczne bez włączonego JavaScriptu
-  - [ ] `TODO(właściciel)`: potwierdzenie znaczenia `distance_m` i `offset_right_m` oraz wymiary przedpola i położenie wałów (zob. Otwarte pytania)
+  - [ ] `TODO(właściciel)`: potwierdzenie przyjętego znaczenia osi: `distance_m` = odległość od linii strzału (y), `offset_right_m` = odległość od prawego wału (x) (zob. Otwarte pytania)
 
 ### FR-6 — Przejrzysty wydruk planu (Must)
 - **Opis:** Odwiedzający może wydrukować plan przedpola wraz z tabelą celów.
@@ -70,11 +73,11 @@
 ### FR-8 — Stopka (Must)
 - **Opis:** Rozbudowana stopka w formie osobnej sekcji na końcu każdej wersji językowej: kluczowe informacje, kontakt i mapa strony.
 - **Kryteria akceptacji:**
-  - [ ] Sekcja „kluczowe informacje": nazwa obiektu, adres, współrzędne, skrót oferty
-  - [ ] Sekcja „kontakt": dane kontaktowe jako tekst i linki `tel:` / `mailto:` (bez formularza)
+  - [ ] Sekcja „kluczowe informacje": nazwa obiektu, adres (Morawy Wielkie 06-316), współrzędne, godziny otwarcia 9:00–18:00 codziennie (pon–nd), skrót oferty
+  - [ ] Sekcja „kontakt": telefon +48 503 911 707 jako tekst i link `tel:+48503911707` (bez formularza); e-mail dopiero po dostarczeniu przez właściciela
   - [ ] Sekcja „mapa strony": linki do wszystkich sekcji strony i do wszystkich 6 wersji językowych
   - [ ] Stopka jest dostępna z każdej strony i w każdej wersji językowej, w pełni przetłumaczona
-  - [ ] `TODO(właściciel)`: dokładne dane do wpisania (nazwa i dane firmy, telefon, e-mail, polityka prywatności/informacja prawna, godziny)
+  - [ ] `TODO(właściciel)`: nazwa i dane firmy, e-mail (jeśli ma być), polityka prywatności lub informacja prawna
   - [ ] Zgodność wymogów prawnych (np. informacja o wydawcy dla odbiorców z Niemiec) potwierdzona z prawnikiem — nie jest poradą analityka
 
 ### FR-9 — Charakter informacyjny (Must)
@@ -94,7 +97,7 @@
 - [ ] `title` i `meta description` w każdej wersji zgodnie z [seo-teksty.md](seo-teksty.md); polskie wartości dokładnie jak podał właściciel
 - [ ] `canonical` budowany z jednej zmiennej adresu witryny (zmiana adresu na `steel-valley.pl` = zmiana w jednym miejscu)
 - [ ] `hreflang` (FR-1), `sitemap.xml` z odpowiednikami językowymi, `robots.txt`, strona 404
-- [ ] Dane strukturalne JSON-LD (np. `SportsActivityLocation`) ze współrzędnymi obiektu
+- [ ] Dane strukturalne JSON-LD (np. `SportsActivityLocation`) ze współrzędnymi, adresem, telefonem i godzinami otwarcia obiektu, zgodne z danymi w stopce
 - [ ] Open Graph i Twitter Cards w każdej wersji
 - [ ] `meta keywords` z listy właściciela (Could; Google tego pola nie wykorzystuje)
 - [ ] Jeden `h1` na stronę, poprawna hierarchia nagłówków
@@ -127,13 +130,9 @@
 - [ ] Do czasu dostarczenia logo używany jest logotyp tekstowy „Steel Valley Long Range"
 
 ## Rozstrzygnięte w wywiadzie
-Astro ([ADR 0001](adr/0001-generator-astro.md)), wersje językowe ([ADR 0002](adr/0002-wersje-jezykowe.md)), kształty celów i pomiar rozmiarów ([ADR 0003](adr/0003-dane-celow-i-plan.md)), mapa z OpenStreetMap ([ADR 0004](adr/0004-mapa-statyczna.md)), brak analityki ([ADR 0005](adr/0005-brak-analityki.md)), styl (premium, jasny motyw, mobile-first), zakres stopki.
+Astro ([ADR 0001](adr/0001-generator-astro.md)), wersje językowe ([ADR 0002](adr/0002-wersje-jezykowe.md)), kształty celów i pomiar rozmiarów ([ADR 0003](adr/0003-dane-celow-i-plan.md)), mapa z OpenStreetMap i jej kadr ([ADR 0004](adr/0004-mapa-statyczna.md)), brak analityki ([ADR 0005](adr/0005-brak-analityki.md)), styl (premium, jasny motyw, mobile-first), przedpole 160 m z wałami po obwodzie, adres, telefon i godziny otwarcia.
 
 ## Otwarte pytania (do właściciela)
-1. **Plan przedpola:** potwierdzenie, że `distance_m` to odległość od linii strzału (oś y), a `offset_right_m` to odległość od prawego wału (oś x); szerokość przedpola i położenie wałów (potrzebne do narysowania tła planu); czy romb rysować jako kwadrat obrócony o 45°.
-2. **Stopka:** dane do wpisania: nazwa i dane firmy, telefon, e-mail, polityka prywatności lub informacja prawna, godziny; co ma wejść do „kluczowych informacji".
-3. **Adres pocztowy** obiektu.
-4. **Kadr mapy:** sam obiekt czy także drogi dojazdowe od głównej trasy.
-5. **Tłumaczenia:** weryfikacja wersji litewskiej, czeskiej i słowackiej przez osobę znającą te języki.
-6. **Materiały od właściciela (później):** opis obiektu, zdjęcia, lista dyscyplin, plan strzelnicy, logo, opis noclegów i atrakcji.
-7. **Budżet i termin.**
+1. **Oś planu:** potwierdzenie, że `distance_m` to odległość od linii strzału (oś y), a `offset_right_m` to odległość od prawego wału (oś x, 0–160 m); czy romb rysować jako kwadrat obrócony o 45°.
+2. **Stopka:** nazwa i dane firmy, e-mail (jeśli ma być), polityka prywatności lub informacja prawna; co jeszcze ma wejść do „kluczowych informacji".
+3. **Materiały od właściciela (później):** opis obiektu i dojazdu, zdjęcia, lista dyscyplin, plan strzelnicy, logo, opis noclegów i atrakcji.

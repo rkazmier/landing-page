@@ -38,4 +38,3 @@ Polski (domyślny), angielski, niemiecki, litewski, czeski i słowacki. Każda w
 - Statyczna strona na GitHub Pages (brak backendu)
 - Repozytorium publiczne
 - Domena: `steel-valley.pl` (wykupiona w GoDaddy); konfiguracja DNS i podpięcie do GitHub Pages później. Do tego czasu adres `https://rkazmier.github.io/landing-page/`
-- TODO(właściciel): budżet, termin

@@ -17,7 +17,7 @@ Strona ma wskazywać lokalizację i najlepszy dojazd. Mapa osadzona (`iframe`) �
 - na obrazie zaznaczony punkt obiektu
 - pod obrazem, jako tekst HTML w danym języku, „© autorzy OpenStreetMap" z linkiem do https://www.openstreetmap.org/copyright
 
-Do ustalenia: kadr (sam obiekt czy też drogi dojazdowe od głównej trasy).
+Kadr (decyzja właściciela): obiekt oraz droga dojazdowa od strony wschodniej z widoczną miejscowością Łanięta. Adres: Morawy Wielkie 06-316.
 
 ## Konsekwencje
 - Brak zewnętrznych skryptów i ciasteczek, szybkie ładowanie.
