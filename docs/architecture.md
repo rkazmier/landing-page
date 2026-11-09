@@ -25,8 +25,7 @@ public/                # obrazy, fonty, robots.txt, favicon
 docs/                  # dokumentacja (nie jest publikowana)
 .github/workflows/     # ci.yml (build + walidacja), deploy.yml (publikacja)
 ```
-Zasady agentów (`AGENTS.md`, `.claude/agents/`) wskazują `src/` i `public/`. Do czasu pierwszego zadania (szkielet Astro) w repozytorium leży jeszcze strona zastępcza w `site/` i workflowy do niej dopasowane; to zadanie je zastępuje.
-
+Zasady agentów (`AGENTS.md`, `.claude/agents/`) wskazują `src/` i `public/`.
 ## Wersje językowe
 Szczegóły w [ADR 0002](adr/0002-wersje-jezykowe.md): osobne adresy, polski bez prefiksu, `hreflang`, baner sugestii na podstawie języka przeglądarki, bez przekierowań.
 
