@@ -83,7 +83,7 @@
 
 ### FR-9 — Charakter informacyjny (Must)
 - **Kryteria akceptacji:**
-  - [ ] Brak formularzy, rezerwacji i logowania; dane kontaktowe występują wyłącznie jako tekst i linki `tel:` / `mailto:` w stopce
+  - [ ] Brak formularzy, rezerwacji i logowania; dane kontaktowe występują wyłącznie jako tekst i link `tel:` w stopce
   - [ ] Brak linków do sklepu, zawodów i wydarzeń (poza zakresem na tym etapie)
 
 ## Wymagania niefunkcjonalne
