@@ -1,6 +1,6 @@
 # Dokumentacja projektu
 
-**Status dokumentacji:** Szkic
+**Status dokumentacji:** Zatwierdzone
 
 Możliwe statusy: `Szkic` → `Do zatwierdzenia` → `Zatwierdzone`.
 Implementacja rusza dopiero po statusie `Zatwierdzone`. Statusu nie zmienia agent, tylko właściciel produktu.
