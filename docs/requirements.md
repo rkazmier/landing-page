@@ -34,21 +34,23 @@
   - [ ] Link prowadzi do `https://www.google.com/maps/dir/?api=1&destination=53.104351448019855,20.796570746344496` (punkt początkowy to bieżąca lokalizacja nawigującego)
   - [ ] Link ma `rel="noopener noreferrer"`; tekst alternatywny obrazu opisuje cel linku (np. „Nawiguj do Steel Valley Long Range w Mapach Google")
   - [ ] Adres i współrzędne są podane **tekstem** obok obrazu
+  - [ ] Obraz mapy powstał z danych OpenStreetMap i ma zaznaczony punkt obiektu; pod obrazem, tekstem HTML w danym języku, widnieje „© autorzy OpenStreetMap" z linkiem do https://www.openstreetmap.org/copyright
+  - [ ] Obraz jest zapisany w repozytorium (AVIF/WebP), a kafelki OSM nie są pobierane w trakcie budowania ani wyświetlania strony
   - [ ] Opis najlepszego dojazdu jest w każdej wersji językowej
-  - [ ] `TODO(właściciel)`: adres pocztowy, opis dojazdu, źródło obrazu mapy
+  - [ ] `TODO(właściciel)`: adres pocztowy i opis najlepszego dojazdu (treść)
 
 ### FR-5 — Plan przedpola z danymi o celach (Must)
 - **Opis:** Uproszczony plan strzelnicy z rozmieszczeniem celów metalowych, generowany z pliku `targets.json` ([ADR 0003](adr/0003-dane-celow-i-plan.md)).
 - **Kryteria akceptacji:**
-  - [ ] Dane o celach są w jednym pliku `targets.json` (tablica obiektów: `shape`, `distance_m`, `size_cm`, `offset_right_m`)
+  - [ ] Dane o celach są w jednym pliku `targets.json` (tablica obiektów: `shape`, `distance_m`, `offset_right_m`, `size_cm`; kształty i sposób zapisu rozmiaru w ADR 0003)
   - [ ] Plan (SVG) powstaje z tego pliku automatycznie, a nie jest rysowany ręcznie
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
   - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie)
-  - [ ] Kształt celu jest widoczny na planie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli i legendzie
+  - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu) powoduje czerwone CI
   - [ ] Plan i tabela są widoczne bez włączonego JavaScriptu
-  - [ ] `TODO(właściciel)`: potwierdzenie semantyki pól, dopuszczalne kształty, wymiary przedpola i wałów (zob. Otwarte pytania)
+  - [ ] `TODO(właściciel)`: potwierdzenie znaczenia `distance_m` i `offset_right_m` oraz wymiary przedpola i położenie wałów (zob. Otwarte pytania)
 
 ### FR-6 — Przejrzysty wydruk planu (Must)
 - **Opis:** Odwiedzający może wydrukować plan przedpola wraz z tabelą celów.
@@ -66,14 +68,18 @@
   - [ ] `TODO(właściciel)`: opis ogólny
 
 ### FR-8 — Stopka (Must)
-- **Opis:** Stopka z danymi wymaganymi prawem.
+- **Opis:** Rozbudowana stopka w formie osobnej sekcji na końcu każdej wersji językowej: kluczowe informacje, kontakt i mapa strony.
 - **Kryteria akceptacji:**
-  - [ ] `TODO(właściciel)`: zawartość stopki (dane firmy, polityka prywatności, dane kontaktowe) — odpowiedź w wywiadzie była niepełna
+  - [ ] Sekcja „kluczowe informacje": nazwa obiektu, adres, współrzędne, skrót oferty
+  - [ ] Sekcja „kontakt": dane kontaktowe jako tekst i linki `tel:` / `mailto:` (bez formularza)
+  - [ ] Sekcja „mapa strony": linki do wszystkich sekcji strony i do wszystkich 6 wersji językowych
+  - [ ] Stopka jest dostępna z każdej strony i w każdej wersji językowej, w pełni przetłumaczona
+  - [ ] `TODO(właściciel)`: dokładne dane do wpisania (nazwa i dane firmy, telefon, e-mail, polityka prywatności/informacja prawna, godziny)
   - [ ] Zgodność wymogów prawnych (np. informacja o wydawcy dla odbiorców z Niemiec) potwierdzona z prawnikiem — nie jest poradą analityka
 
 ### FR-9 — Charakter informacyjny (Must)
 - **Kryteria akceptacji:**
-  - [ ] Brak formularzy, rezerwacji i logowania
+  - [ ] Brak formularzy, rezerwacji i logowania; dane kontaktowe występują wyłącznie jako tekst i linki `tel:` / `mailto:` w stopce
   - [ ] Brak linków do sklepu, zawodów i wydarzeń (poza zakresem na tym etapie)
 
 ## Wymagania niefunkcjonalne
@@ -101,8 +107,10 @@
 - [ ] Pełna obsługa klawiaturą, widoczny focus
 - [ ] Informacje na planie nie są przekazywane samym kolorem
 
-### NFR-4 — Responsywność (Must)
+### NFR-4 — Responsywność i podejście mobile-first (Must)
+- [ ] Style bazowe projektowane dla najmniejszego ekranu (320 px); większe ekrany obsługiwane przez media queries `min-width`
 - [ ] Brak poziomego przewijania od 320 px do 1920 px
+- [ ] Elementy dotykowe (linki, przyciski) mają co najmniej 44 × 44 px
 - [ ] Plan przedpola (proporcje ok. 1000 m długości do szerokości przedpola) czytelny na wąskim ekranie
 
 ### NFR-5 — Prywatność (Must)
@@ -113,12 +121,19 @@
 - [ ] Teksty każdej wersji językowej w osobnych plikach, wspólna struktura strony
 - [ ] Dane celów w jednym pliku; hotele i atrakcje w jednym pliku z treścią
 
+### NFR-7 — Wygląd (Must)
+- [ ] Charakter „premium", jasny motyw; kierunek wizualny (makieta strony głównej w wersji mobile) zatwierdza właściciel przed wdrożeniem sekcji
+- [ ] Kolory, fonty i logo zdefiniowane jako zmienne (tokeny) w jednym miejscu; podmiana logo i kolorów nie wymaga zmian w komponentach
+- [ ] Do czasu dostarczenia logo używany jest logotyp tekstowy „Steel Valley Long Range"
+
+## Rozstrzygnięte w wywiadzie
+Astro ([ADR 0001](adr/0001-generator-astro.md)), wersje językowe ([ADR 0002](adr/0002-wersje-jezykowe.md)), kształty celów i pomiar rozmiarów ([ADR 0003](adr/0003-dane-celow-i-plan.md)), mapa z OpenStreetMap ([ADR 0004](adr/0004-mapa-statyczna.md)), brak analityki ([ADR 0005](adr/0005-brak-analityki.md)), styl (premium, jasny motyw, mobile-first), zakres stopki.
+
 ## Otwarte pytania (do właściciela)
-1. **Styl wizualny:** logo, kolory, klimat, jasny czy ciemny motyw, przykłady stron — brak odpowiedzi w wywiadzie.
-2. **Stopka:** odpowiedź urwała się na „tak, stopka ni…". Co ma zawierać stopka (dane firmy, polityka prywatności, telefon/e-mail)?
-3. **Dane celów:** (a) czy `distance_m` to odległość od linii strzału (oś y), a `offset_right_m` to odległość od prawego wału (oś x)? (b) jakie kształty (okrąg, kwadrat, prostokąt, sylwetka…)? (c) w jakich jednostkach i co oznacza `size_cm` dla kształtów nieokrągłych? (d) jaka jest szerokość przedpola i gdzie leżą wały (potrzebne do narysowania planu)?
-4. **Mapa:** czy dostarczysz obraz, czy mamy go przygotować na podstawie OpenStreetMap (wymaga podania źródła „© autorzy OpenStreetMap")? Zrzut ekranu Map Google ma ograniczenia licencyjne.
-5. **Adres pocztowy** obiektu.
-6. **Generator stron (ADR 0001):** potwierdzenie wyboru Astro zamiast ręcznego HTML.
-7. **Tłumaczenia:** weryfikacja wersji litewskiej, czeskiej i słowackiej przez osobę znającą te języki.
-8. **Budżet i termin.**
+1. **Plan przedpola:** potwierdzenie, że `distance_m` to odległość od linii strzału (oś y), a `offset_right_m` to odległość od prawego wału (oś x); szerokość przedpola i położenie wałów (potrzebne do narysowania tła planu); czy romb rysować jako kwadrat obrócony o 45°.
+2. **Stopka:** dane do wpisania: nazwa i dane firmy, telefon, e-mail, polityka prywatności lub informacja prawna, godziny; co ma wejść do „kluczowych informacji".
+3. **Adres pocztowy** obiektu.
+4. **Kadr mapy:** sam obiekt czy także drogi dojazdowe od głównej trasy.
+5. **Tłumaczenia:** weryfikacja wersji litewskiej, czeskiej i słowackiej przez osobę znającą te języki.
+6. **Materiały od właściciela (później):** opis obiektu, zdjęcia, lista dyscyplin, plan strzelnicy, logo, opis noclegów i atrakcji.
+7. **Budżet i termin.**

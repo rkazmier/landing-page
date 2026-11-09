@@ -1,6 +1,6 @@
 # ADR 0001: Generator stron statycznych (Astro) zamiast ręcznego HTML
 
-- **Status:** Propozycja (czeka na potwierdzenie właściciela)
+- **Status:** Przyjęta (decyzja właściciela z 2026-11-09)
 - **Data:** 2026-11-09
 
 ## Kontekst
@@ -12,7 +12,7 @@ Strona ma 6 wersji językowych, plan przedpola rysowany z pliku danych, wydruk, 
 3. **Astro.** Wbudowany routing językowy, domyślnie zero JavaScriptu po stronie klienta, komponenty (plan, tabela, nagłówek), oficjalna akcja wdrożenia na GitHub Pages.
 4. **Next.js (eksport statyczny) lub inny framework z JS po stronie klienta.** Cięższe, gorsze dla celu „najszybsze ładowanie".
 
-## Decyzja (propozycja)
+## Decyzja
 Opcja 3, Astro. Polski w korzeniu (bez prefiksu), pozostałe języki z prefiksem. Plan SVG i tabela celów renderowane w czasie budowania. JavaScript tylko dla banera językowego i przycisku wydruku.
 
 ## Konsekwencje

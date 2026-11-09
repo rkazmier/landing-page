@@ -1,9 +1,9 @@
 # Architektura
 
-> Wersja robocza. Elementy oznaczone „Propozycja" czekają na potwierdzenie właściciela (zob. ADR-y).
+> Wersja robocza do zatwierdzenia. Decyzje i ich status: zob. ADR-y.
 
 ## Stack
-- **Propozycja ([ADR 0001](adr/0001-generator-astro.md)):** generator stron statycznych **Astro**, wynik budowania to zwykłe pliki HTML/CSS z minimalnym JavaScriptem
+- **Astro** ([ADR 0001](adr/0001-generator-astro.md), przyjęty): generator stron statycznych; wynik budowania to zwykłe pliki HTML/CSS z minimalnym JavaScriptem
 - Hosting: GitHub Pages, wdrożenie przez GitHub Actions (krok budowania przed publikacją)
 - Adres obecny: `https://rkazmier.github.io/landing-page/`
 - Adres docelowy: `https://steel-valley.pl/` (domena w GoDaddy, konfiguracja później)
@@ -11,7 +11,7 @@
 ## Dlaczego nie czysty HTML
 Sześć wersji językowych oznaczałoby sześć ręcznie utrzymywanych kopii, a plan przedpola rysowany z pliku danych musiałby powstawać w przeglądarce (JavaScript), co pogarsza SEO, wydajność i wydruk. Generator rysuje plan i tabelę w czasie budowania.
 
-## Struktura repozytorium (po przyjęciu ADR 0001)
+## Struktura repozytorium
 ```
 src/
   pages/               # strony; polski w korzeniu, pozostałe języki w /en, /de, /lt, /cs, /sk
@@ -25,7 +25,7 @@ public/                # obrazy, fonty, robots.txt, favicon
 docs/                  # dokumentacja (nie jest publikowana)
 .github/workflows/     # ci.yml (build + walidacja), deploy.yml (publikacja)
 ```
-`AGENTS.md` mówi dziś, że kod leży w `site/`. Po decyzji w sprawie ADR 0001 trzeba go zaktualizować (to zmiana dokumentacji, wymaga zgody właściciela).
+Zasady agentów (`AGENTS.md`, `.claude/agents/`) wskazują `src/` i `public/`. Do czasu pierwszego zadania (szkielet Astro) w repozytorium leży jeszcze strona zastępcza w `site/` i workflowy do niej dopasowane; to zadanie je zastępuje.
 
 ## Wersje językowe
 Szczegóły w [ADR 0002](adr/0002-wersje-jezykowe.md): osobne adresy, polski bez prefiksu, `hreflang`, baner sugestii na podstawie języka przeglądarki, bez przekierowań.

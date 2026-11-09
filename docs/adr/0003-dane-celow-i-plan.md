@@ -1,6 +1,6 @@
 # ADR 0003: Dane o celach w `targets.json` i plan generowany z pliku
 
-- **Status:** Propozycja (format pliku wskazał właściciel; semantyka pól i sposób renderowania do potwierdzenia)
+- **Status:** Przyjęta w części (format pliku, kształty i pomiary rozmiaru ustalił właściciel); do potwierdzenia: znaczenie osi x/y oraz wymiary przedpola i wałów
 - **Data:** 2026-11-09
 
 ## Kontekst
@@ -12,12 +12,31 @@ Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego
 
 | Pole | Znaczenie | Jednostka | Uwagi |
 |---|---|---|---|
-| `shape` | kształt celu | — | wartości dopuszczalne do ustalenia (np. `circle`, `square`, `rectangle`, `silhouette`) |
+| `shape` | kształt celu | — | jedna z wartości z tabeli kształtów poniżej |
 | `distance_m` | odległość od linii strzału (oś y) | metry | |
 | `offset_right_m` | odległość od prawego wału (oś x) | metry | |
-| `size_cm` | rozmiar | centymetry | dla kształtów nieokrągłych do ustalenia (np. `[szerokość, wysokość]`) |
+| `size_cm` | rozmiar | centymetry | liczba lub obiekt, zależnie od kształtu (tabela poniżej) |
 
 - Opcjonalnie: `id` lub `label` do oznaczania celu na planie.
+- Kształty i sposób zapisu rozmiaru (ustalone przez właściciela):
+
+| `shape` | Kształt | `size_cm` | Znaczenie |
+|---|---|---|---|
+| `square` | kwadrat | liczba | długość boku |
+| `circle` | koło | liczba | średnica |
+| `rhombus` | romb | liczba | długość boku (właściciel napisał „rąb", przyjęto romb; rysowany jako kwadrat obrócony o 45°, o ile nie zdecyduje inaczej) |
+| `rectangle` | prostokąt | obiekt `{ "width", "height" }` | szerokość i wysokość |
+| `silhouette` | sylwetka | liczba | wysokość |
+| `bust` | popiersie | liczba | wysokość |
+| `other` | inny | obiekt `{ "name", "width", "height" }` | nazwa, szerokość i wysokość |
+
+Przykład (wartości przykładowe):
+```json
+[
+  { "shape": "circle", "distance_m": 300, "offset_right_m": 12.5, "size_cm": 60 },
+  { "shape": "rectangle", "distance_m": 600, "offset_right_m": 4, "size_cm": { "width": 50, "height": 80 } }
+]
+```
 - Plan jako SVG i tabela HTML są generowane w czasie budowania z tego samego pliku (zależnie od [ADR 0001](0001-generator-astro.md)).
 - Struktura pliku jest walidowana schematem JSON w CI.
 - Wydruk: przycisk i `@media print`, kształty i oznaczenia zamiast kolorów.

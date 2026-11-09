@@ -17,12 +17,19 @@ Polski (domyślny), angielski, niemiecki, litewski, czeski i słowacki. Każda w
 - Opis przeznaczenia strzelnicy z osią 1000 metrów,
 - Rodzaje wspieranych dyscyplin sportowych,
 - Plan strzelnicy, plus wizualizacja rozmieszczonych celi metalowych na przedpolu,
-- Sekcja z opisem dostępnej bazy hotelowej oraz innych atrakcji w pobliżu.
+- Sekcja z opisem dostępnej bazy hotelowej oraz innych atrakcji w pobliżu,
+- Rozbudowana stopka jako osobna sekcja: kluczowe informacje, kontakt i mapa strony.
 
 ## Poza zakresem (na razie)
 - linki do innych stron: sklep, zawody, wydarzenia, ...
-- formularze, rezerwacje i inne funkcje kontaktowe (strona jest wyłącznie informacyjna)
+- formularze i rezerwacje (strona jest wyłącznie informacyjna; dane kontaktowe są podane tylko w stopce)
 - analityka ruchu (decyzja właściciela, ADR 0005)
+
+## Styl wizualny
+- Charakter „premium", jasny motyw
+- Podejście mobile-first (projektowanie od najmniejszego ekranu w górę)
+- Logo dostarczy właściciel później; do tego czasu logotyp tekstowy „Steel Valley Long Range"
+- Kolory, fonty i logo jako zmienne w jednym miejscu, żeby dało się je łatwo podmienić
 
 ## Miary sukcesu
 - wynik w Lighthouse powyżej 90
