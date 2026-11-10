@@ -87,6 +87,16 @@
       }
     ]
   },
+  "accommodation": {
+    "todo": "TODO(vlastník): skontrolovať všeobecný popis a zoznam v src/data/accommodation.json; doplniť odkazy na weby ubytovania.",
+    "intro": "V okruhu 50 km od strelnice nájdete hotely a hostince aj miesta, ktoré stoja za návštevu na severnom Mazovsku a v regióne Kurpie.",
+    "staysTitle": "Ubytovanie",
+    "attractionsTitle": "Zaujímavosti v okolí",
+    "distance": "cca {km} km",
+    "listNote": "Nižšie je výber – od najbližších. Vzdialenosti sú uvedené vzdušnou čiarou od strelnice; trasa po ceste je dlhšia.",
+    "link": "Web",
+    "linkBooking": "Zobraziť na Booking.com"
+  },
   "placeholder": {
     "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
     "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."

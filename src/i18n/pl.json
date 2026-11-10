@@ -87,6 +87,16 @@
       }
     ]
   },
+  "accommodation": {
+    "todo": "TODO(właściciel): sprawdź opis ogólny i listę obiektów w src/data/accommodation.json; uzupełnij linki do stron noclegów.",
+    "intro": "W promieniu 50 km od strzelnicy znajdują się hotele i gospody oraz miejsca warte odwiedzenia na północnym Mazowszu i Kurpiach.",
+    "staysTitle": "Noclegi",
+    "attractionsTitle": "Atrakcje w okolicy",
+    "distance": "ok. {km} km",
+    "listNote": "Poniżej wybrane propozycje – od najbliższych. Odległości podano w linii prostej od strzelnicy; trasa drogowa jest dłuższa.",
+    "link": "Strona obiektu",
+    "linkBooking": "Zobacz w Booking.com"
+  },
   "placeholder": {
     "section": "Treść tej sekcji powstanie w kolejnym etapie.",
     "footer": "Stopka: dane kontaktowe i mapa strony w przygotowaniu."

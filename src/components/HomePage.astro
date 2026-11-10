@@ -2,12 +2,13 @@
 /**
  * Strona główna — wspólny układ dla wszystkich wersji językowych.
  * Strony w src/pages/ podają tylko kod języka; teksty pochodzą z src/i18n/<kod>.json.
- * Treści sekcji: Z04–Z10 (Z04: AboutSection, DisciplinesSection).
+ * Treści sekcji: Z04–Z10 (Z04: AboutSection, DisciplinesSection; Z05: AccommodationSection).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Section from './Section.astro';
 import AboutSection from './AboutSection.astro';
 import DisciplinesSection from './DisciplinesSection.astro';
+import AccommodationSection from './AccommodationSection.astro';
 import { brand } from '../brand';
 import { t, type Locale } from '../i18n';
 
@@ -45,9 +46,7 @@ const nav = [
   <Section id="dojazd" title={d.sections.location}>
     <p>{d.placeholder.section}</p>
   </Section>
-  <Section id="noclegi" title={d.sections.accommodation} tone="alt">
-    <p>{d.placeholder.section}</p>
-  </Section>
+  <AccommodationSection id="noclegi" locale={locale} />
 
   <p slot="footer">{d.placeholder.footer}</p>
 </BaseLayout>

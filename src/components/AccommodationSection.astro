@@ -1,0 +1,180 @@
+---
+/**
+ * Sekcja „Noclegi i atrakcje” (FR-7).
+ *
+ * - Opis ogólny i etykiety: klucz `accommodation` w src/i18n/<kod>.json.
+ * - Pozycje: src/data/accommodation.json (schemat: accommodation.schema.json, walidacja w CI).
+ *   Dodanie lub zmiana pozycji wymaga edycji wyłącznie tego pliku.
+ * - Kolejność: od najbliższej (distance_km), osobno noclegi i atrakcje.
+ * - Pusta lista (lub pusta grupa) = sekcja pokazuje tylko opis ogólny.
+ * - Linki zewnętrzne: rel="noopener noreferrer". Link do Booking.com ma własną etykietę
+ *   („Zobacz w Booking.com”), pozostałe — „Strona obiektu”.
+ */
+import Section from './Section.astro';
+import items from '../data/accommodation.json';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  id: string;
+}
+
+interface Item {
+  id: string;
+  type: 'stay' | 'attraction';
+  name: string;
+  place: string;
+  distance_km: number;
+  url?: string;
+  description: Record<Locale, string>;
+}
+
+const { locale, id } = Astro.props;
+const d = t(locale);
+const a = d.accommodation;
+
+const byDistance = (list: Item[]) => [...list].sort((x, y) => x.distance_km - y.distance_km);
+const all = items as Item[];
+const groups = [
+  { key: 'stay', title: a.staysTitle, items: byDistance(all.filter((i) => i.type === 'stay')) },
+  { key: 'attraction', title: a.attractionsTitle, items: byDistance(all.filter((i) => i.type === 'attraction')) },
+].filter((g) => g.items.length > 0);
+
+const isBooking = (url: string) => {
+  try {
+    return /(^|\.)booking\.com$/.test(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+};
+
+const formatKm = (km: number) =>
+  a.distance.replace('{km}', new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(km));
+---
+<Section id={id} title={d.sections.accommodation} tone="alt">
+  <p class="intro">{a.intro}</p>
+
+  {groups.length > 0 && (
+    <>
+      <p class="note">{a.listNote}</p>
+      {groups.map((group) => (
+        <div class="group">
+          <h3>{group.title}</h3>
+          <ul class="places">
+            {group.items.map((item) => (
+              <li class="place">
+                <h4>{item.name}</h4>
+                <p class="meta">
+                  <span>{item.place}</span>
+                  <span class="distance">{formatKm(item.distance_km)}</span>
+                </p>
+                <p class="desc">{item.description[locale]}</p>
+                {item.url && (
+                  <a class="link" href={item.url} rel="noopener noreferrer">
+                    {isBooking(item.url) ? a.linkBooking : a.link}<span class="visually-hidden">: {item.name}</span>
+                  </a>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </>
+  )}
+</Section>
+
+<style>
+  .intro {
+    max-width: 60ch;
+  }
+
+  .note {
+    max-width: 60ch;
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .group {
+    margin-top: var(--space-6);
+  }
+
+  .group h3 {
+    margin-bottom: var(--space-4);
+  }
+
+  .places {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .place {
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-5);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+  }
+
+  .place h4 {
+    margin: 0 0 var(--space-2);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-strong);
+    line-height: var(--leading-tight);
+  }
+
+  .meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-3);
+    margin: 0 0 var(--space-3);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .distance {
+    font-weight: var(--font-weight-strong);
+    color: var(--color-text);
+  }
+
+  .distance::before {
+    content: "";
+    display: inline-block;
+    width: var(--space-3);
+    height: 2px;
+    margin-right: var(--space-2);
+    vertical-align: middle;
+    background: var(--color-highlight);
+  }
+
+  .desc {
+    margin: 0;
+    color: var(--color-text-muted);
+  }
+
+  .link {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    min-height: var(--tap-target);
+    margin-top: var(--space-2);
+    color: var(--color-accent);
+    font-weight: var(--font-weight-strong);
+  }
+
+  @media (min-width: 40em) {
+    .places {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64em) {
+    .places {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+</style>

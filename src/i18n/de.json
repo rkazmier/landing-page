@@ -87,6 +87,16 @@
       }
     ]
   },
+  "accommodation": {
+    "todo": "TODO(Eigentümer): allgemeine Beschreibung und Liste in src/data/accommodation.json prüfen; Links zu den Unterkünften ergänzen.",
+    "intro": "Im Umkreis von 50 km um die Schießanlage gibt es Hotels und Gasthäuser sowie sehenswerte Orte im nördlichen Masowien und in der Region Kurpie.",
+    "staysTitle": "Unterkünfte",
+    "attractionsTitle": "Sehenswertes in der Umgebung",
+    "distance": "ca. {km} km",
+    "listNote": "Unten eine Auswahl – die nächstgelegenen zuerst. Entfernungen in Luftlinie von der Schießanlage; die Strecke auf der Straße ist länger.",
+    "link": "Website",
+    "linkBooking": "Auf Booking.com ansehen"
+  },
   "placeholder": {
     "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
     "footer": "Fußzeile: Kontaktdaten und Seitenübersicht in Vorbereitung."

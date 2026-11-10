@@ -1,0 +1,240 @@
+[
+  {
+    "id": "hotel-sebory",
+    "type": "stay",
+    "name": "Hotel Sebory",
+    "place": "Romany-Sebory",
+    "distance_km": 4,
+    "url": "https://www.booking.com/hotel/pl/sebory.html",
+    "description": {
+      "pl": "Hotel z restauracją Zajazd Sebory, barem i prywatną plażą; na miejscu wypożyczalnia rowerów i mini golf.",
+      "en": "Hotel with the Zajazd Sebory restaurant, a bar and a private beach; bicycle rental and mini golf on site.",
+      "de": "Hotel mit dem Restaurant Zajazd Sebory, Bar und Privatstrand; Fahrradverleih und Minigolf vor Ort.",
+      "lt": "Viešbutis su restoranu „Zajazd Sebory“, baru ir privačiu paplūdimiu; vietoje – dviračių nuoma ir minigolfas.",
+      "cs": "Hotel s restaurací Zajazd Sebory, barem a soukromou pláží; na místě půjčovna kol a minigolf.",
+      "sk": "Hotel s reštauráciou Zajazd Sebory, barom a súkromnou plážou; na mieste požičovňa bicyklov a minigolf."
+    }
+  },
+  {
+    "id": "hotel-millennium",
+    "type": "stay",
+    "name": "Hotel Millennium",
+    "place": "Przasnysz",
+    "distance_km": 11,
+    "url": "https://www.booking.com/hotel/pl/millenium-leszno.html",
+    "description": {
+      "pl": "Kameralny hotel w Przasnyszu z pokojami rodzinnymi, bezpłatnym parkingiem i Wi-Fi.",
+      "en": "A small hotel in Przasnysz with family rooms, free parking and Wi-Fi.",
+      "de": "Kleines Hotel in Przasnysz mit Familienzimmern, kostenlosem Parkplatz und WLAN.",
+      "lt": "Nedidelis viešbutis Pšasnyše su šeimos kambariais, nemokama automobilių stovėjimo aikštele ir „Wi-Fi“.",
+      "cs": "Menší hotel v Přasnyši s rodinnými pokoji, parkováním zdarma a Wi-Fi.",
+      "sk": "Menší hotel v Prasnyši s rodinnými izbami, bezplatným parkovaním a Wi-Fi."
+    }
+  },
+  {
+    "id": "muzeum-przasnysz",
+    "type": "attraction",
+    "name": "Muzeum Historyczne w Przasnyszu",
+    "place": "Przasnysz",
+    "distance_km": 11,
+    "description": {
+      "pl": "Muzeum Historyczne w zabytkowym ratuszu oraz gotycki zespół klasztorny Bernardynów (obecnie Pasjonistów), jeden z największych w Polsce.",
+      "en": "The Historical Museum in the old town hall and the Gothic Bernardine (now Passionist) monastery, one of the largest in Poland.",
+      "de": "Das Historische Museum im alten Rathaus und das gotische Bernhardinerkloster (heute Passionisten), eines der größten in Polen.",
+      "lt": "Istorijos muziejus senojoje rotušėje ir gotikinis bernardinų (dabar pasionistų) vienuolynas – vienas didžiausių Lenkijoje.",
+      "cs": "Historické muzeum ve staré radnici a gotický bernardinský (dnes pasionistický) klášter, jeden z největších v Polsku.",
+      "sk": "Historické múzeum v starej radnici a gotický bernardínsky (dnes pasionistický) kláštor, jeden z najväčších v Poľsku."
+    }
+  },
+  {
+    "id": "rostkowo-sanktuarium",
+    "type": "attraction",
+    "name": "Sanktuarium św. Stanisława Kostki",
+    "place": "Rostkowo",
+    "distance_km": 11,
+    "description": {
+      "pl": "Miejsce urodzenia św. Stanisława Kostki; neogotycki kościół z relikwiami świętego, cel pielgrzymek z Polski i zagranicy.",
+      "en": "Birthplace of St Stanislaus Kostka; a neo-Gothic church with the saint's relics, visited by pilgrims from Poland and abroad.",
+      "de": "Geburtsort des hl. Stanislaus Kostka; neugotische Kirche mit Reliquien des Heiligen, Ziel von Pilgern aus dem In- und Ausland.",
+      "lt": "Šv. Stanislovo Kostkos gimtinė; neogotikinė bažnyčia su šventojo relikvijomis, piligrimų iš Lenkijos ir užsienio tikslas.",
+      "cs": "Rodiště sv. Stanislava Kostky; novogotický kostel s ostatky světce, cíl poutníků z Polska i ze zahraničí.",
+      "sk": "Rodisko sv. Stanislava Kostku; novogotický kostol s relikviami svätca, cieľ pútnikov z Poľska aj zo zahraničia."
+    }
+  },
+  {
+    "id": "dwor-karwacz",
+    "type": "stay",
+    "name": "Dwór Karwacz",
+    "place": "Karwacz",
+    "distance_km": 15,
+    "url": "https://www.booking.com/hotel/pl/dwor-karwacz.html",
+    "description": {
+      "pl": "Obiekt w dworskim klimacie z restauracją, ogrodem, kortem tenisowym i rowerami dla gości.",
+      "en": "A manor-style guesthouse with a restaurant, garden, tennis court and bicycles for guests.",
+      "de": "Unterkunft im Gutshausstil mit Restaurant, Garten, Tennisplatz und Fahrrädern für Gäste.",
+      "lt": "Dvaro stiliaus svečių namai su restoranu, sodu, teniso kortu ir dviračiais svečiams.",
+      "cs": "Ubytování v duchu šlechtického sídla s restaurací, zahradou, tenisovým kurtem a koly pro hosty.",
+      "sk": "Ubytovanie v štýle kaštieľa s reštauráciou, záhradou, tenisovým kurtom a bicyklami pre hostí."
+    }
+  },
+  {
+    "id": "hotel-atena",
+    "type": "stay",
+    "name": "Hotel Atena",
+    "place": "Ciechanów",
+    "distance_km": 27,
+    "url": "https://www.booking.com/hotel/pl/atena-wedding-business-amp-spa.html",
+    "description": {
+      "pl": "Hotel ze strefą spa i wellness, położony w spokojnej części Ciechanowa; bezpłatny parking.",
+      "en": "A hotel with a spa and wellness area in a quiet part of Ciechanów; free parking.",
+      "de": "Hotel mit Spa- und Wellnessbereich in einer ruhigen Gegend von Ciechanów; kostenloser Parkplatz.",
+      "lt": "Viešbutis su SPA ir sveikatingumo zona ramioje Čechanuvo dalyje; nemokama automobilių stovėjimo aikštelė.",
+      "cs": "Hotel s lázeňskou a wellness zónou v klidné části Ciechanówa; parkování zdarma.",
+      "sk": "Hotel so zónou spa a wellness v tichej časti Ciechanówa; bezplatné parkovanie."
+    }
+  },
+  {
+    "id": "hotel-korona",
+    "type": "stay",
+    "name": "Hotel Korona",
+    "place": "Ciechanów",
+    "distance_km": 27,
+    "url": "https://www.booking.com/hotel/pl/korona-ciechanow.html",
+    "description": {
+      "pl": "Hotel z restauracją, barem i tarasem w Ciechanowie; bezpłatny parking.",
+      "en": "A hotel with a restaurant, bar and terrace in Ciechanów; free parking.",
+      "de": "Hotel mit Restaurant, Bar und Terrasse in Ciechanów; kostenloser Parkplatz.",
+      "lt": "Viešbutis su restoranu, baru ir terasa Čechanuve; nemokama automobilių stovėjimo aikštelė.",
+      "cs": "Hotel s restaurací, barem a terasou v Ciechanówě; parkování zdarma.",
+      "sk": "Hotel s reštauráciou, barom a terasou v Ciechanówe; bezplatné parkovanie."
+    }
+  },
+  {
+    "id": "zamek-ciechanow",
+    "type": "attraction",
+    "name": "Zamek Książąt Mazowieckich",
+    "place": "Ciechanów",
+    "distance_km": 27,
+    "url": "https://www.umciechanow.pl/informacje_o_ciechanowie/zamek_ksiazat_mazowieckich",
+    "description": {
+      "pl": "Gotycki zamek z przełomu XIV i XV wieku nad Łydynią, z wystawą o dziejach niezależnego Księstwa Mazowieckiego.",
+      "en": "A Gothic castle from the turn of the 14th and 15th centuries on the Łydynia river, with an exhibition on the independent Duchy of Masovia.",
+      "de": "Gotische Burg aus der Wende vom 14. zum 15. Jahrhundert an der Łydynia mit einer Ausstellung über das unabhängige Herzogtum Masowien.",
+      "lt": "XIV–XV a. sandūros gotikinė pilis prie Lydynios upės su paroda apie nepriklausomą Mazovijos kunigaikštystę.",
+      "cs": "Gotický hrad z přelomu 14. a 15. století na řece Łydynia s expozicí o nezávislém Mazovském knížectví.",
+      "sk": "Gotický hrad z prelomu 14. a 15. storočia na rieke Łydynia s expozíciou o nezávislom Mazovskom kniežatstve."
+    }
+  },
+  {
+    "id": "hotel-mlawa",
+    "type": "stay",
+    "name": "Hotel Mława",
+    "place": "Mława",
+    "distance_km": 28,
+    "url": "https://www.booking.com/hotel/pl/mlawa-mlawa1.html",
+    "description": {
+      "pl": "Hotel przy obiektach sportowych MOSiR w Mławie, z restauracją i całodobową recepcją; basen w sąsiedztwie.",
+      "en": "A hotel next to the MOSiR sports facilities in Mława, with a restaurant and 24-hour reception; swimming pool nearby.",
+      "de": "Hotel an der Sportanlage MOSiR in Mława mit Restaurant und 24-Stunden-Rezeption; Schwimmbad in der Nähe.",
+      "lt": "Viešbutis prie MOSiR sporto komplekso Mlavoje, su restoranu ir visą parą veikiančia registratūra; šalia – baseinas.",
+      "cs": "Hotel u sportovního areálu MOSiR v Mławě s restaurací a nepřetržitou recepcí; bazén v sousedství.",
+      "sk": "Hotel pri športovom areáli MOSiR v Mławe s reštauráciou a nepretržitou recepciou; bazén v susedstve."
+    }
+  },
+  {
+    "id": "muzeum-mlawa",
+    "type": "attraction",
+    "name": "Muzeum Ziemi Zawkrzeńskiej",
+    "place": "Mława",
+    "distance_km": 28,
+    "url": "https://muzeum.mlawa.pl",
+    "description": {
+      "pl": "Muzeum regionalne z dwujęzyczną wystawą „Bitwa pod Mławą 1939”; w okolicy zachowane umocnienia Pozycji Mławskiej.",
+      "en": "A regional museum with the bilingual exhibition “Battle of Mława 1939”; remains of the Mława Position fortifications nearby.",
+      "de": "Regionalmuseum mit der zweisprachigen Ausstellung „Schlacht bei Mława 1939“; in der Umgebung Reste der Befestigungen der Mława-Stellung.",
+      "lt": "Regioninis muziejus su dvikalbe paroda „Mlavos mūšis 1939“; apylinkėse išlikę Mlavos pozicijos įtvirtinimai.",
+      "cs": "Regionální muzeum s dvojjazyčnou expozicí „Bitva u Mławy 1939“; v okolí pozůstatky opevnění Mławské pozice.",
+      "sk": "Regionálne múzeum s dvojjazyčnou expozíciou „Bitka pri Mławe 1939“; v okolí pozostatky opevnení Mławskej pozície."
+    }
+  },
+  {
+    "id": "muzeum-romantyzmu",
+    "type": "attraction",
+    "name": "Muzeum Romantyzmu",
+    "place": "Opinogóra Górna",
+    "distance_km": 32,
+    "url": "https://www.muzeumromantyzmu.pl",
+    "description": {
+      "pl": "Neogotycki zameczek Krasińskich w parku krajobrazowym, z pamiątkami po poecie Zygmuncie Krasińskim.",
+      "en": "The Krasiński family's neo-Gothic little castle in a landscape park, with mementos of the poet Zygmunt Krasiński.",
+      "de": "Neugotisches Schlösschen der Familie Krasiński in einem Landschaftspark mit Erinnerungsstücken an den Dichter Zygmunt Krasiński.",
+      "lt": "Neogotikinė Krasinskių pilaitė kraštovaizdžio parke su poeto Zygmunto Krasinskio atminimo daiktais.",
+      "cs": "Novogotický zámeček rodu Krasińských v krajinářském parku s památkami na básníka Zygmunta Krasińského.",
+      "sk": "Novogotický zámoček rodu Krasińských v krajinárskom parku s pamiatkami na básnika Zygmunta Krasińského."
+    }
+  },
+  {
+    "id": "hotel-wroblewscy",
+    "type": "stay",
+    "name": "Hotel & Restauracja Wróblewscy",
+    "place": "Karniewo",
+    "distance_km": 33,
+    "url": "https://www.booking.com/hotel/pl/amp-restauracja-wroblewscy.html",
+    "description": {
+      "pl": "Hotel z restauracją, barem i ogrodem; bezpłatne Wi-Fi w całym obiekcie.",
+      "en": "A hotel with a restaurant, bar and garden; free Wi-Fi throughout.",
+      "de": "Hotel mit Restaurant, Bar und Garten; kostenloses WLAN im gesamten Haus.",
+      "lt": "Viešbutis su restoranu, baru ir sodu; nemokamas „Wi-Fi“ visame pastate.",
+      "cs": "Hotel s restaurací, barem a zahradou; Wi-Fi zdarma v celém objektu.",
+      "sk": "Hotel s reštauráciou, barom a záhradou; bezplatné Wi-Fi v celom objekte."
+    }
+  },
+  {
+    "id": "gospoda-pazibroda",
+    "type": "stay",
+    "name": "Gospoda Pazibroda",
+    "place": "Chrzanowo",
+    "distance_km": 34,
+    "url": "https://www.booking.com/hotel/pl/gospoda-pazibroda-chrzanowo.html",
+    "description": {
+      "pl": "Gospoda z restauracją, barem, ogrodem i placem zabaw; rowery dla gości bez dodatkowej opłaty.",
+      "en": "An inn with a restaurant, bar, garden and children's playground; free bicycles for guests.",
+      "de": "Gasthaus mit Restaurant, Bar, Garten und Spielplatz; kostenlose Fahrräder für Gäste.",
+      "lt": "Užeiga su restoranu, baru, sodu ir vaikų žaidimų aikštele; nemokami dviračiai svečiams.",
+      "cs": "Hostinec s restaurací, barem, zahradou a dětským hřištěm; kola pro hosty zdarma.",
+      "sk": "Hostinec s reštauráciou, barom, záhradou a detským ihriskom; bicykle pre hostí zadarmo."
+    }
+  },
+  {
+    "id": "zagroda-kurpiowska",
+    "type": "attraction",
+    "name": "Zagroda Kurpiowska",
+    "place": "Kadzidło",
+    "distance_km": 47,
+    "url": "https://kadzidlo.pl",
+    "description": {
+      "pl": "Skansen tradycyjnej drewnianej zabudowy Puszczy Kurpiowskiej; w czerwcu odbywa się tu inscenizacja Wesela Kurpiowskiego.",
+      "en": "An open-air museum of traditional wooden architecture of the Kurpie Forest; the Kurpie Wedding re-enactment is held here in June.",
+      "de": "Freilichtmuseum mit traditioneller Holzarchitektur des Kurpie-Waldes; im Juni findet hier die Inszenierung der Kurpie-Hochzeit statt.",
+      "lt": "Tradicinės Kurpių girios medinės architektūros muziejus po atviru dangumi; birželį čia vaidinamos Kurpių vestuvės.",
+      "cs": "Skanzen tradiční dřevěné architektury Kurpiowského pralesa; v červnu se zde koná inscenace Kurpiowské svatby.",
+      "sk": "Skanzen tradičnej drevenej architektúry Kurpiovského pralesa; v júni sa tu koná inscenácia Kurpiovskej svadby."
+    }
+  },
+  {
+    "id": "hotelik-kur",
+    "type": "stay",
+    "name": "Hotelik ze śniadaniami „KUR”",
+    "place": "Myszyniec",
+    "distance_km": 48,
+    "url": "https://www.booking.com/hotel/pl/noclegi-restauracja-kur-myszyniec-myszyniec.html",
+    "description": {
+      "pl": "Kameralny hotel z restauracją i barem w sercu Kurpiów; bezpłatny parking i Wi-Fi.",
+      "en": "A small hotel with a restaurant and bar in the heart of the Kurpie region; free parking and Wi-Fi.",
+      "de": "Kleines Hotel mit Restaurant und Bar im Herzen der Region Kurpie; kostenloser Parkplatz und WLAN.",
+      "lt": "Nedidelis viešbutis su restoranu ir baru Kurpių krašto širdyje; nemokama automobilių stovėjimo aikštelė ir „Wi-Fi“.",
+      "cs": "Menší hotel s restaurací a barem v srdci regionu Kurpie; parkování a Wi-Fi zdarma.",
+      "sk": "Menší hotel s reštauráciou a barom v srdci regiónu Kurpie; bezplatné parkovanie a Wi-Fi."
+    }
+  }
+]
