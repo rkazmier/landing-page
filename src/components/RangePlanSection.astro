@@ -7,7 +7,7 @@
  * - Geometria i układ etykiet: src/utils/rangePlan.ts; znaczniki kształtów: TargetShape.astro.
  * - Oś strzału w pionie (linia otwarcia ognia na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
  *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
- * - Tabela: oznaczenie, kształt, odległość, rozmiar i pusta kolumna „Poprawka” do własnych notatek.
+ * - Tabela: oznaczenie, kształt, odległość, rozmiar.
  * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
@@ -130,7 +130,7 @@ const bermMid = L.fieldY + L.fieldH / 2;
           dominant-baseline="central"
         >{p.rightBerm}</text>
 
-        <!-- Linia strzału -->
+        <!-- Linia otwarcia ognia -->
         <line
           class="firing-line"
           x1={L.fieldX}
@@ -180,7 +180,6 @@ const bermMid = L.fieldY + L.fieldH / 2;
               <th scope="col">{p.colShape}</th>
               <th scope="col">{p.colDistance}</th>
               <th scope="col">{p.colSize}</th>
-              <th scope="col">{p.colCorrection}</th>
             </tr>
           </thead>
           <tbody>
@@ -197,7 +196,6 @@ const bermMid = L.fieldY + L.fieldH / 2;
                 </td>
                 <td class="num">{n(target.distance_m)} m</td>
                 <td>{sizeText(target)}</td>
-                <td class="correction"></td>
               </tr>
             ))}
           </tbody>
@@ -369,11 +367,6 @@ const bermMid = L.fieldY + L.fieldH / 2;
   .targets-table .num {
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
-  }
-
-  /* Pusta kolumna na własne notatki (np. na wydruku) */
-  .targets-table .correction {
-    min-width: 6rem;
   }
 
   .shape-cell {

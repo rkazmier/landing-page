@@ -110,7 +110,6 @@
     "colLabel": "Označení",
     "colShape": "Tvar",
     "colDistance": "Vzdálenost",
-    "colCorrection": "Korekce",
     "colSize": "Velikost",
     "sizeSide": "strana {v} cm",
     "sizeDiameter": "průměr {v} cm",

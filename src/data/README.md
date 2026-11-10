@@ -19,7 +19,7 @@ Tablica obiektów, jeden obiekt = jeden cel.
 |---|---|---|---|
 | `label` | tak | — | oznaczenie na planie: jedna wielka litera A–Z i numer kolejnego celu z tą literą, np. `K1`, `A1`, `A2` |
 | `shape` | tak | — | kształt: `square`, `circle`, `rhombus`, `rectangle`, `silhouette`, `bust`, `other` |
-| `distance_m` | tak | metry | odległość od linii strzału (oś y), 0–1000 |
+| `distance_m` | tak | metry | odległość od linii otwarcia ognia (oś y), 0–1000 |
 | `offset_right_m` | tak | metry | odległość od prawego wału (oś x, prawy wał = 0, lewy = 160), 0–160 |
 | `size_cm` | tak | centymetry | rozmiar — liczba lub obiekt, zależnie od kształtu (tabela niżej) |
 | `id` | nie | — | opcjonalny stały identyfikator (małe litery, cyfry, myślniki), unikalny |

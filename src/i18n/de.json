@@ -110,7 +110,6 @@
     "colLabel": "Bezeichnung",
     "colShape": "Form",
     "colDistance": "Entfernung",
-    "colCorrection": "Korrektur",
     "colSize": "Größe",
     "sizeSide": "Seite {v} cm",
     "sizeDiameter": "Durchmesser {v} cm",

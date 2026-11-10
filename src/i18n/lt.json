@@ -110,7 +110,6 @@
     "colLabel": "Žymuo",
     "colShape": "Forma",
     "colDistance": "Atstumas",
-    "colCorrection": "Pataisa",
     "colSize": "Dydis",
     "sizeSide": "kraštinė {v} cm",
     "sizeDiameter": "skersmuo {v} cm",

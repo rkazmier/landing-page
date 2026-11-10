@@ -110,7 +110,6 @@
     "colLabel": "Label",
     "colShape": "Shape",
     "colDistance": "Distance",
-    "colCorrection": "Correction",
     "colSize": "Size",
     "sizeSide": "side {v} cm",
     "sizeDiameter": "diameter {v} cm",
