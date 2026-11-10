@@ -36,6 +36,57 @@
     "location": "Vieta ir kaip atvykti",
     "accommodation": "Nakvynė ir lankytinos vietos"
   },
+  "about": {
+    "todo": "TODO(savininkas): pakeisti objekto ir 1000 m linijos aprašymą bei nuotrauką (src/assets/photos/). Dabartiniai tekstai ir iliustracija yra laikini.",
+    "eyebrow": "1000 m linija",
+    "lead": "Steel Valley Long Range – šaudykla, skirta šaudymui ilgais nuotoliais: 1000 metrų šaudymo linija ir taikinių laukas su metaliniais taikiniais.",
+    "body": "Taikinių laukas yra 160 metrų pločio ir visu perimetru apjuostas pylimais. Skirtingais atstumais išdėstyti metaliniai taikiniai leidžia treniruotis ir rengti varžybas visu linijos ilgiu.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "šaudymo linijos ilgis"
+      },
+      {
+        "value": "160 m",
+        "label": "taikinių lauko plotis"
+      },
+      {
+        "value": "Plienas",
+        "label": "metaliniai taikiniai lauke"
+      }
+    ],
+    "imageAlt": "Laikina iliustracija: šaudymo linija tarp žemės pylimų su metaliniais taikiniais taikinių lauke"
+  },
+  "disciplines": {
+    "intro": "1000 m linija ir metaliniai taikiniai leidžia užsiimti įvairiomis šaudymo ilgais nuotoliais disciplinomis.",
+    "items": [
+      {
+        "id": "prs",
+        "name": "Precision Rifle (PRS)",
+        "description": "Tikslusis šaudymas iš įvairių padėčių ir atramų į metalinius taikinius kintančiais atstumais, spaudžiant laikui."
+      },
+      {
+        "id": "nrl-hunter",
+        "name": "NRL Hunter",
+        "description": "NRL Hunter – lauko šaudymo sportas, paremtas realistiškais medžioklės scenarijais. Į plieninius taikinius nežinomais atstumais šaudoma iš natūralių padėčių lauke, naudojant tuos pačius įgūdžius, kurių reikia sumaniam ir etiškam medžiotojui."
+      },
+      {
+        "id": "sharpshooter-challenge",
+        "name": "Sharpshooter Challenge",
+        "description": "Karinis požiūris į šaudymą dideliais nuotoliais. Šaudymas žinomais ir nežinomais atstumais, judantys taikiniai, įvairios padėtys, pritaikytos prie vietovės sąlygų."
+      },
+      {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Tikslusis šaudymas gulint nuo atramos dideliais atstumais."
+      },
+      {
+        "id": "training",
+        "name": "Treniruotės ir mokymai",
+        "description": "Užsiėmimai norintiems pradėti arba tobulinti savo šaudymo ilgais nuotoliais įgūdžius bet kokia forma. Geriausi savo srities instruktoriai."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Šios dalies turinys bus parengtas kitame etape.",
     "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."

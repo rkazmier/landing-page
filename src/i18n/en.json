@@ -36,6 +36,57 @@
     "location": "Location and directions",
     "accommodation": "Accommodation and attractions"
   },
+  "about": {
+    "todo": "TODO(owner): replace the description of the range and the 1000 m lane, and the photo (src/assets/photos/). Current texts and illustration are placeholders.",
+    "eyebrow": "1000 m lane",
+    "lead": "Steel Valley Long Range is a shooting range built for long-range shooting: a 1000-metre lane and a target field with steel targets.",
+    "body": "The target field is 160 metres wide and surrounded by berms along its entire perimeter. Steel targets placed at various distances allow training and competitions over the full length of the lane.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "shooting lane length"
+      },
+      {
+        "value": "160 m",
+        "label": "target field width"
+      },
+      {
+        "value": "Steel",
+        "label": "steel targets in the field"
+      }
+    ],
+    "imageAlt": "Placeholder illustration: a shooting lane between earth berms with steel targets in the target field"
+  },
+  "disciplines": {
+    "intro": "The 1000 m lane and steel targets support a range of long-range shooting disciplines.",
+    "items": [
+      {
+        "id": "prs",
+        "name": "Precision Rifle (PRS)",
+        "description": "Precision shooting from various positions and supports at steel targets over changing distances, under time pressure."
+      },
+      {
+        "id": "nrl-hunter",
+        "name": "NRL Hunter",
+        "description": "NRL Hunter is a field-shooting sport built around realistic hunting scenarios. Steel targets at unknown distances are engaged from natural field positions, using the very same skills that make a capable, ethical hunter."
+      },
+      {
+        "id": "sharpshooter-challenge",
+        "name": "Sharpshooter Challenge",
+        "description": "A military approach to long-range shooting. Shooting at known and unknown distances, moving targets, and a variety of positions adapted to the terrain."
+      },
+      {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Precision prone shooting from a rest at long distances."
+      },
+      {
+        "id": "training",
+        "name": "Training and courses",
+        "description": "Sessions for shooters who want to start or develop their long-range shooting skills in any form. Best-in-class instructors."
+      }
+    ]
+  },
   "placeholder": {
     "section": "The content of this section will be added at a later stage.",
     "footer": "Footer: contact details and site map coming soon."

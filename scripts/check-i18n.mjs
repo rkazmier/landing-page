@@ -3,7 +3,9 @@
  * Sprawdza pliki tłumaczeń src/i18n/<kod>.json (FR-1, Z03):
  * - każdy z 6 plików istnieje i jest poprawnym JSON-em,
  * - każdy klucz występuje we wszystkich plikach (porównanie ze zbiorem wszystkich kluczy),
- * - wartości są niepustymi napisami.
+ * - wartości są niepustymi napisami,
+ * - tablice (np. listy dyscyplin) mają tyle samo elementów w każdym języku
+ *   (elementy są porównywane jako klucze `lista.0`, `lista.1`, …).
  * Bez zależności; uruchamiane w CI: `npm run check:i18n`.
  */
 import { readFileSync } from 'node:fs';
@@ -15,7 +17,7 @@ const dir = join(dirname(fileURLToPath(import.meta.url)), '..', 'src', 'i18n');
 const errors = [];
 
 function flatten(value, prefix, out, locale) {
-  if (value !== null && typeof value === 'object' && !Array.isArray(value)) {
+  if (value !== null && typeof value === 'object') {
     for (const [key, child] of Object.entries(value)) {
       flatten(child, prefix ? `${prefix}.${key}` : key, out, locale);
     }

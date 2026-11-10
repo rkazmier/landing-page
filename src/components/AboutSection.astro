@@ -1,0 +1,105 @@
+---
+/**
+ * Sekcja „O obiekcie" (FR-2): opis przeznaczenia strzelnicy i osi 1000 m,
+ * najważniejsze liczby oraz zdjęcie.
+ *
+ * Teksty: klucz `about` w src/i18n/<kod>.json (oznaczone `todo` do podmiany).
+ * Zdjęcie: src/assets/photos/ — aby podmienić, zastąp plik i zaktualizuj `imageAlt`.
+ * Astro generuje AVIF/WebP w kilku szerokościach, z wymiarami i `loading="lazy"`.
+ */
+import { Picture } from 'astro:assets';
+import Section from './Section.astro';
+import photo from '../assets/photos/placeholder-range.jpg';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+  id: string;
+}
+
+const { locale, id } = Astro.props;
+const d = t(locale);
+---
+<Section id={id} title={d.sections.about} eyebrow={d.about.eyebrow} tone="alt">
+  <div class="about">
+    <div class="about-text">
+      <p class="lead">{d.about.lead}</p>
+      <p>{d.about.body}</p>
+
+      <dl class="facts">
+        {d.about.facts.map((fact) => (
+          <div class="fact">
+            <dt>{fact.label}</dt>
+            <dd>{fact.value}</dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+
+    <Picture
+      class="about-photo"
+      src={photo}
+      alt={d.about.imageAlt}
+      formats={['avif', 'webp']}
+      widths={[480, 800, 1200, 1600]}
+      sizes="(min-width: 56em) 50vw, 100vw"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</Section>
+
+<style>
+  .about {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .about-text > p:last-of-type {
+    max-width: 60ch;
+  }
+
+  .facts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+    gap: var(--space-4);
+    margin: var(--space-6) 0 0;
+  }
+
+  .fact {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: var(--space-1);
+    padding-top: var(--space-3);
+    border-top: 2px solid var(--color-highlight);
+  }
+
+  .fact dt {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .fact dd {
+    margin: 0;
+    font-family: var(--font-heading);
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-strong);
+    line-height: var(--leading-tight);
+  }
+
+  .about :global(.about-photo) {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+  }
+
+  @media (min-width: 56em) {
+    .about {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      align-items: center;
+      gap: var(--space-7);
+    }
+  }
+</style>

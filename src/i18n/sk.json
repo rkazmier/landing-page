@@ -36,6 +36,57 @@
     "location": "Poloha a príjazd",
     "accommodation": "Ubytovanie a atrakcie"
   },
+  "about": {
+    "todo": "TODO(vlastník): nahradiť popis strelnice a dráhy 1000 m a fotografiu (src/assets/photos/). Súčasné texty a ilustrácia sú zástupné.",
+    "eyebrow": "Dráha 1000 m",
+    "lead": "Steel Valley Long Range je strelnica určená na streľbu na veľké vzdialenosti: dráha s dĺžkou 1000 metrov a terčové pole s kovovými terčmi.",
+    "body": "Terčové pole je široké 160 metrov a po celom obvode ho obklopujú valy. Kovové terče rozmiestnené v rôznych vzdialenostiach umožňujú tréning aj súťaže na celej dĺžke dráhy.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "dĺžka streleckej dráhy"
+      },
+      {
+        "value": "160 m",
+        "label": "šírka terčového poľa"
+      },
+      {
+        "value": "Oceľ",
+        "label": "kovové terče v terčovom poli"
+      }
+    ],
+    "imageAlt": "Zástupná ilustrácia: strelecká dráha medzi zemnými valmi s kovovými terčmi v terčovom poli"
+  },
+  "disciplines": {
+    "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti.",
+    "items": [
+      {
+        "id": "prs",
+        "name": "Precision Rifle (PRS)",
+        "description": "Presná streľba z rôznych polôh a opôr na kovové terče na meniace sa vzdialenosti, pod časovým tlakom."
+      },
+      {
+        "id": "nrl-hunter",
+        "name": "NRL Hunter",
+        "description": "NRL Hunter je terénny strelecký šport postavený na realistických poľovníckych scenároch. Na oceľové terče na neznáme vzdialenosti sa strieľa z prirodzených polôh v teréne s využitím presne tých zručností, ktoré zo strelca robia schopného a etického poľovníka."
+      },
+      {
+        "id": "sharpshooter-challenge",
+        "name": "Sharpshooter Challenge",
+        "description": "Vojenský prístup k streľbe na veľké vzdialenosti. Streľba na známu aj neznámu vzdialenosť, pohyblivé terče a rôzne polohy prispôsobené terénu."
+      },
+      {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Presná streľba v ľahu z opory na veľké vzdialenosti."
+      },
+      {
+        "id": "training",
+        "name": "Tréningy a školenia",
+        "description": "Kurzy pre tých, ktorí chcú začať so streľbou na veľké vzdialenosti v akejkoľvek podobe alebo v nej rozvíjať svoje zručnosti. Špičkoví inštruktori vo svojom odbore."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
     "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."
