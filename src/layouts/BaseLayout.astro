@@ -1,0 +1,66 @@
+---
+/**
+ * Układ bazowy: <head>, link „przejdź do treści", nagłówek, <main>, miejsce na stopkę.
+ * Teksty interfejsu przychodzą z propsów (wersje językowe: Z03).
+ */
+import Fonts from '../components/Fonts.astro';
+import Header from '../components/Header.astro';
+import type { NavItem } from '../types';
+import '../styles/tokens.css';
+import '../styles/base.css';
+
+interface Props {
+  lang: string;
+  title: string;
+  description: string;
+  nav: NavItem[];
+  /** Kotwica stopki (cel linku „Kontakt" w nawigacji) */
+  footerId?: string;
+  ui: {
+    skipLink: string;
+    navLabel: string;
+    menuLabel: string;
+  };
+}
+
+const { lang, title, description, nav, footerId = 'kontakt', ui } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="color-scheme" content="light" />
+    <Fonts />
+  </head>
+  <body>
+    <a class="skip-link" href="#tresc">{ui.skipLink}</a>
+    <Header items={nav} navLabel={ui.navLabel} menuLabel={ui.menuLabel} />
+    <main id="tresc" tabindex="-1">
+      <slot />
+    </main>
+    <footer id={footerId} class="site-footer">
+      <div class="container">
+        <slot name="footer" />
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style>
+  main:focus {
+    outline: none;
+  }
+
+  .site-footer {
+    padding-block: var(--space-7);
+    background: var(--color-dark);
+    color: var(--color-on-dark);
+  }
+
+  .site-footer :global(a) {
+    color: var(--color-on-dark);
+  }
+</style>
