@@ -7,7 +7,8 @@
  *   Dodanie lub zmiana pozycji wymaga edycji wyłącznie tego pliku.
  * - Kolejność: od najbliższej (distance_km), osobno noclegi i atrakcje.
  * - Pusta lista (lub pusta grupa) = sekcja pokazuje tylko opis ogólny.
- * - Linki zewnętrzne: rel="noopener noreferrer".
+ * - Linki zewnętrzne: rel="noopener noreferrer". Link do Booking.com ma własną etykietę
+ *   („Zobacz w Booking.com”), pozostałe — „Strona obiektu”.
  */
 import Section from './Section.astro';
 import items from '../data/accommodation.json';
@@ -39,6 +40,14 @@ const groups = [
   { key: 'attraction', title: a.attractionsTitle, items: byDistance(all.filter((i) => i.type === 'attraction')) },
 ].filter((g) => g.items.length > 0);
 
+const isBooking = (url: string) => {
+  try {
+    return /(^|\.)booking\.com$/.test(new URL(url).hostname);
+  } catch {
+    return false;
+  }
+};
+
 const formatKm = (km: number) =>
   a.distance.replace('{km}', new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }).format(km));
 ---
@@ -62,7 +71,7 @@ const formatKm = (km: number) =>
                 <p class="desc">{item.description[locale]}</p>
                 {item.url && (
                   <a class="link" href={item.url} rel="noopener noreferrer">
-                    {a.link}<span class="visually-hidden">: {item.name}</span>
+                    {isBooking(item.url) ? a.linkBooking : a.link}<span class="visually-hidden">: {item.name}</span>
                   </a>
                 )}
               </li>

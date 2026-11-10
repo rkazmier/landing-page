@@ -94,7 +94,8 @@
     "attractionsTitle": "Lankytinos vietos apylinkėse",
     "distance": "apie {km} km",
     "listNote": "Žemiau – pasiūlymai, pradedant artimiausiais. Atstumai nurodyti tiesia linija nuo šaudyklos; kelias automobiliu yra ilgesnis.",
-    "link": "Svetainė"
+    "link": "Svetainė",
+    "linkBooking": "Žiūrėti „Booking.com“"
   },
   "placeholder": {
     "section": "Šios dalies turinys bus parengtas kitame etape.",

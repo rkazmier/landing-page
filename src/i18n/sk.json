@@ -94,7 +94,8 @@
     "attractionsTitle": "Zaujímavosti v okolí",
     "distance": "cca {km} km",
     "listNote": "Nižšie je výber – od najbližších. Vzdialenosti sú uvedené vzdušnou čiarou od strelnice; trasa po ceste je dlhšia.",
-    "link": "Web"
+    "link": "Web",
+    "linkBooking": "Zobraziť na Booking.com"
   },
   "placeholder": {
     "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",

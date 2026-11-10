@@ -94,7 +94,8 @@
     "attractionsTitle": "Atrakcje w okolicy",
     "distance": "ok. {km} km",
     "listNote": "Poniżej wybrane propozycje – od najbliższych. Odległości podano w linii prostej od strzelnicy; trasa drogowa jest dłuższa.",
-    "link": "Strona obiektu"
+    "link": "Strona obiektu",
+    "linkBooking": "Zobacz w Booking.com"
   },
   "placeholder": {
     "section": "Treść tej sekcji powstanie w kolejnym etapie.",

@@ -94,7 +94,8 @@
     "attractionsTitle": "Sehenswertes in der Umgebung",
     "distance": "ca. {km} km",
     "listNote": "Unten eine Auswahl – die nächstgelegenen zuerst. Entfernungen in Luftlinie von der Schießanlage; die Strecke auf der Straße ist länger.",
-    "link": "Website"
+    "link": "Website",
+    "linkBooking": "Auf Booking.com ansehen"
   },
   "placeholder": {
     "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
