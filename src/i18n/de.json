@@ -90,6 +90,7 @@
   "plan": {
     "todo": "TODO(Eigentümer): Die Ziele in src/data/targets.json sind Beispiele – durch die echten Daten ersetzen.",
     "intro": "Vereinfachter Plan des Schießgeländes mit der Anordnung der Stahlziele. Die Schusslinie liegt unten, die Ziele in Schussrichtung.",
+    "printButton": "Plan drucken",
     "svgTitle": "Plan des Schießgeländes",
     "svgDesc": "Gelände 160 m breit und 1000 m lang, von einem Wall umgeben. Schusslinie unten, rechter Wall rechts. Anzahl der Ziele im Plan: {count}. Alle Zieldaten stehen in der Tabelle „{table}“.",
     "firingLine": "Schusslinie",

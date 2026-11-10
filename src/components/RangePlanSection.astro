@@ -9,6 +9,10 @@
  *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
  * - Tabela: oznaczenie, kształt, odległość, rozmiar.
  * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
+ * - Wydruk (FR-6, Z08): przycisk „Drukuj plan” dodaje do <html> klasę `print-plan` i otwiera okno
+ *   drukowania — wtedy drukowana jest tylko ta sekcja (reguły w src/styles/base.css i poniżej).
+ *   Na wydruku: tytuł, plan (60 mm) i tabela; bez wstępu i legendy.
+ *   Przycisk jest ukryty bez JavaScriptu; skrypt poniżej to jedyny JavaScript tej funkcji.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
 import Section from './Section.astro';
@@ -68,7 +72,15 @@ const captionId = `${id}-table-caption`;
 const bermMid = L.fieldY + L.fieldH / 2;
 ---
 <Section id={id} title={d.sections.plan} tone="alt">
-  <p class="plan-intro">{p.intro}</p>
+  <div class="plan-head">
+    <p class="plan-intro">{p.intro}</p>
+    <button type="button" class="print-button" data-print-plan hidden>
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">
+        <path d="M7 3h10v5H7z M5 9h14a2 2 0 0 1 2 2v6h-4v4H7v-4H3v-6a2 2 0 0 1 2-2z M9 15v4h6v-4z" fill-rule="evenodd" />
+      </svg>
+      {p.printButton}
+    </button>
+  </div>
 
   <div class="plan">
     <figure class="plan-figure">
@@ -205,9 +217,59 @@ const bermMid = L.fieldY + L.fieldH / 2;
   </div>
 </Section>
 
+<script>
+  const button = document.querySelector<HTMLButtonElement>('[data-print-plan]');
+  if (button) {
+    const root = document.documentElement;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      root.classList.add('print-plan');
+      window.print();
+    });
+    window.addEventListener('afterprint', () => root.classList.remove('print-plan'));
+  }
+</script>
+
 <style>
+  .plan-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4) var(--space-6);
+  }
+
   .plan-intro {
     max-width: 60ch;
+    margin-bottom: 0;
+  }
+
+  .print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-height: var(--tap-target);
+    padding: var(--space-2) var(--space-5);
+    color: var(--color-surface);
+    background: var(--color-accent);
+    font: inherit;
+    font-weight: var(--font-weight-strong);
+    border: 0;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+  }
+
+  .print-button[hidden] {
+    display: none;
+  }
+
+  .print-button:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .print-button svg {
+    fill: currentColor;
   }
 
   .plan {
@@ -381,6 +443,96 @@ const bermMid = L.fieldY + L.fieldH / 2;
       grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
       align-items: start;
       gap: var(--space-7);
+    }
+  }
+
+  /* ---- Wydruk (Z08): A4, czerń i biel — kształty i wzory zamiast kolorów ---- */
+  @media print {
+    .plan-head {
+      display: block;
+    }
+
+    /* Na wydruku bez wstępu i legendy (decyzja właściciela) */
+    .plan-intro,
+    .plan-side h3,
+    .legend {
+      display: none;
+    }
+
+    .plan {
+      grid-template-columns: 60mm minmax(0, 1fr);
+      align-items: start;
+      gap: 6mm;
+      margin-top: 4mm;
+      break-inside: avoid;
+    }
+
+    .plan-svg {
+      width: 60mm;
+      max-width: none;
+      margin: 0;
+    }
+
+    .plan-svg .field {
+      stroke: #000;
+    }
+
+    .plan-svg .berm {
+      stroke: #000;
+    }
+
+    .plan-svg :global(.berm-hatch) {
+      stroke: #888;
+    }
+
+    .plan-svg .grid {
+      stroke: #999;
+    }
+
+    .plan-svg .tick,
+    .plan-svg .axis-title,
+    .plan-svg .berm-label,
+    .plan-svg .firing-label,
+    .plan-svg .target-label {
+      fill: #000;
+    }
+
+    .plan-svg .firing-line {
+      stroke: #000;
+    }
+
+    .plan-svg .target :global(.target-shape),
+    .targets-table .legend-icon {
+      fill: #000;
+    }
+
+    .plan-svg .target-label {
+      stroke: #fff;
+    }
+
+    .table-wrap {
+      overflow: visible;
+      border: 0;
+      border-radius: 0;
+    }
+
+    .targets-table {
+      font-size: 9pt;
+    }
+
+    .targets-table caption {
+      padding: 0 0 2mm;
+    }
+
+    .targets-table th,
+    .targets-table td {
+      padding: 1.5mm 2mm;
+      border: 0.3mm solid #000;
+      color: #000;
+    }
+
+    .targets-table tr {
+      break-inside: avoid;
     }
   }
 </style>

@@ -90,6 +90,7 @@
   "plan": {
     "todo": "TODO(savininkas): taikiniai faile src/data/targets.json yra pavyzdiniai – pakeiskite juos tikrais duomenimis.",
     "intro": "Supaprastintas šaudyklos lauko planas su metalinių taikinių išdėstymu. Šaudymo linija yra plano apačioje, taikiniai – šaudymo kryptimi.",
+    "printButton": "Spausdinti planą",
     "svgTitle": "Šaudyklos lauko planas",
     "svgDesc": "160 m pločio ir 1000 m ilgio laukas, apjuostas pylimu. Šaudymo linija apačioje, dešinysis pylimas dešinėje. Taikinių plane: {count}. Visi taikinių duomenys pateikti lentelėje „{table}“.",
     "firingLine": "Šaudymo linija",
