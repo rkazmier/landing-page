@@ -27,7 +27,7 @@
         "type": "number",
         "minimum": 0,
         "maximum": 1000,
-        "description": "Odległość od linii strzału (oś y), w metrach"
+        "description": "Odległość od linii otwarcia ognia (oś y), w metrach"
       },
       "offset_right_m": {
         "type": "number",

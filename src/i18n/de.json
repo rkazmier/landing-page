@@ -87,6 +87,36 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(Eigentümer): Die Ziele in src/data/targets.json sind Beispiele – durch die echten Daten ersetzen.",
+    "intro": "Vereinfachter Plan des Schießgeländes mit der Anordnung der Stahlziele. Die Schusslinie liegt unten, die Ziele in Schussrichtung.",
+    "svgTitle": "Plan des Schießgeländes",
+    "svgDesc": "Gelände 160 m breit und 1000 m lang, von einem Wall umgeben. Schusslinie unten, rechter Wall rechts. Anzahl der Ziele im Plan: {count}. Alle Zieldaten stehen in der Tabelle „{table}“.",
+    "firingLine": "Schusslinie",
+    "rightBerm": "Rechter Wall",
+    "leftBerm": "Linker Wall",
+    "distanceAxis": "Entfernung von der Schusslinie [m]",
+    "legendTitle": "Legende",
+    "shapes": {
+      "square": "Quadrat",
+      "circle": "Kreis",
+      "rhombus": "Raute",
+      "rectangle": "Rechteck",
+      "silhouette": "Silhouette",
+      "bust": "Büste",
+      "other": "Sonstiges"
+    },
+    "tableCaption": "Ziele auf dem Gelände",
+    "colLabel": "Bezeichnung",
+    "colShape": "Form",
+    "colDistance": "Entfernung",
+    "colSize": "Größe",
+    "sizeSide": "Seite {v} cm",
+    "sizeDiameter": "Durchmesser {v} cm",
+    "sizeHeight": "Höhe {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (B × H)",
+    "sizeOther": "{name}, {w} × {h} cm (B × H)"
+  },
   "accommodation": {
     "todo": "TODO(Eigentümer): allgemeine Beschreibung und Liste in src/data/accommodation.json prüfen; Links zu den Unterkünften ergänzen.",
     "intro": "Im Umkreis von 50 km um die Schießanlage gibt es Hotels und Gasthäuser sowie sehenswerte Orte im nördlichen Masowien und in der Region Kurpie.",

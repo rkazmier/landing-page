@@ -87,6 +87,36 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(savininkas): taikiniai faile src/data/targets.json yra pavyzdiniai – pakeiskite juos tikrais duomenimis.",
+    "intro": "Supaprastintas šaudyklos lauko planas su metalinių taikinių išdėstymu. Šaudymo linija yra plano apačioje, taikiniai – šaudymo kryptimi.",
+    "svgTitle": "Šaudyklos lauko planas",
+    "svgDesc": "160 m pločio ir 1000 m ilgio laukas, apjuostas pylimu. Šaudymo linija apačioje, dešinysis pylimas dešinėje. Taikinių plane: {count}. Visi taikinių duomenys pateikti lentelėje „{table}“.",
+    "firingLine": "Šaudymo linija",
+    "rightBerm": "Dešinysis pylimas",
+    "leftBerm": "Kairysis pylimas",
+    "distanceAxis": "Atstumas nuo šaudymo linijos [m]",
+    "legendTitle": "Sutartiniai ženklai",
+    "shapes": {
+      "square": "kvadratas",
+      "circle": "apskritimas",
+      "rhombus": "rombas",
+      "rectangle": "stačiakampis",
+      "silhouette": "siluetas",
+      "bust": "biustas",
+      "other": "kita"
+    },
+    "tableCaption": "Taikiniai lauke",
+    "colLabel": "Žymuo",
+    "colShape": "Forma",
+    "colDistance": "Atstumas",
+    "colSize": "Dydis",
+    "sizeSide": "kraštinė {v} cm",
+    "sizeDiameter": "skersmuo {v} cm",
+    "sizeHeight": "aukštis {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (plotis × aukštis)",
+    "sizeOther": "{name}, {w} × {h} cm (plotis × aukštis)"
+  },
   "accommodation": {
     "todo": "TODO(savininkas): patikrinti bendrą aprašymą ir sąrašą faile src/data/accommodation.json; papildyti nakvynės vietų svetainių nuorodas.",
     "intro": "50 km spinduliu nuo šaudyklos yra viešbučių ir užeigų bei lankytinų vietų Šiaurės Mazovijoje ir Kurpių krašte.",

@@ -87,6 +87,36 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(vlastník): terče v src/data/targets.json sú ukážkové – nahraďte ich skutočnými údajmi.",
+    "intro": "Zjednodušený plán strelnice s rozmiestnením kovových terčov. Palebná čiara je dole, terče ležia v smere streľby.",
+    "svgTitle": "Plán strelnice",
+    "svgDesc": "Plocha široká 160 m a dlhá 1000 m, obklopená valom. Palebná čiara dole, pravý val vpravo. Počet terčov v pláne: {count}. Všetky údaje o terčoch sú v tabuľke „{table}“.",
+    "firingLine": "Palebná čiara",
+    "rightBerm": "Pravý val",
+    "leftBerm": "Ľavý val",
+    "distanceAxis": "Vzdialenosť od palebnej čiary [m]",
+    "legendTitle": "Legenda",
+    "shapes": {
+      "square": "štvorec",
+      "circle": "kruh",
+      "rhombus": "kosoštvorec",
+      "rectangle": "obdĺžnik",
+      "silhouette": "silueta",
+      "bust": "busta",
+      "other": "iný"
+    },
+    "tableCaption": "Terče na strelnici",
+    "colLabel": "Označenie",
+    "colShape": "Tvar",
+    "colDistance": "Vzdialenosť",
+    "colSize": "Veľkosť",
+    "sizeSide": "strana {v} cm",
+    "sizeDiameter": "priemer {v} cm",
+    "sizeHeight": "výška {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (š × v)",
+    "sizeOther": "{name}, {w} × {h} cm (š × v)"
+  },
   "accommodation": {
     "todo": "TODO(vlastník): skontrolovať všeobecný popis a zoznam v src/data/accommodation.json; doplniť odkazy na weby ubytovania.",
     "intro": "V okruhu 50 km od strelnice nájdete hotely a hostince aj miesta, ktoré stoja za návštevu na severnom Mazovsku a v regióne Kurpie.",

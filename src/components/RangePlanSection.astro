@@ -1,0 +1,386 @@
+---
+/**
+ * Sekcja „Plan przedpola” (FR-5, ADR 0003, Z07).
+ *
+ * - Plan (SVG) i tabela powstają w czasie budowania z src/data/targets.json — bez JavaScriptu
+ *   w przeglądarce. Dodanie, usunięcie lub zmiana celu = edycja wyłącznie targets.json.
+ * - Geometria i układ etykiet: src/utils/rangePlan.ts; znaczniki kształtów: TargetShape.astro.
+ * - Oś strzału w pionie (linia otwarcia ognia na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
+ *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
+ * - Tabela: oznaczenie, kształt, odległość, rozmiar.
+ * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
+ * - Teksty: klucz `plan` w src/i18n/<kod>.json.
+ */
+import Section from './Section.astro';
+import TargetShape from './TargetShape.astro';
+import targetsData from '../data/targets.json';
+import { t, type Locale } from '../i18n';
+import {
+  SHAPES,
+  MARKER,
+  LABEL_FONT,
+  RANGE_LENGTH_M,
+  RANGE_WIDTH_M,
+  layout as L,
+  placeTargets,
+  xOf,
+  yOf,
+  type Target,
+} from '../utils/rangePlan';
+
+interface Props {
+  locale: Locale;
+  id: string;
+}
+
+const { locale, id } = Astro.props;
+const d = t(locale);
+const p = d.plan;
+
+const fill = (text: string, values: Record<string, string | number>) =>
+  text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
+const num = new Intl.NumberFormat(locale, { maximumFractionDigits: 2 });
+const n = (value: number) => num.format(value);
+
+const targets = targetsData as Target[];
+
+// Napis linii otwarcia ognia leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
+const firingLabel = { x: L.fieldX + L.fieldW / 2, y: L.fieldY + L.fieldH - 5 };
+const firingBox = { x: L.fieldX + 20, y: firingLabel.y - 10, w: L.fieldW - 40, h: 13 };
+const placed = placeTargets(targets, [firingBox]);
+
+const yTicks = Array.from({ length: RANGE_LENGTH_M / 100 + 1 }, (_, i) => i * 100);
+
+function sizeText(target: Target): string {
+  const s = target.size_cm;
+  if (typeof s === 'number') {
+    if (target.shape === 'circle') return fill(p.sizeDiameter, { v: n(s) });
+    if (target.shape === 'silhouette' || target.shape === 'bust') return fill(p.sizeHeight, { v: n(s) });
+    return fill(p.sizeSide, { v: n(s) });
+  }
+  if (target.shape === 'other') return fill(p.sizeOther, { name: s.name ?? '', w: n(s.width), h: n(s.height) });
+  return fill(p.sizeWidthHeight, { w: n(s.width), h: n(s.height) });
+}
+
+const titleId = `${id}-svg-title`;
+const descId = `${id}-svg-desc`;
+const captionId = `${id}-table-caption`;
+const bermMid = L.fieldY + L.fieldH / 2;
+---
+<Section id={id} title={d.sections.plan} tone="alt">
+  <p class="plan-intro">{p.intro}</p>
+
+  <div class="plan">
+    <figure class="plan-figure">
+      <svg
+        class="plan-svg"
+        viewBox={`0 0 ${L.width} ${L.height}`}
+        width={L.width}
+        height={L.height}
+        role="img"
+        aria-labelledby={`${titleId} ${descId}`}
+      >
+        <title id={titleId}>{p.svgTitle}</title>
+        <desc id={descId}>
+          {fill(p.svgDesc, { count: targets.length, table: p.tableCaption })}
+        </desc>
+        <defs>
+          <pattern id={`${id}-berm`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+            <line x1="0" y1="0" x2="0" y2="6" class="berm-hatch" />
+          </pattern>
+        </defs>
+
+        <!-- Wał po obwodzie i przedpole -->
+        <rect
+          class="berm"
+          x={L.fieldX - L.berm}
+          y={L.fieldY - L.berm}
+          width={L.fieldW + 2 * L.berm}
+          height={L.fieldH + 2 * L.berm}
+          fill={`url(#${id}-berm)`}
+        />
+        <rect class="field" x={L.fieldX} y={L.fieldY} width={L.fieldW} height={L.fieldH} />
+
+        <!-- Siatka i podziałka odległości (co 100 m) -->
+        {yTicks.map((m) => (
+          <g>
+            {m > 0 && m < RANGE_LENGTH_M && (
+              <line class="grid" x1={L.fieldX} x2={L.fieldX + L.fieldW} y1={yOf(m)} y2={yOf(m)} />
+            )}
+            <text class="tick" x={L.fieldX - L.berm - 4} y={yOf(m) + 3.5} text-anchor="end">{m}</text>
+          </g>
+        ))}
+        <text
+          class="axis-title"
+          transform={`translate(10 ${bermMid}) rotate(-90)`}
+          text-anchor="middle"
+        >{p.distanceAxis}</text>
+
+        <!-- Opisy wałów (w pasie wału) -->
+        <text
+          class="berm-label"
+          transform={`translate(${L.fieldX - L.berm / 2} ${bermMid}) rotate(-90)`}
+          text-anchor="middle"
+          dominant-baseline="central"
+        >{p.leftBerm}</text>
+        <text
+          class="berm-label"
+          transform={`translate(${L.fieldX + L.fieldW + L.berm / 2} ${bermMid}) rotate(90)`}
+          text-anchor="middle"
+          dominant-baseline="central"
+        >{p.rightBerm}</text>
+
+        <!-- Linia otwarcia ognia -->
+        <line
+          class="firing-line"
+          x1={L.fieldX}
+          x2={L.fieldX + L.fieldW}
+          y1={L.fieldY + L.fieldH}
+          y2={L.fieldY + L.fieldH}
+        />
+        <text class="firing-label" x={firingLabel.x} y={firingLabel.y} text-anchor="middle">{p.firingLine}</text>
+
+        <!-- Cele -->
+        {placed.map((target) => (
+          <g class="target">
+            <g transform={`translate(${target.cx} ${target.cy})`}>
+              <TargetShape shape={target.shape} size={MARKER} />
+            </g>
+            <text
+              class="target-label"
+              x={target.lx}
+              y={target.ly}
+              text-anchor={target.anchor}
+              font-size={LABEL_FONT}
+            >{target.label}</text>
+          </g>
+        ))}
+      </svg>
+    </figure>
+
+    <div class="plan-side">
+      <h3>{p.legendTitle}</h3>
+      <ul class="legend">
+        {SHAPES.map((shape) => (
+          <li>
+            <svg class="legend-icon" viewBox="-10 -10 20 20" width="20" height="20" aria-hidden="true" focusable="false">
+              <TargetShape shape={shape} size={16} />
+            </svg>
+            <span>{p.shapes[shape]}</span>
+          </li>
+        ))}
+      </ul>
+
+      <section class="table-wrap" aria-labelledby={captionId} tabindex="0">
+        <table class="targets-table">
+          <caption id={captionId}>{p.tableCaption}</caption>
+          <thead>
+            <tr>
+              <th scope="col">{p.colLabel}</th>
+              <th scope="col">{p.colShape}</th>
+              <th scope="col">{p.colDistance}</th>
+              <th scope="col">{p.colSize}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {targets.map((target) => (
+              <tr>
+                <th scope="row" class="label-cell">{target.label}</th>
+                <td>
+                  <span class="shape-cell">
+                    <svg class="legend-icon" viewBox="-10 -10 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+                      <TargetShape shape={target.shape} size={16} />
+                    </svg>
+                    {p.shapes[target.shape]}
+                  </span>
+                </td>
+                <td class="num">{n(target.distance_m)} m</td>
+                <td>{sizeText(target)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </section>
+    </div>
+  </div>
+</Section>
+
+<style>
+  .plan-intro {
+    max-width: 60ch;
+  }
+
+  .plan {
+    display: grid;
+    gap: var(--space-6);
+    margin-top: var(--space-5);
+  }
+
+  .plan-figure {
+    margin: 0;
+    min-width: 0;
+  }
+
+  .plan-svg {
+    display: block;
+    width: 100%;
+    max-width: 24rem;
+    height: auto;
+    margin-inline: auto;
+    font-family: var(--font-body);
+  }
+
+  .plan-svg .berm {
+    stroke: var(--color-text-muted);
+    stroke-width: 1;
+  }
+
+  .plan-svg :global(.berm-hatch) {
+    stroke: var(--color-border);
+    stroke-width: 2;
+  }
+
+  .plan-svg .field {
+    fill: var(--color-surface);
+    stroke: var(--color-text-muted);
+    stroke-width: 1;
+  }
+
+  .plan-svg .grid {
+    stroke: var(--color-border);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  .plan-svg .tick,
+  .plan-svg .axis-title {
+    fill: var(--color-text-muted);
+    font-size: 10px;
+  }
+
+  .plan-svg .tick {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .plan-svg .berm-label {
+    fill: var(--color-text);
+    font-size: 9px;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan-svg .firing-line {
+    stroke: var(--color-text);
+    stroke-width: 3;
+  }
+
+  .plan-svg .firing-label {
+    fill: var(--color-text);
+    font-size: 10px;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan-svg .target :global(.target-shape) {
+    fill: var(--color-accent);
+    stroke: var(--color-surface);
+    stroke-width: 1.2;
+  }
+
+  .plan-svg .target-label {
+    fill: var(--color-text);
+    font-weight: var(--font-weight-strong);
+    paint-order: stroke;
+    stroke: var(--color-surface);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  .plan-side {
+    min-width: 0;
+  }
+
+  .plan-side h3 {
+    margin-bottom: var(--space-3);
+  }
+
+  .legend {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+    gap: var(--space-2) var(--space-4);
+    margin: 0 0 var(--space-6);
+    padding: 0;
+    list-style: none;
+  }
+
+  .legend li {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  .legend-icon {
+    flex: none;
+    fill: var(--color-accent);
+  }
+
+  .table-wrap {
+    max-width: 100%;
+    overflow-x: auto;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-surface);
+  }
+
+  .targets-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: var(--text-sm);
+  }
+
+  .targets-table caption {
+    padding: var(--space-3) var(--space-4);
+    font-weight: var(--font-weight-strong);
+    text-align: left;
+  }
+
+  .targets-table th,
+  .targets-table td {
+    padding: var(--space-2) var(--space-3);
+    border-top: var(--border-width) solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .targets-table thead th {
+    color: var(--color-text-muted);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .targets-table .label-cell {
+    font-weight: var(--font-weight-strong);
+    white-space: nowrap;
+  }
+
+  .targets-table .num {
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .shape-cell {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    white-space: nowrap;
+  }
+
+  @media (min-width: 56em) {
+    .plan {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      align-items: start;
+      gap: var(--space-7);
+    }
+  }
+</style>
