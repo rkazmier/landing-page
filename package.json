@@ -8,7 +8,8 @@
     "preview": "astro preview",
     "validate:html": "html-validate \"dist/**/*.html\"",
     "check:i18n": "node scripts/check-i18n.mjs",
-    "check:data": "node scripts/validate-data.mjs"
+    "check:data": "node scripts/validate-data.mjs",
+    "validate:data": "node scripts/validate-data.mjs"
   },
   "dependencies": {
     "astro": "^7.4.8"

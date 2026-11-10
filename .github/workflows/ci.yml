@@ -21,7 +21,7 @@ jobs:
       - name: Check translations
         run: npm run check:i18n
       - name: Validate data
-        run: npm run check:data
+        run: npm run validate:data
       - name: Build
         run: npm run build
       - name: Validate HTML

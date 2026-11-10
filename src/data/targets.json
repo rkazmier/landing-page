@@ -1,0 +1,9 @@
+[
+  { "label": "K1", "shape": "square", "distance_m": 100, "offset_right_m": 20, "size_cm": 40 },
+  { "label": "O1", "shape": "circle", "distance_m": 200, "offset_right_m": 40, "size_cm": 50 },
+  { "label": "R1", "shape": "rhombus", "distance_m": 300, "offset_right_m": 60, "size_cm": 30 },
+  { "label": "P1", "shape": "rectangle", "distance_m": 400, "offset_right_m": 80, "size_cm": { "width": 50, "height": 100 } },
+  { "label": "S1", "shape": "silhouette", "distance_m": 500, "offset_right_m": 100, "size_cm": 180 },
+  { "label": "B1", "shape": "bust", "distance_m": 600, "offset_right_m": 120, "size_cm": 70 },
+  { "label": "I1", "shape": "other", "distance_m": 700, "offset_right_m": 140, "size_cm": { "name": "Cel przykładowy", "width": 60, "height": 60 } }
+]
