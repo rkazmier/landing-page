@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Steel Valley Long Range - športová strelnica na veľké vzdialenosti",
+    "description": "Steel Valley Long Range je profesionálna športová strelnica na streľbu na veľké vzdialenosti. Ponúkame strelecký tréning, súťaže a školenia pre milovníkov športovej streľby."
+  },
+  "ui": {
+    "skipLink": "Prejsť na obsah",
+    "navLabel": "Hlavná navigácia",
+    "menuLabel": "Menu",
+    "homeLabel": "Steel Valley Long Range – úvodná stránka",
+    "languageLabel": "Jazyk",
+    "languageNavLabel": "Výber jazyka"
+  },
+  "languageBanner": {
+    "label": "Návrh jazyka",
+    "message": "Táto stránka je dostupná aj v slovenčine.",
+    "action": "Prejsť na slovenskú verziu",
+    "close": "Zavrieť"
+  },
+  "nav": {
+    "about": "O strelnici",
+    "disciplines": "Disciplíny",
+    "plan": "Plán terčového poľa",
+    "location": "Príjazd",
+    "accommodation": "Ubytovanie a atrakcie",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Strelnica na veľké vzdialenosti",
+    "lead": "Strelecká dráha 1000 m pre strelcov na veľké vzdialenosti z celej Európy. Web vo výstavbe."
+  },
+  "sections": {
+    "about": "O strelnici",
+    "disciplines": "Disciplíny",
+    "plan": "Plán terčového poľa",
+    "location": "Poloha a príjazd",
+    "accommodation": "Ubytovanie a atrakcie"
+  },
+  "placeholder": {
+    "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
+    "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."
+  }
+}

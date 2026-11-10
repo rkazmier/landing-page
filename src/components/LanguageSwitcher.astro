@@ -1,0 +1,151 @@
+---
+/**
+ * Przełącznik języka: rozwijana lista (<details>) z nazwami języków w ich własnym brzmieniu.
+ * Działa bez JavaScriptu; skrypt dodaje tylko zamykanie klawiszem Escape i kliknięciem obok.
+ */
+import { languageNames, localePath, locales, t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const ui = t(locale).ui;
+---
+<details class="lang-switcher">
+  <summary>
+    <span class="visually-hidden">{ui.languageLabel}: </span>
+    <span class="lang-current" aria-hidden="true">{locale.toUpperCase()}</span>
+    <span class="visually-hidden">{languageNames[locale]}</span>
+    <span class="lang-caret" aria-hidden="true"></span>
+  </summary>
+  <nav class="lang-menu" aria-label={ui.languageNavLabel}>
+    <ul>
+      {locales.map((code) => (
+        <li>
+          <a
+            href={localePath(code)}
+            hreflang={code}
+            lang={code}
+            aria-current={code === locale ? 'page' : undefined}
+          >
+            {languageNames[code]}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</details>
+
+<script>
+  const switchers = document.querySelectorAll<HTMLDetailsElement>('.lang-switcher');
+
+  switchers.forEach((details) => {
+    const summary = details.querySelector('summary');
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && details.open) {
+        details.open = false;
+        summary?.focus();
+      }
+    });
+
+    document.addEventListener('click', (event) => {
+      if (details.open && !details.contains(event.target as Node)) {
+        details.open = false;
+      }
+    });
+  });
+</script>
+
+<style>
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-switcher summary {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-2);
+    min-width: var(--tap-target);
+    min-height: var(--tap-target);
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-text);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-strong);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .lang-switcher summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .lang-switcher summary:hover {
+    border-color: var(--color-accent);
+  }
+
+  .lang-caret {
+    width: 0.4em;
+    height: 0.4em;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: translateY(-25%) rotate(45deg);
+  }
+
+  .lang-switcher[open] .lang-caret {
+    transform: translateY(25%) rotate(225deg);
+  }
+
+  .lang-menu {
+    position: absolute;
+    top: calc(100% + var(--space-2));
+    right: 0;
+    z-index: 60;
+    min-width: 11rem;
+    padding: var(--space-2);
+    background: var(--color-surface);
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 0.12);
+  }
+
+  .lang-menu ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .lang-menu a {
+    display: flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    padding: var(--space-2) var(--space-3);
+    color: var(--color-text);
+    font-size: var(--text-base);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+  }
+
+  .lang-menu a:hover {
+    color: var(--color-accent);
+    background: var(--color-surface-alt);
+  }
+
+  .lang-menu a[aria-current="page"] {
+    color: var(--color-accent);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .lang-menu a[aria-current="page"]::after {
+    content: "";
+    width: 0.35em;
+    height: 0.7em;
+    margin-left: auto;
+    border-right: 2px solid currentColor;
+    border-bottom: 2px solid currentColor;
+    transform: rotate(45deg);
+  }
+</style>

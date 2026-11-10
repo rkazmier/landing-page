@@ -1,0 +1,182 @@
+---
+/**
+ * Baner „czytaj w swoim języku" (ADR 0002, FR-1).
+ *
+ * - Pokazuje się tylko z JavaScriptem: bez niego pozostaje ukryty, a strona działa normalnie.
+ * - Język wybierany z `navigator.languages`: pierwszy wspierany. Jeśli to bieżąca
+ *   wersja — baner się nie pojawia. Bez przekierowania i bez wykrywania po IP.
+ * - Tekst banera jest w języku proponowanym (osoba może nie znać bieżącego).
+ * - Zamknięcie pamiętane w `sessionStorage`; gdy storage jest niedostępny,
+ *   baner po prostu się zamyka bez zapamiętania.
+ * - Teksty dla wszystkich języków trafiają do danych JSON, a nie do treści strony,
+ *   żeby wyszukiwarki nie widziały tekstów w innych językach.
+ */
+import { languageNames, localePath, locales, t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+// Teksty startowe (bieżący język) — skrypt podmienia je na teksty języka proponowanego.
+const own = t(locale).languageBanner;
+
+const messages = Object.fromEntries(
+  locales
+    .filter((code) => code !== locale)
+    .map((code) => [
+      code,
+      { ...t(code).languageBanner, href: localePath(code), name: languageNames[code] },
+    ]),
+);
+---
+<div class="lang-banner" data-current={locale} hidden>
+  <div class="container lang-banner-inner">
+    <p class="lang-banner-message">{own.message}</p>
+    <div class="lang-banner-actions">
+      <a class="lang-banner-action" href={localePath(locale)}>{own.action}</a>
+      <button class="lang-banner-close" type="button">{own.close}</button>
+    </div>
+  </div>
+</div>
+<script type="application/json" id="lang-banner-data" is:inline set:html={JSON.stringify(messages)}></script>
+
+<script>
+  const STORAGE_KEY = 'lang-banner-dismissed';
+
+  interface BannerText {
+    label: string;
+    message: string;
+    action: string;
+    close: string;
+    href: string;
+    name: string;
+  }
+
+  const banner = document.querySelector<HTMLElement>('.lang-banner');
+  const dataEl = document.getElementById('lang-banner-data');
+
+  const isDismissed = (): boolean => {
+    try {
+      return window.sessionStorage.getItem(STORAGE_KEY) === '1';
+    } catch {
+      return false;
+    }
+  };
+
+  const rememberDismissal = (): void => {
+    try {
+      window.sessionStorage.setItem(STORAGE_KEY, '1');
+    } catch {
+      // Storage niedostępny (np. tryb prywatny, blokada) — zamykamy bez zapamiętania.
+    }
+  };
+
+  const pickLanguage = (available: string[], current: string): string | null => {
+    const preferred = navigator.languages?.length ? navigator.languages : [navigator.language];
+    for (const tag of preferred) {
+      const code = (tag || '').toLowerCase().split('-')[0];
+      if (code === current) return null;
+      if (available.includes(code)) return code;
+    }
+    return null;
+  };
+
+  if (banner && dataEl && !isDismissed()) {
+    try {
+      const messages = JSON.parse(dataEl.textContent || '{}') as Record<string, BannerText>;
+      const current = banner.dataset.current ?? '';
+      const code = pickLanguage(Object.keys(messages), current);
+      const text = code ? messages[code] : undefined;
+
+      if (code && text) {
+        const message = banner.querySelector<HTMLElement>('.lang-banner-message');
+        const action = banner.querySelector<HTMLAnchorElement>('.lang-banner-action');
+        const close = banner.querySelector<HTMLButtonElement>('.lang-banner-close');
+
+        if (message && action && close) {
+          banner.lang = code;
+          banner.setAttribute('role', 'region');
+          banner.setAttribute('aria-label', text.label);
+          message.textContent = text.message;
+          action.textContent = text.action;
+          action.href = text.href + window.location.hash;
+          action.hreflang = code;
+          close.textContent = text.close;
+
+          close.addEventListener('click', () => {
+            rememberDismissal();
+            banner.hidden = true;
+          });
+
+          banner.hidden = false;
+        }
+      }
+    } catch {
+      // Uszkodzone dane — baner nie jest potrzebny do działania strony.
+    }
+  }
+</script>
+
+<style>
+  .lang-banner {
+    background: var(--color-dark);
+    color: var(--color-on-dark);
+    font-size: var(--text-sm);
+  }
+
+  .lang-banner[hidden] {
+    display: none;
+  }
+
+  .lang-banner-inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-2) var(--space-4);
+    padding-block: var(--space-3);
+  }
+
+  .lang-banner-message {
+    margin: 0;
+  }
+
+  .lang-banner-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-2);
+  }
+
+  .lang-banner-action,
+  .lang-banner-close {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    padding: var(--space-2) var(--space-4);
+    font: inherit;
+    font-weight: var(--font-weight-strong);
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+  }
+
+  .lang-banner-action {
+    background: var(--color-on-dark);
+    color: var(--color-dark);
+    text-decoration: none;
+  }
+
+  .lang-banner-action:hover {
+    background: var(--color-surface);
+  }
+
+  .lang-banner-close {
+    background: transparent;
+    color: var(--color-on-dark);
+    border: var(--border-width) solid currentColor;
+  }
+
+  .lang-banner :focus-visible {
+    outline-color: var(--color-on-dark);
+  }
+</style>

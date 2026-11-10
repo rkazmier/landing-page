@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Steel Valley Long Range - Sportowa Strzelnica Długodystansowa",
+    "description": "Steel Valley Long Range to profesjonalna sportowa strzelnica długodystansowa. Oferujemy treningi strzeleckie, zawody i szkolenia dla miłośników strzelectwa sportowego."
+  },
+  "ui": {
+    "skipLink": "Przejdź do treści",
+    "navLabel": "Nawigacja główna",
+    "menuLabel": "Menu",
+    "homeLabel": "Steel Valley Long Range – strona główna",
+    "languageLabel": "Język",
+    "languageNavLabel": "Wybór języka"
+  },
+  "languageBanner": {
+    "label": "Propozycja zmiany języka",
+    "message": "Ta strona jest dostępna także po polsku.",
+    "action": "Przejdź do wersji polskiej",
+    "close": "Zamknij"
+  },
+  "nav": {
+    "about": "O obiekcie",
+    "disciplines": "Dyscypliny",
+    "plan": "Plan przedpola",
+    "location": "Dojazd",
+    "accommodation": "Noclegi i atrakcje",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Strzelnica długodystansowa",
+    "lead": "Oś strzelecka 1000 m dla strzelców dalekodystansowych z całej Europy. Strona w budowie."
+  },
+  "sections": {
+    "about": "O obiekcie",
+    "disciplines": "Dyscypliny",
+    "plan": "Plan przedpola",
+    "location": "Lokalizacja i dojazd",
+    "accommodation": "Noclegi i atrakcje"
+  },
+  "placeholder": {
+    "section": "Treść tej sekcji powstanie w kolejnym etapie.",
+    "footer": "Stopka: dane kontaktowe i mapa strony w przygotowaniu."
+  }
+}

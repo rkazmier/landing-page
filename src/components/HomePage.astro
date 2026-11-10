@@ -1,0 +1,71 @@
+---
+/**
+ * Strona główna — wspólny układ dla wszystkich wersji językowych.
+ * Strony w src/pages/ podają tylko kod języka; teksty pochodzą z src/i18n/<kod>.json.
+ * Treści sekcji: Z04–Z10.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from './Section.astro';
+import { brand } from '../brand';
+import { t, type Locale } from '../i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const d = t(locale);
+
+// Kotwice sekcji są wspólne dla wszystkich wersji (ułatwia przełączanie języka z zachowaniem miejsca)
+const nav = [
+  { href: '#o-obiekcie', label: d.nav.about },
+  { href: '#dyscypliny', label: d.nav.disciplines },
+  { href: '#plan-przedpola', label: d.nav.plan },
+  { href: '#dojazd', label: d.nav.location },
+  { href: '#noclegi', label: d.nav.accommodation },
+  { href: '#kontakt', label: d.nav.contact },
+];
+---
+<BaseLayout locale={locale} title={d.meta.title} description={d.meta.description} nav={nav}>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <p class="eyebrow">{d.hero.eyebrow}</p>
+      <h1 id="hero-title">{brand.name}</h1>
+      <p class="lead">{d.hero.lead}</p>
+    </div>
+  </section>
+
+  <Section id="o-obiekcie" title={d.sections.about} tone="alt">
+    <p>{d.placeholder.section}</p>
+  </Section>
+  <Section id="dyscypliny" title={d.sections.disciplines}>
+    <p>{d.placeholder.section}</p>
+  </Section>
+  <Section id="plan-przedpola" title={d.sections.plan} tone="alt">
+    <p>{d.placeholder.section}</p>
+  </Section>
+  <Section id="dojazd" title={d.sections.location}>
+    <p>{d.placeholder.section}</p>
+  </Section>
+  <Section id="noclegi" title={d.sections.accommodation} tone="alt">
+    <p>{d.placeholder.section}</p>
+  </Section>
+
+  <p slot="footer">{d.placeholder.footer}</p>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-8) var(--space-section);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .hero h1 {
+    max-width: 16ch;
+  }
+
+  .hero .lead {
+    max-width: 52ch;
+    margin-bottom: 0;
+  }
+</style>
