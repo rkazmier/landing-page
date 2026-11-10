@@ -1,0 +1,90 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "targets.schema.json",
+  "title": "Cele metalowe na przedpolu (FR-5, ADR 0003)",
+  "description": "Lista celów, z której generowany jest plan przedpola. Jeden obiekt = jeden cel.",
+  "type": "array",
+  "items": {
+    "type": "object",
+    "additionalProperties": false,
+    "required": ["label", "shape", "distance_m", "offset_right_m", "size_cm"],
+    "properties": {
+      "id": {
+        "type": "string",
+        "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+        "description": "Opcjonalny stały identyfikator (małe litery, cyfry, myślniki)"
+      },
+      "label": {
+        "type": "string",
+        "pattern": "^[A-Z][1-9][0-9]*$",
+        "description": "Oznaczenie na planie: jedna wielka litera alfabetu łacińskiego (A–Z) i numer kolejnego celu z tą literą, np. K1, A1, A2. Numery dla danej litery rosną od 1 bez przerw (sprawdza scripts/validate-data.mjs)."
+      },
+      "shape": {
+        "enum": ["square", "circle", "rhombus", "rectangle", "silhouette", "bust", "other"],
+        "description": "Kształt celu"
+      },
+      "distance_m": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 1000,
+        "description": "Odległość od linii strzału (oś y), w metrach"
+      },
+      "offset_right_m": {
+        "type": "number",
+        "minimum": 0,
+        "maximum": 160,
+        "description": "Odległość od prawego wału (oś x, prawy wał = 0), w metrach"
+      },
+      "size_cm": {
+        "description": "Rozmiar w centymetrach: liczba albo obiekt, zależnie od kształtu"
+      }
+    },
+    "allOf": [
+      {
+        "if": { "required": ["shape"], "properties": { "shape": { "enum": ["square", "circle", "rhombus", "silhouette", "bust"] } } },
+        "then": {
+          "properties": {
+            "size_cm": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "description": "square, rhombus: bok; circle: średnica; silhouette, bust: wysokość"
+            }
+          }
+        }
+      },
+      {
+        "if": { "required": ["shape"], "properties": { "shape": { "const": "rectangle" } } },
+        "then": {
+          "properties": {
+            "size_cm": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["width", "height"],
+              "properties": {
+                "width": { "type": "number", "exclusiveMinimum": 0 },
+                "height": { "type": "number", "exclusiveMinimum": 0 }
+              }
+            }
+          }
+        }
+      },
+      {
+        "if": { "required": ["shape"], "properties": { "shape": { "const": "other" } } },
+        "then": {
+          "properties": {
+            "size_cm": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["name", "width", "height"],
+              "properties": {
+                "name": { "type": "string", "minLength": 1 },
+                "width": { "type": "number", "exclusiveMinimum": 0 },
+                "height": { "type": "number", "exclusiveMinimum": 0 }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}

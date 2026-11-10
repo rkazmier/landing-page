@@ -2,8 +2,9 @@
 /**
  * Waliduje pliki danych w src/data/ ich schematami JSON Schema:
  * każdy plik `<nazwa>.schema.json` sprawdza plik `<nazwa>.json` obok niego.
- * Dodatkowo: unikalność pól `id` w tablicach.
- * Uruchamiane w CI: `npm run check:data`.
+ * Dodatkowo: unikalność pól `id` w tablicach oraz kolejność oznaczeń `label`
+ * (litera + numer, np. K1, A1, A2): dla każdej litery numery rosną od 1 bez przerw.
+ * Uruchamiane w CI: `npm run validate:data`.
  */
 import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
@@ -47,6 +48,18 @@ for (const schemaFile of readdirSync(dir).filter((f) => f.endsWith('.schema.json
         if (seen.has(item.id)) errors.push(`${dataFile}/${i}/id: powtórzony identyfikator "${item.id}"`);
         seen.add(item.id);
       }
+    });
+
+    const lastNumber = new Map();
+    data.forEach((item, i) => {
+      const match = item && typeof item.label === 'string' ? /^([A-Z])([1-9][0-9]*)$/.exec(item.label) : null;
+      if (!match) return;
+      const [, letter, num] = match;
+      const expected = (lastNumber.get(letter) ?? 0) + 1;
+      if (Number(num) !== expected) {
+        errors.push(`${dataFile}/${i}/label: "${item.label}" — oczekiwano "${letter}${expected}" (numery dla litery rosną od 1 bez przerw)`);
+      }
+      lastNumber.set(letter, Math.max(expected, Number(num)));
     });
   }
   checked++;
