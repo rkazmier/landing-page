@@ -87,6 +87,15 @@
       }
     ]
   },
+  "accommodation": {
+    "todo": "TODO(owner): check the general description and the list in src/data/accommodation.json; add website links for the accommodation.",
+    "intro": "Within 50 km of the range there are hotels and inns as well as places worth visiting in northern Masovia and the Kurpie region.",
+    "staysTitle": "Where to stay",
+    "attractionsTitle": "Nearby attractions",
+    "distance": "approx. {km} km",
+    "listNote": "Below is a selection, nearest first. Distances are measured in a straight line from the range; the road route is longer.",
+    "link": "Website"
+  },
   "placeholder": {
     "section": "The content of this section will be added at a later stage.",
     "footer": "Footer: contact details and site map coming soon."

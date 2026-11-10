@@ -7,12 +7,14 @@
     "build": "astro build",
     "preview": "astro preview",
     "validate:html": "html-validate \"dist/**/*.html\"",
-    "check:i18n": "node scripts/check-i18n.mjs"
+    "check:i18n": "node scripts/check-i18n.mjs",
+    "check:data": "node scripts/validate-data.mjs"
   },
   "dependencies": {
     "astro": "^7.4.8"
   },
   "devDependencies": {
+    "ajv": "^8.20.0",
     "html-validate": "^11.21.0"
   }
 }

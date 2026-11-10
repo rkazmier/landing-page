@@ -87,6 +87,15 @@
       }
     ]
   },
+  "accommodation": {
+    "todo": "TODO(savininkas): patikrinti bendrą aprašymą ir sąrašą faile src/data/accommodation.json; papildyti nakvynės vietų svetainių nuorodas.",
+    "intro": "50 km spinduliu nuo šaudyklos yra viešbučių ir užeigų bei lankytinų vietų Šiaurės Mazovijoje ir Kurpių krašte.",
+    "staysTitle": "Nakvynė",
+    "attractionsTitle": "Lankytinos vietos apylinkėse",
+    "distance": "apie {km} km",
+    "listNote": "Žemiau – pasiūlymai, pradedant artimiausiais. Atstumai nurodyti tiesia linija nuo šaudyklos; kelias automobiliu yra ilgesnis.",
+    "link": "Svetainė"
+  },
   "placeholder": {
     "section": "Šios dalies turinys bus parengtas kitame etape.",
     "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."
