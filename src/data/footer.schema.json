@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "footer.schema.json",
+  "title": "Dane stopki dostarczane później (FR-8, Z10)",
+  "description": "Wszystkie wpisy są opcjonalne. Brak wpisu = stopka nie pokazuje danej pozycji (bez pustych sekcji i martwych linków).",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "company": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "description": "Nazwa i dane firmy (nie tłumaczone)",
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "description": "Pełna nazwa firmy" },
+        "lines": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "description": "Kolejne wiersze danych firmy, np. adres siedziby, NIP, REGON"
+        }
+      }
+    },
+    "privacyPolicyUrl": {
+      "type": "string",
+      "pattern": "^(https://|/)",
+      "description": "Adres polityki prywatności: pełny adres https:// albo ścieżka w serwisie zaczynająca się od /"
+    },
+    "legalNoticeUrl": {
+      "type": "string",
+      "pattern": "^(https://|/)",
+      "description": "Adres informacji prawnej: pełny adres https:// albo ścieżka w serwisie zaczynająca się od /"
+    }
+  }
+}

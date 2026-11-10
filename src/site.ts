@@ -1,6 +1,6 @@
 /**
- * Dane obiektu w jednym miejscu (adres, współrzędne, nawigacja).
- * Używane w sekcji „Lokalizacja i dojazd” (Z09); stopka (Z10) i dane strukturalne (Z11)
+ * Dane obiektu w jednym miejscu (adres, współrzędne, telefon, godziny otwarcia, nawigacja).
+ * Używane w sekcji „Lokalizacja i dojazd” (Z09) i w stopce (Z10); dane strukturalne (Z11)
  * powinny korzystać z tych samych wartości.
  */
 export const site = {
@@ -13,7 +13,24 @@ export const site = {
     latitude: 53.104351448019855,
     longitude: 20.796570746344496,
   },
+  /** Telefon: zapis do wyświetlenia i format E.164 do linku tel: */
+  phone: {
+    display: '+48 503 911 707',
+    e164: '+48503911707',
+  },
+  /** Godziny otwarcia: codziennie (pon–nd) */
+  openingHours: {
+    days: ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'],
+    opens: '09:00',
+    closes: '18:00',
+  },
 } as const;
+
+/** Link tel: do telefonu obiektu */
+export const phoneHref = `tel:${site.phone.e164}`;
+
+/** Godzina do wyświetlenia bez zera wiodącego: „09:00” → „9:00” */
+export const displayTime = (time: string) => time.replace(/^0(\d)/, '$1');
 
 /** Link do nawigacji w Mapach Google (punkt startowy = bieżąca lokalizacja użytkownika) — ADR 0004 */
 export const navigationUrl = `https://www.google.com/maps/dir/?api=1&destination=${site.geo.latitude},${site.geo.longitude}`;

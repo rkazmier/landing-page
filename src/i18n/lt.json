@@ -139,8 +139,20 @@
     "mapHint": "Spustelėkite žemėlapį, kad suplanuotumėte maršrutą „Google“ žemėlapiuose.",
     "attribution": "„OpenStreetMap“ bendraautoriai"
   },
-  "placeholder": {
-    "section": "Šios dalies turinys bus parengtas kitame etape.",
-    "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."
+  "footer": {
+    "keyInfoTitle": "Pagrindinė informacija",
+    "contactTitle": "Kontaktai",
+    "sitemapTitle": "Svetainės žemėlapis",
+    "sectionsLabel": "Puslapio skyriai",
+    "languagesLabel": "Kalbos",
+    "hoursLabel": "Darbo laikas",
+    "hours": "Kasdien (pr–sk), {opens}–{closes}",
+    "offerLabel": "Pasiūlymas",
+    "offer": "Tolimojo šaudymo šaudykla: 1000 m šaudymo kryptis ir 160 m pločio laukas su metaliniais taikiniais.",
+    "phoneLabel": "Telefonas",
+    "contactNote": "Kviečiame susisiekti telefonu.",
+    "companyLabel": "Įmonės duomenys",
+    "privacyPolicy": "Privatumo politika",
+    "legalNotice": "Teisinė informacija"
   }
 }

@@ -139,8 +139,20 @@
     "mapHint": "Klicken Sie auf die Karte, um die Route in Google Maps zu planen.",
     "attribution": "OpenStreetMap-Mitwirkende"
   },
-  "placeholder": {
-    "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
-    "footer": "Fußzeile: Kontaktdaten und Seitenübersicht in Vorbereitung."
+  "footer": {
+    "keyInfoTitle": "Wichtige Informationen",
+    "contactTitle": "Kontakt",
+    "sitemapTitle": "Seitenübersicht",
+    "sectionsLabel": "Abschnitte der Seite",
+    "languagesLabel": "Sprachen",
+    "hoursLabel": "Öffnungszeiten",
+    "hours": "Täglich (Mo–So), {opens}–{closes}",
+    "offerLabel": "Angebot",
+    "offer": "Langdistanz-Schießstand: 1000 m lange Schießbahn und ein 160 m breites Gelände mit Stahlzielen.",
+    "phoneLabel": "Telefon",
+    "contactNote": "Kontakt bitte telefonisch.",
+    "companyLabel": "Firmenangaben",
+    "privacyPolicy": "Datenschutzerklärung",
+    "legalNotice": "Impressum"
   }
 }

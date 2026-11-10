@@ -139,8 +139,20 @@
     "mapHint": "Click the map to plan your route in Google Maps.",
     "attribution": "OpenStreetMap contributors"
   },
-  "placeholder": {
-    "section": "The content of this section will be added at a later stage.",
-    "footer": "Footer: contact details and site map coming soon."
+  "footer": {
+    "keyInfoTitle": "Key information",
+    "contactTitle": "Contact",
+    "sitemapTitle": "Site map",
+    "sectionsLabel": "Page sections",
+    "languagesLabel": "Languages",
+    "hoursLabel": "Opening hours",
+    "hours": "Every day (Mon–Sun), {opens}–{closes}",
+    "offerLabel": "What we offer",
+    "offer": "Long-range shooting range: a 1000 m shooting lane and a 160 m wide range with steel targets.",
+    "phoneLabel": "Phone",
+    "contactNote": "Please contact us by phone.",
+    "companyLabel": "Company details",
+    "privacyPolicy": "Privacy policy",
+    "legalNotice": "Legal notice"
   }
 }
