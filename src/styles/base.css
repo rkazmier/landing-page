@@ -168,3 +168,56 @@ a:hover {
   font-size: var(--text-lg);
   color: var(--color-text-muted);
 }
+
+/* ---- Wydruk (FR-6, Z08) ----
+ * Zawsze: bez nawigacji, banera językowego, przycisków i stopki; czarny tekst na białym tle.
+ * Przycisk „Drukuj plan” dodaje klasę `print-plan` do <html> — wtedy drukowany jest tylko plan
+ * przedpola z legendą i tabelą (style samego planu: RangePlanSection.astro).
+ */
+@media print {
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
+  html {
+    scroll-padding-top: 0;
+  }
+
+  body {
+    background: #fff;
+    color: #000;
+  }
+
+  .skip-link,
+  .lang-banner,
+  .site-header,
+  .site-footer,
+  button {
+    display: none !important;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .section {
+    padding-block: 6mm !important;
+    background: none !important;
+  }
+
+  html.print-plan main > :not(#plan-przedpola) {
+    display: none !important;
+  }
+
+  html.print-plan #plan-przedpola {
+    padding-block: 0 !important;
+  }
+
+  html.print-plan h2 {
+    margin-bottom: 2mm;
+    font-size: 16pt;
+  }
+}
+

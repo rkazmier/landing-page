@@ -90,6 +90,7 @@
   "plan": {
     "todo": "TODO(vlastník): terče v src/data/targets.json jsou ukázkové – nahraďte je skutečnými daty.",
     "intro": "Zjednodušený plán střeliště s rozmístěním kovových terčů. Palebná čára je dole, terče leží ve směru střelby.",
+    "printButton": "Vytisknout plán",
     "svgTitle": "Plán střeliště",
     "svgDesc": "Plocha široká 160 m a dlouhá 1000 m, obklopená valem. Palebná čára dole, pravý val vpravo. Počet terčů v plánu: {count}. Všechny údaje o terčích jsou v tabulce „{table}“.",
     "firingLine": "Palebná čára",

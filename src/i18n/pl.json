@@ -90,6 +90,7 @@
   "plan": {
     "todo": "TODO(właściciel): cele w src/data/targets.json są przykładowe – podmień je na właściwe dane.",
     "intro": "Uproszczony plan przedpola z rozmieszczeniem celów metalowych. Linia otwarcia ognia jest na dole planu, cele leżą w kierunku strzału.",
+    "printButton": "Drukuj plan",
     "svgTitle": "Plan przedpola",
     "svgDesc": "Przedpole o szerokości 160 m i długości 1000 m, otoczone wałem. Linia otwarcia ognia na dole, prawy wał po prawej stronie. Liczba celów na planie: {count}. Pełne dane celów są w tabeli „{table}”.",
     "firingLine": "Linia otwarcia ognia",
