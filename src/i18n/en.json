@@ -61,22 +61,27 @@
     "intro": "The 1000 m lane and steel targets support a range of long-range shooting disciplines.",
     "items": [
       {
+        "id": "prs",
         "name": "Precision Rifle (PRS)",
         "description": "Precision shooting from various positions and supports at steel targets over changing distances, under time pressure."
       },
       {
-        "name": "F-Class",
-        "description": "Precision prone shooting from a rest at long distances."
-      },
-      {
+        "id": "nrl-hunter",
         "name": "NRL Hunter",
         "description": "NRL Hunter is a field-shooting sport built around realistic hunting scenarios. Steel targets at unknown distances are engaged from natural field positions, using the very same skills that make a capable, ethical hunter."
       },
       {
+        "id": "sharpshooter-challenge",
         "name": "Sharpshooter Challenge",
         "description": "A military approach to long-range shooting. Shooting at known and unknown distances, moving targets, and a variety of positions adapted to the terrain."
       },
       {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Precision prone shooting from a rest at long distances."
+      },
+      {
+        "id": "training",
         "name": "Training and courses",
         "description": "Sessions for shooters who want to start or develop their long-range shooting skills in any form. Best-in-class instructors."
       }

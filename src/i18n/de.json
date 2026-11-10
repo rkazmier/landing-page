@@ -61,22 +61,27 @@
     "intro": "Die 1000-m-Bahn und die Stahlziele ermöglichen verschiedene Disziplinen des Langdistanzschießens.",
     "items": [
       {
+        "id": "prs",
         "name": "Precision Rifle (PRS)",
         "description": "Präzisionsschießen aus verschiedenen Positionen und Auflagen auf Stahlziele in wechselnden Entfernungen, unter Zeitdruck."
       },
       {
-        "name": "F-Class",
-        "description": "Präzisionsschießen liegend mit Auflage auf große Entfernungen."
-      },
-      {
+        "id": "nrl-hunter",
         "name": "NRL Hunter",
         "description": "NRL Hunter ist ein Feldschießsport, der auf realistischen Jagdszenarien aufbaut. Stahlziele auf unbekannte Entfernungen werden aus natürlichen Positionen im Gelände beschossen – mit genau den Fähigkeiten, die einen fähigen und waidgerechten Jäger ausmachen."
       },
       {
+        "id": "sharpshooter-challenge",
         "name": "Sharpshooter Challenge",
         "description": "Ein militärischer Ansatz für das Schießen auf große Entfernungen. Schießen auf bekannte und unbekannte Entfernungen, bewegliche Ziele und verschiedene, dem Gelände angepasste Anschlagarten."
       },
       {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Präzisionsschießen liegend mit Auflage auf große Entfernungen."
+      },
+      {
+        "id": "training",
         "name": "Training und Schulungen",
         "description": "Kurse für alle, die mit dem Langdistanzschießen in jeder Form beginnen oder ihre Fähigkeiten darin weiterentwickeln möchten. Ausbilder der Spitzenklasse."
       }

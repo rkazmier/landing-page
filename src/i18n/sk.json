@@ -61,22 +61,27 @@
     "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti.",
     "items": [
       {
+        "id": "prs",
         "name": "Precision Rifle (PRS)",
         "description": "Presná streľba z rôznych polôh a opôr na kovové terče na meniace sa vzdialenosti, pod časovým tlakom."
       },
       {
-        "name": "F-Class",
-        "description": "Presná streľba v ľahu z opory na veľké vzdialenosti."
-      },
-      {
+        "id": "nrl-hunter",
         "name": "NRL Hunter",
         "description": "NRL Hunter je terénny strelecký šport postavený na realistických poľovníckych scenároch. Na oceľové terče na neznáme vzdialenosti sa strieľa z prirodzených polôh v teréne s využitím presne tých zručností, ktoré zo strelca robia schopného a etického poľovníka."
       },
       {
+        "id": "sharpshooter-challenge",
         "name": "Sharpshooter Challenge",
         "description": "Vojenský prístup k streľbe na veľké vzdialenosti. Streľba na známu aj neznámu vzdialenosť, pohyblivé terče a rôzne polohy prispôsobené terénu."
       },
       {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Presná streľba v ľahu z opory na veľké vzdialenosti."
+      },
+      {
+        "id": "training",
         "name": "Tréningy a školenia",
         "description": "Kurzy pre tých, ktorí chcú začať so streľbou na veľké vzdialenosti v akejkoľvek podobe alebo v nej rozvíjať svoje zručnosti. Špičkoví inštruktori vo svojom odbore."
       }

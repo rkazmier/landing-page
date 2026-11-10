@@ -61,22 +61,27 @@
     "intro": "1000 m linija ir metaliniai taikiniai leidžia užsiimti įvairiomis šaudymo ilgais nuotoliais disciplinomis.",
     "items": [
       {
+        "id": "prs",
         "name": "Precision Rifle (PRS)",
         "description": "Tikslusis šaudymas iš įvairių padėčių ir atramų į metalinius taikinius kintančiais atstumais, spaudžiant laikui."
       },
       {
-        "name": "F-Class",
-        "description": "Tikslusis šaudymas gulint nuo atramos dideliais atstumais."
-      },
-      {
+        "id": "nrl-hunter",
         "name": "NRL Hunter",
         "description": "NRL Hunter – lauko šaudymo sportas, paremtas realistiškais medžioklės scenarijais. Į plieninius taikinius nežinomais atstumais šaudoma iš natūralių padėčių lauke, naudojant tuos pačius įgūdžius, kurių reikia sumaniam ir etiškam medžiotojui."
       },
       {
+        "id": "sharpshooter-challenge",
         "name": "Sharpshooter Challenge",
         "description": "Karinis požiūris į šaudymą dideliais nuotoliais. Šaudymas žinomais ir nežinomais atstumais, judantys taikiniai, įvairios padėtys, pritaikytos prie vietovės sąlygų."
       },
       {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Tikslusis šaudymas gulint nuo atramos dideliais atstumais."
+      },
+      {
+        "id": "training",
         "name": "Treniruotės ir mokymai",
         "description": "Užsiėmimai norintiems pradėti arba tobulinti savo šaudymo ilgais nuotoliais įgūdžius bet kokia forma. Geriausi savo srities instruktoriai."
       }

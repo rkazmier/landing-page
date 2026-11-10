@@ -2,7 +2,8 @@
 /**
  * Sekcja „Dyscypliny" (FR-3): lista wspieranych dyscyplin z krótkim opisem.
  * Teksty: klucz `disciplines` w src/i18n/<kod>.json (oznaczone `todo` do podmiany).
- * Liczba pozycji wynika z pliku tłumaczeń — musi być taka sama w każdym języku (CI).
+ * Liczba i kolejność pozycji wynikają z pliku tłumaczeń — muszą być takie same w każdym języku (CI).
+ * Pole `id` jest stałe we wszystkich językach (nie tłumaczymy go).
  */
 import Section from './Section.astro';
 import { t, type Locale } from '../i18n';
@@ -14,12 +15,15 @@ interface Props {
 
 const { locale, id } = Astro.props;
 const d = t(locale);
+
+/** Karty szerokie na dwie kolumny na desktopie (wyróżnione) */
+const WIDE = new Set(['nrl-hunter']);
 ---
 <Section id={id} title={d.sections.disciplines}>
   <p class="intro">{d.disciplines.intro}</p>
   <ul class="disciplines">
     {d.disciplines.items.map((item, index) => (
-      <li class="discipline">
+      <li class:list={['discipline', { 'discipline--wide': WIDE.has(item.id) }]}>
         <span class="discipline-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
         <h3>{item.name}</h3>
         <p>{item.description}</p>
@@ -77,6 +81,10 @@ const d = t(locale);
   @media (min-width: 64em) {
     .disciplines {
       grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .discipline--wide {
+      grid-column: span 2;
     }
   }
 </style>

@@ -61,22 +61,27 @@
     "intro": "Oś 1000 m i cele metalowe pozwalają uprawiać różne dyscypliny strzelectwa długodystansowego.",
     "items": [
       {
+        "id": "prs",
         "name": "Precision Rifle (PRS)",
         "description": "Strzelanie precyzyjne z różnych postaw i podpór do celów metalowych na zmiennych dystansach, pod presją czasu."
       },
       {
-        "name": "F-Class",
-        "description": "Precyzyjne strzelanie z pozycji leżącej z podpórki na dalekich dystansach."
-      },
-      {
+        "id": "nrl-hunter",
         "name": "NRL Hunter",
         "description": "NRL Hunter to strzelectwo terenowe oparte na realistycznych scenariuszach myśliwskich. Strzela się do celów stalowych na nieznanych dystansach z naturalnych pozycji w terenie, z wykorzystaniem tych samych umiejętności, które są potrzebne sprawnemu i etycznemu myśliwemu."
       },
       {
+        "id": "sharpshooter-challenge",
         "name": "Sharpshooter Challenge",
         "description": "Wojskowe podejście do strzelania na duży dystans. Strzelanie na znanym i nieznanym dystansie, cele ruchome, różne postawy dostosowane do sytuacji terenowej."
       },
       {
+        "id": "f-class",
+        "name": "F-Class",
+        "description": "Precyzyjne strzelanie z pozycji leżącej z podpórki na dalekich dystansach."
+      },
+      {
+        "id": "training",
         "name": "Treningi i szkolenia",
         "description": "Zajęcia dla osób, które chcą zacząć lub rozwijać swoje umiejętności strzelania długodystansowego w dowolnej formie. Najlepsi instruktorzy w swojej klasie."
       }
