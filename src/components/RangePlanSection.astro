@@ -5,8 +5,9 @@
  * - Plan (SVG) i tabela powstają w czasie budowania z src/data/targets.json — bez JavaScriptu
  *   w przeglądarce. Dodanie, usunięcie lub zmiana celu = edycja wyłącznie targets.json.
  * - Geometria i układ etykiet: src/utils/rangePlan.ts; znaczniki kształtów: TargetShape.astro.
- * - Oś strzału w pionie (linia strzału na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
- *   Skale pozioma i pionowa są różne — opisane pod planem.
+ * - Oś strzału w pionie (linia otwarcia ognia na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
+ *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
+ * - Tabela: oznaczenie, kształt, odległość, rozmiar i pusta kolumna „Poprawka” do własnych notatek.
  * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
@@ -43,13 +44,12 @@ const n = (value: number) => num.format(value);
 
 const targets = targetsData as Target[];
 
-// Napis „Linia strzału” leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
+// Napis linii otwarcia ognia leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
 const firingLabel = { x: L.fieldX + L.fieldW / 2, y: L.fieldY + L.fieldH - 5 };
 const firingBox = { x: L.fieldX + 20, y: firingLabel.y - 10, w: L.fieldW - 40, h: 13 };
 const placed = placeTargets(targets, [firingBox]);
 
 const yTicks = Array.from({ length: RANGE_LENGTH_M / 100 + 1 }, (_, i) => i * 100);
-const xTicks = [0, 40, 80, 120, 160];
 
 function sizeText(target: Target): string {
   const s = target.size_cm;
@@ -66,7 +66,6 @@ const titleId = `${id}-svg-title`;
 const descId = `${id}-svg-desc`;
 const captionId = `${id}-table-caption`;
 const bermMid = L.fieldY + L.fieldH / 2;
-const bottom = L.fieldY + L.fieldH + L.berm;
 ---
 <Section id={id} title={d.sections.plan} tone="alt">
   <p class="plan-intro">{p.intro}</p>
@@ -117,15 +116,6 @@ const bottom = L.fieldY + L.fieldH + L.berm;
           text-anchor="middle"
         >{p.distanceAxis}</text>
 
-        <!-- Podziałka położenia (od prawego wału) -->
-        {xTicks.map((m) => (
-          <g>
-            <line class="tick-mark" x1={xOf(m)} x2={xOf(m)} y1={bottom} y2={bottom + 4} />
-            <text class="tick" x={xOf(m)} y={bottom + 15} text-anchor="middle">{m}</text>
-          </g>
-        ))}
-        <text class="axis-title" x={L.fieldX + L.fieldW / 2} y={bottom + 32} text-anchor="middle">{p.offsetAxis}</text>
-
         <!-- Opisy wałów (w pasie wału) -->
         <text
           class="berm-label"
@@ -166,7 +156,6 @@ const bottom = L.fieldY + L.fieldH + L.berm;
           </g>
         ))}
       </svg>
-      <figcaption class="plan-note">{p.scaleNote}</figcaption>
     </figure>
 
     <div class="plan-side">
@@ -190,8 +179,8 @@ const bottom = L.fieldY + L.fieldH + L.berm;
               <th scope="col">{p.colLabel}</th>
               <th scope="col">{p.colShape}</th>
               <th scope="col">{p.colDistance}</th>
-              <th scope="col">{p.colOffset}</th>
               <th scope="col">{p.colSize}</th>
+              <th scope="col">{p.colCorrection}</th>
             </tr>
           </thead>
           <tbody>
@@ -207,8 +196,8 @@ const bottom = L.fieldY + L.fieldH + L.berm;
                   </span>
                 </td>
                 <td class="num">{n(target.distance_m)} m</td>
-                <td class="num">{n(target.offset_right_m)} m</td>
                 <td>{sizeText(target)}</td>
+                <td class="correction"></td>
               </tr>
             ))}
           </tbody>
@@ -275,10 +264,6 @@ const bottom = L.fieldY + L.fieldH + L.berm;
     font-variant-numeric: tabular-nums;
   }
 
-  .plan-svg .tick-mark {
-    stroke: var(--color-text-muted);
-  }
-
   .plan-svg .berm-label {
     fill: var(--color-text);
     font-size: 9px;
@@ -313,13 +298,6 @@ const bottom = L.fieldY + L.fieldH + L.berm;
     stroke: var(--color-surface);
     stroke-width: 3px;
     stroke-linejoin: round;
-  }
-
-  .plan-note {
-    max-width: 24rem;
-    margin: var(--space-3) auto 0;
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
   }
 
   .plan-side {
@@ -391,6 +369,11 @@ const bottom = L.fieldY + L.fieldH + L.berm;
   .targets-table .num {
     font-variant-numeric: tabular-nums;
     white-space: nowrap;
+  }
+
+  /* Pusta kolumna na własne notatki (np. na wydruku) */
+  .targets-table .correction {
+    min-width: 6rem;
   }
 
   .shape-cell {

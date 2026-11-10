@@ -2,9 +2,9 @@
  * Geometria planu przedpola (FR-5, ADR 0003, Z07) — liczona w czasie budowania.
  *
  * Układ (jednostki viewBox SVG):
- * - oś strzału w pionie: linia strzału na dole (distance_m = 0), 1000 m na górze,
+ * - oś strzału w pionie: linia otwarcia ognia na dole (distance_m = 0), 1000 m na górze,
  * - prawy wał po prawej (offset_right_m = 0), lewy wał po lewej (160 m) — tak, jak widzi strzelec,
- * - skale różne: 160 m szerokości zajmuje FIELD_W, 1000 m długości FIELD_H (opis przy planie).
+ * - skale różne: 160 m szerokości zajmuje FIELD_W, 1000 m długości FIELD_H.
  * Znaczniki mają stały rozmiar (kształt, nie wielkość celu). Etykiety `label` są układane tak,
  * by nie nachodziły na inne etykiety ani znaczniki (pierwsze wolne miejsce z listy kandydatów).
  */
@@ -28,7 +28,7 @@ export const RANGE_LENGTH_M = 1000;
 const FIELD_W = 200;
 const FIELD_H = 560;
 const BERM = 14;
-const MARGIN = { top: 12, right: 6, bottom: 46, left: 46 };
+const MARGIN = { top: 12, right: 6, bottom: 6, left: 46 };
 
 export const MARKER = 14;
 export const LABEL_FONT = 12;
@@ -73,7 +73,7 @@ export interface PlacedTarget extends Target {
 }
 
 /**
- * Rozmieszcza cele i ich etykiety. `reserved` — obszary już zajęte (np. napis „Linia strzału”).
+ * Rozmieszcza cele i ich etykiety. `reserved` — obszary już zajęte (np. napis linii otwarcia ognia).
  */
 export function placeTargets(targets: Target[], reserved: Box[] = []): PlacedTarget[] {
   const half = MARKER / 2 + 1;
