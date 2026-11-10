@@ -177,7 +177,7 @@ a:hover {
 @media print {
   @page {
     size: A4;
-    margin: 12mm;
+    margin: 12mm 50mm 12mm 12mm; /* prawy margines 5 cm (decyzja właściciela) */
   }
 
   html {

@@ -11,6 +11,7 @@
  * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
  * - Wydruk (FR-6, Z08): przycisk „Drukuj plan” dodaje do <html> klasę `print-plan` i otwiera okno
  *   drukowania — wtedy drukowana jest tylko ta sekcja (reguły w src/styles/base.css i poniżej).
+ *   Na wydruku: tytuł, plan (60 mm) i tabela; bez wstępu i legendy.
  *   Przycisk jest ukryty bez JavaScriptu; skrypt poniżej to jedyny JavaScript tej funkcji.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
@@ -451,20 +452,23 @@ const bermMid = L.fieldY + L.fieldH / 2;
       display: block;
     }
 
-    .plan-intro {
-      font-size: 9pt;
+    /* Na wydruku bez wstępu i legendy (decyzja właściciela) */
+    .plan-intro,
+    .plan-side h3,
+    .legend {
+      display: none;
     }
 
     .plan {
-      grid-template-columns: 92mm minmax(0, 1fr);
+      grid-template-columns: 60mm minmax(0, 1fr);
       align-items: start;
-      gap: 8mm;
+      gap: 6mm;
       margin-top: 4mm;
       break-inside: avoid;
     }
 
     .plan-svg {
-      width: 92mm;
+      width: 60mm;
       max-width: none;
       margin: 0;
     }
@@ -498,23 +502,12 @@ const bermMid = L.fieldY + L.fieldH / 2;
     }
 
     .plan-svg .target :global(.target-shape),
-    .legend-icon {
+    .targets-table .legend-icon {
       fill: #000;
     }
 
     .plan-svg .target-label {
       stroke: #fff;
-    }
-
-    .plan-side h3 {
-      font-size: 11pt;
-    }
-
-    .legend {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 1mm 4mm;
-      margin-bottom: 5mm;
-      font-size: 9pt;
     }
 
     .table-wrap {
