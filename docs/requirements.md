@@ -48,14 +48,15 @@
   - [ ] Plan (SVG) powstaje z tego pliku automatycznie, a nie jest rysowany ręcznie
   - [ ] Tło planu: przedpole o szerokości 160 m, otoczone wałem po całym obwodzie; prawy wał to x = 0, lewy x = 160 m
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
-  - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie), z kolumną „Oznaczenie” zawierającą `label` każdego celu
+  - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie) z dokładnie czterema kolumnami w kolejności: „Oznaczenie” (`label`), „Kształt”, „Odległość” (`distance_m`, odległość od linii otwarcia ognia), „Rozmiar”; tabela nie ma kolumny położenia ani odległości od prawego wału (decyzja właściciela z 2026-11-10)
   - [ ] Przy każdym znaczniku celu na planie jest etykieta z jego `label`, czytelna także na wydruku w czerni i bieli
   - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI
   - [ ] Każdy cel ma oznaczenie `label` zgodne z wzorcem `^[A-Z][1-9][0-9]*$` (np. `K1`, `A2`); dla tej samej litery numery rosną od 1 bez przerw w kolejności występowania w pliku; brak `label`, powtórzenie, przeskok lub zła kolejność numeru powoduje czerwone CI
   - [ ] Plan i tabela są widoczne bez włączonego JavaScriptu
-  - [ ] Znaczenie osi (potwierdzone przez właściciela): `distance_m` = odległość od linii strzału (y), `offset_right_m` = odległość od prawego wału (x); romb rysowany jako kwadrat obrócony o 45°
+  - [ ] Plan SVG nie ma podziałki ani opisu osi x (odległości od prawego wału) i nie ma podpisu o różnych skalach; skale pozioma i pionowa mogą się różnić bez obowiązku opisu (decyzja właściciela z 2026-11-10)
+  - [ ] Znaczenie osi (potwierdzone przez właściciela): `distance_m` = odległość od linii otwarcia ognia (y), `offset_right_m` = odległość od prawego wału (x), używana tylko do położenia znacznika na planie; romb rysowany jako kwadrat obrócony o 45°
 
 ### FR-6 — Przejrzysty wydruk planu (Must)
 - **Opis:** Odwiedzający może wydrukować plan przedpola wraz z tabelą celów.
