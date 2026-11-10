@@ -44,7 +44,7 @@
 ### FR-5 — Plan przedpola z danymi o celach (Must)
 - **Opis:** Uproszczony plan strzelnicy z rozmieszczeniem celów metalowych, generowany z pliku `targets.json` ([ADR 0003](adr/0003-dane-celow-i-plan.md)).
 - **Kryteria akceptacji:**
-  - [ ] Dane o celach są w jednym pliku `targets.json` (tablica obiektów: `shape`, `distance_m`, `offset_right_m`, `size_cm`; kształty i sposób zapisu rozmiaru w ADR 0003)
+  - [ ] Dane o celach są w jednym pliku `targets.json` (tablica obiektów z wymaganymi polami `label`, `shape`, `distance_m`, `offset_right_m`, `size_cm` i opcjonalnym `id`; kształty, sposób zapisu rozmiaru i format `label` w ADR 0003)
   - [ ] Plan (SVG) powstaje z tego pliku automatycznie, a nie jest rysowany ręcznie
   - [ ] Tło planu: przedpole o szerokości 160 m, otoczone wałem po całym obwodzie; prawy wał to x = 0, lewy x = 160 m
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
@@ -52,6 +52,7 @@
   - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI
+  - [ ] Każdy cel ma oznaczenie `label` zgodne z wzorcem `^[A-Z][1-9][0-9]*$` (np. `K1`, `A2`); dla tej samej litery numery rosną od 1 bez przerw w kolejności występowania w pliku; brak `label`, powtórzenie, przeskok lub zła kolejność numeru powoduje czerwone CI
   - [ ] Plan i tabela są widoczne bez włączonego JavaScriptu
   - [ ] Znaczenie osi (potwierdzone przez właściciela): `distance_m` = odległość od linii strzału (y), `offset_right_m` = odległość od prawego wału (x); romb rysowany jako kwadrat obrócony o 45°
 
