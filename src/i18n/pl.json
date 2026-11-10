@@ -97,6 +97,17 @@
     "link": "Strona obiektu",
     "linkBooking": "Zobacz w Booking.com"
   },
+  "location": {
+    "todo": "TODO(właściciel): podmień opis najlepszego dojazdu (pole „route”).",
+    "addressLabel": "Adres",
+    "coordinatesLabel": "Współrzędne GPS",
+    "routeTitle": "Najlepszy dojazd",
+    "route": "Opis najlepszego dojazdu zostanie wkrótce uzupełniony.",
+    "mapLegend": "Granatową linią zaznaczono dojazd od drogi krajowej nr 57 przez Łanięta.",
+    "mapAlt": "Nawiguj do Steel Valley Long Range w Mapach Google",
+    "mapHint": "Kliknij mapę, aby wyznaczyć trasę w Mapach Google.",
+    "attribution": "autorzy OpenStreetMap"
+  },
   "placeholder": {
     "section": "Treść tej sekcji powstanie w kolejnym etapie.",
     "footer": "Stopka: dane kontaktowe i mapa strony w przygotowaniu."

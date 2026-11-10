@@ -97,6 +97,17 @@
     "link": "Website",
     "linkBooking": "View on Booking.com"
   },
+  "location": {
+    "todo": "TODO(owner): replace the description of the best route (the “route” field).",
+    "addressLabel": "Address",
+    "coordinatesLabel": "GPS coordinates",
+    "routeTitle": "Best way to get here",
+    "route": "A description of the best route will be added soon.",
+    "mapLegend": "The navy line marks the access road from national road 57 through Łanięta.",
+    "mapAlt": "Navigate to Steel Valley Long Range in Google Maps",
+    "mapHint": "Click the map to plan your route in Google Maps.",
+    "attribution": "OpenStreetMap contributors"
+  },
   "placeholder": {
     "section": "The content of this section will be added at a later stage.",
     "footer": "Footer: contact details and site map coming soon."

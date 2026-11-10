@@ -97,6 +97,17 @@
     "link": "Svetainė",
     "linkBooking": "Žiūrėti „Booking.com“"
   },
+  "location": {
+    "todo": "TODO(savininkas): pakeisti geriausio privažiavimo aprašymą (laukas „route“).",
+    "addressLabel": "Adresas",
+    "coordinatesLabel": "GPS koordinatės",
+    "routeTitle": "Kaip geriausia atvykti",
+    "route": "Geriausio privažiavimo aprašymas bus netrukus papildytas.",
+    "mapLegend": "Tamsiai mėlyna linija pažymėtas privažiavimas nuo 57-ojo nacionalinio kelio per Łanięta.",
+    "mapAlt": "Naviguoti į Steel Valley Long Range „Google“ žemėlapiuose",
+    "mapHint": "Spustelėkite žemėlapį, kad suplanuotumėte maršrutą „Google“ žemėlapiuose.",
+    "attribution": "„OpenStreetMap“ bendraautoriai"
+  },
   "placeholder": {
     "section": "Šios dalies turinys bus parengtas kitame etape.",
     "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."

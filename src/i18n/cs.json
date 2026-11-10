@@ -97,6 +97,17 @@
     "link": "Web",
     "linkBooking": "Zobrazit na Booking.com"
   },
+  "location": {
+    "todo": "TODO(vlastník): nahradit popis nejlepšího příjezdu (pole „route“).",
+    "addressLabel": "Adresa",
+    "coordinatesLabel": "Souřadnice GPS",
+    "routeTitle": "Nejlepší příjezd",
+    "route": "Popis nejlepšího příjezdu brzy doplníme.",
+    "mapLegend": "Tmavě modrá čára vyznačuje příjezd od státní silnice č. 57 přes Łanięta.",
+    "mapAlt": "Navigovat do Steel Valley Long Range v Mapách Google",
+    "mapHint": "Kliknutím na mapu naplánujete trasu v Mapách Google.",
+    "attribution": "přispěvatelé OpenStreetMap"
+  },
   "placeholder": {
     "section": "Obsah této sekce bude doplněn v další fázi.",
     "footer": "Zápatí: kontaktní údaje a mapa stránek se připravují."
