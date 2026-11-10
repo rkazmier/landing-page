@@ -58,7 +58,6 @@
     "imageAlt": "Laikina iliustracija: šaudymo linija tarp žemės pylimų su metaliniais taikiniais taikinių lauke"
   },
   "disciplines": {
-    "todo": "TODO(savininkas): pakeisti disciplinų sąrašą ir aprašymus. Dabartinis sąrašas yra pavyzdinis.",
     "intro": "1000 m linija ir metaliniai taikiniai leidžia užsiimti įvairiomis šaudymo ilgais nuotoliais disciplinomis.",
     "items": [
       {
@@ -79,7 +78,7 @@
       },
       {
         "name": "Treniruotės ir mokymai",
-        "description": "Užsiėmimai norintiems pradėti arba tobulinti šaudymą ilgais nuotoliais."
+        "description": "Užsiėmimai norintiems pradėti arba tobulinti savo šaudymo ilgais nuotoliais įgūdžius bet kokia forma. Geriausi savo srities instruktoriai."
       }
     ]
   },

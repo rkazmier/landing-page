@@ -58,7 +58,6 @@
     "imageAlt": "Placeholder illustration: a shooting lane between earth berms with steel targets in the target field"
   },
   "disciplines": {
-    "todo": "TODO(owner): replace the list of disciplines and their descriptions. The current list is an example.",
     "intro": "The 1000 m lane and steel targets support a range of long-range shooting disciplines.",
     "items": [
       {
@@ -79,7 +78,7 @@
       },
       {
         "name": "Training and courses",
-        "description": "Sessions for shooters who want to start or develop their long-range shooting."
+        "description": "Sessions for shooters who want to start or develop their long-range shooting skills in any form. Best-in-class instructors."
       }
     ]
   },

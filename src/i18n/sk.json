@@ -58,7 +58,6 @@
     "imageAlt": "Zástupná ilustrácia: strelecká dráha medzi zemnými valmi s kovovými terčmi v terčovom poli"
   },
   "disciplines": {
-    "todo": "TODO(vlastník): nahradiť zoznam disciplín a ich popisy. Súčasný zoznam je ukážkový.",
     "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti.",
     "items": [
       {
@@ -79,7 +78,7 @@
       },
       {
         "name": "Tréningy a školenia",
-        "description": "Kurzy pre tých, ktorí chcú so streľbou na veľké vzdialenosti začať alebo sa v nej zlepšiť."
+        "description": "Kurzy pre tých, ktorí chcú začať so streľbou na veľké vzdialenosti v akejkoľvek podobe alebo v nej rozvíjať svoje zručnosti. Špičkoví inštruktori vo svojom odbore."
       }
     ]
   },
