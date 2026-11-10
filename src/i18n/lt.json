@@ -97,6 +97,17 @@
     "link": "Svetainė",
     "linkBooking": "Žiūrėti „Booking.com“"
   },
+  "location": {
+    "todo": "TODO(savininkas): prireikus papildyti privažiavimo aprašymą (laukas „route“).",
+    "addressLabel": "Adresas",
+    "coordinatesLabel": "GPS koordinatės",
+    "routeTitle": "Kaip geriausia atvykti",
+    "route": "Vienintelis privažiavimas prie šaudyklos eina per Łanięta – tiek atvykstant iš rytų (nuo 57-ojo nacionalinio kelio), tiek iš vakarų.",
+    "mapLegend": "Tamsiai mėlyna linija pažymėtas vienintelis privažiavimas prie šaudyklos – per Łanięta, nuo 57-ojo nacionalinio kelio.",
+    "mapAlt": "Naviguoti į Steel Valley Long Range „Google“ žemėlapiuose",
+    "mapHint": "Spustelėkite žemėlapį, kad suplanuotumėte maršrutą „Google“ žemėlapiuose.",
+    "attribution": "„OpenStreetMap“ bendraautoriai"
+  },
   "placeholder": {
     "section": "Šios dalies turinys bus parengtas kitame etape.",
     "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."

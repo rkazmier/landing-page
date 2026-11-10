@@ -97,6 +97,17 @@
     "link": "Web",
     "linkBooking": "Zobraziť na Booking.com"
   },
+  "location": {
+    "todo": "TODO(vlastník): v prípade potreby rozšíriť popis príjazdu (pole „route“).",
+    "addressLabel": "Adresa",
+    "coordinatesLabel": "Súradnice GPS",
+    "routeTitle": "Najlepší príjazd",
+    "route": "Jediná príjazdová cesta k strelnici vedie cez Łanięta – či už prichádzate od východu (od štátnej cesty č. 57), alebo od západu.",
+    "mapLegend": "Tmavomodrá čiara vyznačuje jedinú príjazdovú cestu k strelnici – cez Łanięta, od štátnej cesty č. 57.",
+    "mapAlt": "Navigovať do Steel Valley Long Range v Mapách Google",
+    "mapHint": "Kliknutím na mapu naplánujete trasu v Mapách Google.",
+    "attribution": "prispievatelia OpenStreetMap"
+  },
   "placeholder": {
     "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
     "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."

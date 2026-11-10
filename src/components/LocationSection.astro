@@ -1,0 +1,182 @@
+---
+/**
+ * Sekcja „Lokalizacja i dojazd” (FR-4, ADR 0004).
+ *
+ * - Mapa to statyczny obraz z danych OpenStreetMap (src/assets/map/, źródło i skrypt: scripts/map/).
+ *   Strona nie pobiera kafelków OSM; Astro generuje z plików AVIF/WebP w kilku szerokościach.
+ *   Dwa kadry: szeroki (od 40em) i węższy z większymi napisami (telefony).
+ * - Cały obraz jest linkiem do nawigacji w Mapach Google (rel="noopener noreferrer").
+ * - Pod mapą atrybucja OSM tekstem HTML w danym języku.
+ * - Adres i współrzędne tekstem — dane z src/site.ts.
+ * - Teksty: klucz `location` w src/i18n/<kod>.json (opis dojazdu oznaczony `todo`).
+ */
+import { getImage } from 'astro:assets';
+import Section from './Section.astro';
+import wide from '../assets/map/mapa-dojazdu-szeroka.webp';
+import narrow from '../assets/map/mapa-dojazdu-waska.webp';
+import { t, type Locale } from '../i18n';
+import { addressText, coordinatesText, navigationUrl } from '../site';
+
+interface Props {
+  locale: Locale;
+  id: string;
+}
+
+const { locale, id } = Astro.props;
+const d = t(locale);
+const l = d.location;
+
+const BREAKPOINT = '(min-width: 40em)';
+const sizesWide = '(min-width: 72em) 46rem, (min-width: 56em) 60vw, 100vw';
+
+async function srcset(src: ImageMetadata, widths: number[], format: 'avif' | 'webp') {
+  const images = await Promise.all(widths.map((width) => getImage({ src, width, format })));
+  return images.map((img, i) => `${img.src} ${widths[i]}w`).join(', ');
+}
+
+const wideWidths = [640, 960, 1280, 1600];
+const narrowWidths = [400, 700, 1000];
+const sources = [
+  { media: BREAKPOINT, type: 'image/avif', srcset: await srcset(wide, wideWidths, 'avif'), sizes: sizesWide },
+  { media: BREAKPOINT, type: 'image/webp', srcset: await srcset(wide, wideWidths, 'webp'), sizes: sizesWide },
+  { media: undefined, type: 'image/avif', srcset: await srcset(narrow, narrowWidths, 'avif'), sizes: '100vw' },
+  { media: undefined, type: 'image/webp', srcset: await srcset(narrow, narrowWidths, 'webp'), sizes: '100vw' },
+];
+const fallback = await getImage({ src: narrow, width: 700, format: 'webp' });
+---
+<Section id={id} title={d.sections.location}>
+  <div class="location">
+    <div class="location-text">
+      <dl class="facts">
+        <div>
+          <dt>{l.addressLabel}</dt>
+          <dd>{addressText}</dd>
+        </div>
+        <div>
+          <dt>{l.coordinatesLabel}</dt>
+          <dd><span class="coords">{coordinatesText}</span></dd>
+        </div>
+      </dl>
+
+      <h3>{l.routeTitle}</h3>
+      <p>{l.route}</p>
+    </div>
+
+    <figure class="map">
+      <a class="map-link" href={navigationUrl} rel="noopener noreferrer">
+        <picture>
+          {sources.map((s) => (
+            <source media={s.media} type={s.type} srcset={s.srcset} sizes={s.sizes} />
+          ))}
+          <img
+            src={fallback.src}
+            width={narrow.width}
+            height={narrow.height}
+            alt={l.mapAlt}
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
+      </a>
+      <figcaption>
+        <span>{l.mapHint} {l.mapLegend}</span>
+        <span class="attribution">
+          © <a href="https://www.openstreetmap.org/copyright" rel="noopener noreferrer">{l.attribution}</a>
+        </span>
+      </figcaption>
+    </figure>
+  </div>
+</Section>
+
+<style>
+  .location {
+    display: grid;
+    gap: var(--space-6);
+  }
+
+  .facts {
+    display: grid;
+    gap: var(--space-4);
+    margin: 0 0 var(--space-6);
+  }
+
+  .facts div {
+    padding-left: var(--space-4);
+    border-left: 2px solid var(--color-highlight);
+  }
+
+  .facts dt {
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .facts dd {
+    margin: var(--space-1) 0 0;
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .coords {
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+
+  .location-text h3 {
+    margin-bottom: var(--space-2);
+  }
+
+  .location-text p {
+    max-width: 60ch;
+  }
+
+  .map {
+    margin: 0;
+  }
+
+  .map-link {
+    display: block;
+    overflow: hidden;
+    border: var(--border-width) solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface-alt);
+    transition: box-shadow var(--transition-fast);
+  }
+
+  .map-link:hover {
+    box-shadow: 0 6px 24px rgb(0 0 0 / 0.12);
+  }
+
+  .map-link img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .map figcaption {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: var(--space-1) var(--space-4);
+    margin-top: var(--space-2);
+    color: var(--color-text-muted);
+    font-size: var(--text-sm);
+  }
+
+  .attribution a {
+    color: inherit;
+  }
+
+  @media (min-width: 40em) {
+    .map-link img {
+      aspect-ratio: 16 / 10;
+    }
+  }
+
+  @media (min-width: 56em) {
+    .location {
+      grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+      align-items: start;
+      gap: var(--space-7);
+    }
+  }
+</style>

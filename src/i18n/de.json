@@ -97,6 +97,17 @@
     "link": "Website",
     "linkBooking": "Auf Booking.com ansehen"
   },
+  "location": {
+    "todo": "TODO(Eigentümer): Anfahrtsbeschreibung bei Bedarf erweitern (Feld „route“).",
+    "addressLabel": "Adresse",
+    "coordinatesLabel": "GPS-Koordinaten",
+    "routeTitle": "Beste Anfahrt",
+    "route": "Die einzige Zufahrt zur Schießanlage führt durch Łanięta – sowohl aus östlicher Richtung (von der Landesstraße 57) als auch aus westlicher Richtung.",
+    "mapLegend": "Die dunkelblaue Linie zeigt die einzige Zufahrt zur Schießanlage – über Łanięta, von der Landesstraße 57.",
+    "mapAlt": "Navigation zu Steel Valley Long Range in Google Maps starten",
+    "mapHint": "Klicken Sie auf die Karte, um die Route in Google Maps zu planen.",
+    "attribution": "OpenStreetMap-Mitwirkende"
+  },
   "placeholder": {
     "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
     "footer": "Fußzeile: Kontaktdaten und Seitenübersicht in Vorbereitung."
