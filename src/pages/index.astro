@@ -1,18 +1,73 @@
 ---
-// Strona zastępcza szkieletu (Z01). Właściwy układ, języki i treści dochodzą w kolejnych zadaniach (Z02, Z03...).
+/**
+ * Strona główna (pl). Na tym etapie (Z02) pokazuje układ, typografię i nawigację
+ * na szkieletach sekcji. Treści sekcji: Z04–Z10. Teksty interfejsu trafią do
+ * src/i18n/ w Z03.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Section from '../components/Section.astro';
+
+const nav = [
+  { href: '#o-obiekcie', label: 'O obiekcie' },
+  { href: '#dyscypliny', label: 'Dyscypliny' },
+  { href: '#plan-przedpola', label: 'Plan przedpola' },
+  { href: '#dojazd', label: 'Dojazd' },
+  { href: '#noclegi', label: 'Noclegi i atrakcje' },
+  { href: '#kontakt', label: 'Kontakt' },
+];
+
+const placeholder = 'Treść tej sekcji powstanie w kolejnym etapie.';
 ---
-<!DOCTYPE html>
-<html lang="pl">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Steel Valley Long Range</title>
-    <meta name="description" content="Strona w budowie." />
-  </head>
-  <body>
-    <main>
-      <h1>Steel Valley Long Range</h1>
-      <p>Strona w budowie.</p>
-    </main>
-  </body>
-</html>
+<BaseLayout
+  lang="pl"
+  title="Steel Valley Long Range"
+  description="Strona w budowie."
+  nav={nav}
+  ui={{
+    skipLink: 'Przejdź do treści',
+    navLabel: 'Nawigacja główna',
+    menuLabel: 'Menu',
+  }}
+>
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="container">
+      <p class="eyebrow">Strzelnica długodystansowa</p>
+      <h1 id="hero-title">Steel Valley Long Range</h1>
+      <p class="lead">Oś strzelecka 1000 m dla strzelców dalekodystansowych z całej Europy. Strona w budowie.</p>
+    </div>
+  </section>
+
+  <Section id="o-obiekcie" title="O obiekcie" tone="alt">
+    <p>{placeholder}</p>
+  </Section>
+  <Section id="dyscypliny" title="Dyscypliny">
+    <p>{placeholder}</p>
+  </Section>
+  <Section id="plan-przedpola" title="Plan przedpola" tone="alt">
+    <p>{placeholder}</p>
+  </Section>
+  <Section id="dojazd" title="Lokalizacja i dojazd">
+    <p>{placeholder}</p>
+  </Section>
+  <Section id="noclegi" title="Noclegi i atrakcje" tone="alt">
+    <p>{placeholder}</p>
+  </Section>
+
+  <p slot="footer">Stopka: dane kontaktowe i mapa strony w przygotowaniu.</p>
+</BaseLayout>
+
+<style>
+  .hero {
+    padding-block: var(--space-8) var(--space-section);
+    border-bottom: var(--border-width) solid var(--color-border);
+  }
+
+  .hero h1 {
+    max-width: 16ch;
+  }
+
+  .hero .lead {
+    max-width: 52ch;
+    margin-bottom: 0;
+  }
+</style>
