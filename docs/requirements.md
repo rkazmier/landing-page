@@ -48,7 +48,8 @@
   - [ ] Plan (SVG) powstaje z tego pliku automatycznie, a nie jest rysowany ręcznie
   - [ ] Tło planu: przedpole o szerokości 160 m, otoczone wałem po całym obwodzie; prawy wał to x = 0, lewy x = 160 m
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
-  - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie)
+  - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie), z kolumną „Oznaczenie” zawierającą `label` każdego celu
+  - [ ] Przy każdym znaczniku celu na planie jest etykieta z jego `label`, czytelna także na wydruku w czerni i bieli
   - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI

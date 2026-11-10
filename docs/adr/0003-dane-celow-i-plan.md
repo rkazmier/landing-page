@@ -12,7 +12,7 @@ Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego
 
 | Pole | Znaczenie | Jednostka | Uwagi |
 |---|---|---|---|
-| `label` | oznaczenie celu na planie | — | **wymagane**; format i numeracja niżej |
+| `label` | oznaczenie celu na planie i w tabeli | — | **wymagane**; format i numeracja niżej |
 | `shape` | kształt celu | — | jedna z wartości z tabeli kształtów poniżej |
 | `distance_m` | odległość od linii strzału (oś y) | metry | |
 | `offset_right_m` | odległość od prawego wału (oś x) | metry | |
@@ -24,6 +24,7 @@ Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego
   - format: jedna wielka litera alfabetu łacińskiego A–Z (bez polskich znaków) i numer kolejnego celu z tą literą, np. `K1`, `A1`, `A2`; wzorzec `^[A-Z][1-9][0-9]*$`;
   - dla tej samej litery numery rosną od 1 bez przerw, w kolejności występowania celów w pliku (`A1`, `A2`, `A3`…); litery mogą się przeplatać (np. `K1`, `O1`, `K2`);
   - powtórzenie oznaczenia, przeskok numeru (np. `A1`, `A3`) lub zła kolejność (np. `A2` przed `A1`) to błąd walidacji; reguły numeracji sprawdza `scripts/validate-data.mjs` (wzorzec może być też w schemacie JSON);
+  - `label` jest pokazywane jako etykieta przy znaczniku celu na planie SVG (czytelna także na wydruku) i w kolumnie „Oznaczenie” tabeli HTML; wartość nie jest tłumaczona (decyzja właściciela z 2026-11-10);
   - litery dobiera właściciel dowolnie. W danych przykładowych przyjęto konwencję: `K` – kwadrat, `O` – koło, `R` – romb, `P` – prostokąt, `S` – sylwetka, `B` – popiersie, `I` – inny. To tylko konwencja przykładu, walidacja nie wiąże litery z `shape`.
 - Kształty i sposób zapisu rozmiaru (ustalone przez właściciela):
 
