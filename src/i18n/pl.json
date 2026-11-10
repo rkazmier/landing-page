@@ -98,12 +98,12 @@
     "linkBooking": "Zobacz w Booking.com"
   },
   "location": {
-    "todo": "TODO(właściciel): podmień opis najlepszego dojazdu (pole „route”).",
+    "todo": "TODO(właściciel): w razie potrzeby rozbuduj opis dojazdu (pole „route”).",
     "addressLabel": "Adres",
     "coordinatesLabel": "Współrzędne GPS",
     "routeTitle": "Najlepszy dojazd",
-    "route": "Opis najlepszego dojazdu zostanie wkrótce uzupełniony.",
-    "mapLegend": "Granatową linią zaznaczono dojazd od drogi krajowej nr 57 przez Łanięta.",
+    "route": "Jedyna droga dojazdowa do strzelnicy prowadzi przez Łanięta – zarówno od strony wschodniej (od drogi krajowej nr 57), jak i od strony zachodniej.",
+    "mapLegend": "Granatową linią zaznaczono jedyną drogę dojazdową do strzelnicy – przez Łanięta, od drogi krajowej nr 57.",
     "mapAlt": "Nawiguj do Steel Valley Long Range w Mapach Google",
     "mapHint": "Kliknij mapę, aby wyznaczyć trasę w Mapach Google.",
     "attribution": "autorzy OpenStreetMap"
