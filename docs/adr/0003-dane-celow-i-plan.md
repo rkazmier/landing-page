@@ -1,7 +1,7 @@
 # ADR 0003: Dane o celach w `targets.json` i plan generowany z pliku
 
 - **Status:** Przyjęta (decyzja właściciela z 2026-11-09)
-- **Data:** 2026-11-09 (aktualizacja 2026-11-10: wymagane pole `label`, decyzja właściciela przy Z06, Issue #12)
+- **Data:** 2026-11-09 (aktualizacja 2026-11-10: wymagane pole `label`, decyzja właściciela przy Z06, Issue #12; aktualizacja 2026-11-10: „linia otwarcia ognia”, czterokolumnowa tabela, brak opisu osi x na planie, decyzja właściciela przy Z07, Issue #13)
 
 ## Kontekst
 Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego pliku danych, wyświetlany jako uproszczona grafika i dawać się przejrzyście wydrukować.
@@ -14,8 +14,8 @@ Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego
 |---|---|---|---|
 | `label` | oznaczenie celu na planie i w tabeli | — | **wymagane**; format i numeracja niżej |
 | `shape` | kształt celu | — | jedna z wartości z tabeli kształtów poniżej |
-| `distance_m` | odległość od linii strzału (oś y) | metry | |
-| `offset_right_m` | odległość od prawego wału (oś x) | metry | |
+| `distance_m` | odległość od linii otwarcia ognia (oś y) | metry | |
+| `offset_right_m` | odległość od prawego wału (oś x) | metry | tylko położenie znacznika na planie; nie jest pokazywane w tabeli ani opisywane na planie |
 | `size_cm` | rozmiar | centymetry | liczba lub obiekt, zależnie od kształtu (tabela poniżej) |
 | `id` | identyfikator techniczny | — | opcjonalne |
 
@@ -47,13 +47,17 @@ Przykład (wartości przykładowe):
 ]
 ```
 - Plan jako SVG i tabela HTML są generowane w czasie budowania z tego samego pliku (zależnie od [ADR 0001](0001-generator-astro.md)).
+- Plan i tabela (decyzja właściciela z 2026-11-10):
+  - cel jest rysowany w miejscu wynikającym z `offset_right_m` (x) i `distance_m` (y);
+  - plan nie ma podziałki ani opisu osi x (odległości od prawego wału) i nie ma podpisu o różnych skalach; skale pozioma i pionowa mogą się różnić bez obowiązku opisu;
+  - tabela HTML ma kolumny: „Oznaczenie” (`label`), „Kształt” (`shape`), „Odległość” (`distance_m`, odległość od linii otwarcia ognia, w metrach), „Rozmiar” (`size_cm`, z jednostką); bez kolumny położenia ani odległości od prawego wału.
 - Struktura pliku jest walidowana schematem JSON w CI, a reguły numeracji `label` skryptem `scripts/validate-data.mjs`; polecenie `npm run validate:data` (alias `npm run check:data`).
 - Wydruk: przycisk i `@media print`, kształty i oznaczenia zamiast kolorów.
 
 ## Otwarte kwestie
-Przedpole ma **160 m szerokości**, a **wały biegną po jego obwodzie** (decyzja właściciela). Przyjęto: prawy wał to x = 0, lewy x = 160 m, więc `offset_right_m` mieści się w zakresie 0–160 (walidowane w CI), a `distance_m` jest mierzone od linii strzału wzdłuż osi (do 1000 m).
+Przedpole ma **160 m szerokości**, a **wały biegną po jego obwodzie** (decyzja właściciela). Przyjęto: prawy wał to x = 0, lewy x = 160 m, więc `offset_right_m` mieści się w zakresie 0–160 (walidowane w CI), a `distance_m` jest mierzone od linii otwarcia ognia wzdłuż osi (do 1000 m).
 
-Znaczenie osi potwierdził właściciel (odległość od linii strzału oraz od prawego wału). Skala planu jest bardzo niesymetryczna (160 m szerokości wobec 1000 m długości), więc plan może używać innej skali w poziomie niż w pionie; do ustalenia przy projektowaniu.
+Znaczenie osi potwierdził właściciel (odległość od linii otwarcia ognia oraz od prawego wału). Skala planu jest bardzo niesymetryczna (160 m szerokości wobec 1000 m długości), więc plan może używać innej skali w poziomie niż w pionie; właściciel zdecydował (2026-11-10), że różnica skal nie jest opisywana przy planie, a oś x nie ma podziałki ani opisu.
 
 ## Konsekwencje
 - Zmiana rozmieszczenia celów to zmiana jednego pliku, bez edycji kodu.
