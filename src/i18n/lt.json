@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Steel Valley Long Range - sportinio šaudymo šaudykla ilgiems nuotoliams",
+    "description": "Steel Valley Long Range - profesionali sportinio šaudymo šaudykla ilgiems nuotoliams. Siūlome šaudymo treniruotes, varžybas ir mokymus sportinio šaudymo entuziastams."
+  },
+  "ui": {
+    "skipLink": "Pereiti prie turinio",
+    "navLabel": "Pagrindinė navigacija",
+    "menuLabel": "Meniu",
+    "homeLabel": "Steel Valley Long Range – pagrindinis puslapis",
+    "languageLabel": "Kalba",
+    "languageNavLabel": "Kalbos pasirinkimas"
+  },
+  "languageBanner": {
+    "label": "Kalbos pasiūlymas",
+    "message": "Šis puslapis taip pat pasiekiamas lietuvių kalba.",
+    "action": "Skaityti lietuviškai",
+    "close": "Uždaryti"
+  },
+  "nav": {
+    "about": "Apie objektą",
+    "disciplines": "Disciplinos",
+    "plan": "Taikinių lauko planas",
+    "location": "Kaip atvykti",
+    "accommodation": "Nakvynė ir lankytinos vietos",
+    "contact": "Kontaktai"
+  },
+  "hero": {
+    "eyebrow": "Ilgų nuotolių šaudykla",
+    "lead": "1000 m šaudymo linija ilgų nuotolių šauliams iš visos Europos. Svetainė kuriama."
+  },
+  "sections": {
+    "about": "Apie objektą",
+    "disciplines": "Disciplinos",
+    "plan": "Taikinių lauko planas",
+    "location": "Vieta ir kaip atvykti",
+    "accommodation": "Nakvynė ir lankytinos vietos"
+  },
+  "placeholder": {
+    "section": "Šios dalies turinys bus parengtas kitame etape.",
+    "footer": "Poraštė: kontaktai ir svetainės žemėlapis ruošiami."
+  }
+}

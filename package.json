@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "validate:html": "html-validate \"dist/**/*.html\""
+    "validate:html": "html-validate \"dist/**/*.html\"",
+    "check:i18n": "node scripts/check-i18n.mjs"
   },
   "dependencies": {
     "astro": "^7.4.8"

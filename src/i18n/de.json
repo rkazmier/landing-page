@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Steel Valley Long Range - Sportschießanlage für Langdistanz",
+    "description": "Steel Valley Long Range ist eine professionelle Schießanlage für den Langdistanz-Schießsport. Wir bieten Schießtraining, Wettkämpfe und Schulungen für Sportschützen."
+  },
+  "ui": {
+    "skipLink": "Zum Inhalt springen",
+    "navLabel": "Hauptnavigation",
+    "menuLabel": "Menü",
+    "homeLabel": "Steel Valley Long Range – Startseite",
+    "languageLabel": "Sprache",
+    "languageNavLabel": "Sprachauswahl"
+  },
+  "languageBanner": {
+    "label": "Sprachvorschlag",
+    "message": "Diese Seite ist auch auf Deutsch verfügbar.",
+    "action": "Zur deutschen Version",
+    "close": "Schließen"
+  },
+  "nav": {
+    "about": "Die Anlage",
+    "disciplines": "Disziplinen",
+    "plan": "Zielfeldplan",
+    "location": "Anfahrt",
+    "accommodation": "Unterkünfte & Ausflugsziele",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "eyebrow": "Langdistanz-Schießanlage",
+    "lead": "Eine 1000-m-Schießbahn für Langdistanzschützen aus ganz Europa. Website im Aufbau."
+  },
+  "sections": {
+    "about": "Die Anlage",
+    "disciplines": "Disziplinen",
+    "plan": "Zielfeldplan",
+    "location": "Lage und Anfahrt",
+    "accommodation": "Unterkünfte und Ausflugsziele"
+  },
+  "placeholder": {
+    "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
+    "footer": "Fußzeile: Kontaktdaten und Seitenübersicht in Vorbereitung."
+  }
+}

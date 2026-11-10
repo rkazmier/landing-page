@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "title": "Steel Valley Long Range - Long-Range Sport Shooting Range",
+    "description": "Steel Valley Long Range is a professional long-range sport shooting range. We offer shooting training, competitions and courses for sport shooting enthusiasts."
+  },
+  "ui": {
+    "skipLink": "Skip to content",
+    "navLabel": "Main navigation",
+    "menuLabel": "Menu",
+    "homeLabel": "Steel Valley Long Range – home page",
+    "languageLabel": "Language",
+    "languageNavLabel": "Choose language"
+  },
+  "languageBanner": {
+    "label": "Language suggestion",
+    "message": "This page is also available in English.",
+    "action": "Switch to English",
+    "close": "Close"
+  },
+  "nav": {
+    "about": "About",
+    "disciplines": "Disciplines",
+    "plan": "Range layout",
+    "location": "Getting here",
+    "accommodation": "Accommodation & attractions",
+    "contact": "Contact"
+  },
+  "hero": {
+    "eyebrow": "Long-range shooting range",
+    "lead": "A 1000 m shooting lane for long-range shooters from all over Europe. Website under construction."
+  },
+  "sections": {
+    "about": "About the range",
+    "disciplines": "Disciplines",
+    "plan": "Range layout",
+    "location": "Location and directions",
+    "accommodation": "Accommodation and attractions"
+  },
+  "placeholder": {
+    "section": "The content of this section will be added at a later stage.",
+    "footer": "Footer: contact details and site map coming soon."
+  }
+}
