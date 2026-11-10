@@ -30,7 +30,7 @@ Zasady agentów (`AGENTS.md`, `.claude/agents/`) wskazują `src/` i `public/`.
 Szczegóły w [ADR 0002](adr/0002-wersje-jezykowe.md): osobne adresy, polski bez prefiksu, `hreflang`, baner sugestii na podstawie języka przeglądarki, bez przekierowań.
 
 ## Dane i plan przedpola
-Szczegóły w [ADR 0003](adr/0003-dane-celow-i-plan.md): `targets.json` → walidacja schematem w CI → w czasie budowania powstaje SVG planu i tabela HTML. Wydruk przez `@media print`.
+Szczegóły w [ADR 0003](adr/0003-dane-celow-i-plan.md): `targets.json` (każdy cel z wymaganym oznaczeniem `label`, np. `K1`) → walidacja schematem i regułami numeracji w CI (`npm run validate:data`) → w czasie budowania powstaje SVG planu i tabela HTML. Wydruk przez `@media print`.
 
 ## Mapa
 Statyczny obraz jako link do nawigacji w Mapach Google ([ADR 0004](adr/0004-mapa-statyczna.md)).
