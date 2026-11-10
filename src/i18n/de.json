@@ -36,6 +36,49 @@
     "location": "Lage und Anfahrt",
     "accommodation": "Unterkünfte und Ausflugsziele"
   },
+  "about": {
+    "todo": "TODO(Eigentümer): Beschreibung der Anlage und der 1000-m-Bahn sowie Foto ersetzen (src/assets/photos/). Aktuelle Texte und Illustration sind Platzhalter.",
+    "eyebrow": "1000-m-Bahn",
+    "lead": "Steel Valley Long Range ist eine Schießanlage für das Langdistanzschießen: eine 1000 Meter lange Bahn und ein Zielfeld mit Stahlzielen.",
+    "body": "Das Zielfeld ist 160 Meter breit und auf seinem gesamten Umfang von Wällen umgeben. Stahlziele in unterschiedlichen Entfernungen ermöglichen Training und Wettkämpfe über die volle Länge der Bahn.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "Länge der Schießbahn"
+      },
+      {
+        "value": "160 m",
+        "label": "Breite des Zielfelds"
+      },
+      {
+        "value": "Stahl",
+        "label": "Stahlziele im Zielfeld"
+      }
+    ],
+    "imageAlt": "Platzhalter-Illustration: Schießbahn zwischen Erdwällen mit Stahlzielen im Zielfeld"
+  },
+  "disciplines": {
+    "todo": "TODO(Eigentümer): Liste der Disziplinen und ihre Beschreibungen ersetzen. Die aktuelle Liste ist ein Beispiel.",
+    "intro": "Die 1000-m-Bahn und die Stahlziele ermöglichen verschiedene Disziplinen des Langdistanzschießens.",
+    "items": [
+      {
+        "name": "Precision Rifle (PRS)",
+        "description": "Präzisionsschießen aus verschiedenen Positionen und Auflagen auf Stahlziele in wechselnden Entfernungen."
+      },
+      {
+        "name": "F-Class",
+        "description": "Präzisionsschießen liegend mit Auflage auf große Entfernungen."
+      },
+      {
+        "name": "Benchrest",
+        "description": "Schießen vom Tisch mit Fokus auf maximale Präzision und Wiederholbarkeit."
+      },
+      {
+        "name": "Training und Schulungen",
+        "description": "Angebote für alle, die mit dem Langdistanzschießen beginnen oder sich darin verbessern möchten."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Der Inhalt dieses Abschnitts folgt in einer späteren Phase.",
     "footer": "Fußzeile: Kontaktdaten und Seitenübersicht in Vorbereitung."

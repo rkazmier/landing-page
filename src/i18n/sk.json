@@ -36,6 +36,49 @@
     "location": "Poloha a príjazd",
     "accommodation": "Ubytovanie a atrakcie"
   },
+  "about": {
+    "todo": "TODO(vlastník): nahradiť popis strelnice a dráhy 1000 m a fotografiu (src/assets/photos/). Súčasné texty a ilustrácia sú zástupné.",
+    "eyebrow": "Dráha 1000 m",
+    "lead": "Steel Valley Long Range je strelnica určená na streľbu na veľké vzdialenosti: dráha s dĺžkou 1000 metrov a terčové pole s kovovými terčmi.",
+    "body": "Terčové pole je široké 160 metrov a po celom obvode ho obklopujú valy. Kovové terče rozmiestnené v rôznych vzdialenostiach umožňujú tréning aj súťaže na celej dĺžke dráhy.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "dĺžka streleckej dráhy"
+      },
+      {
+        "value": "160 m",
+        "label": "šírka terčového poľa"
+      },
+      {
+        "value": "Oceľ",
+        "label": "kovové terče v terčovom poli"
+      }
+    ],
+    "imageAlt": "Zástupná ilustrácia: strelecká dráha medzi zemnými valmi s kovovými terčmi v terčovom poli"
+  },
+  "disciplines": {
+    "todo": "TODO(vlastník): nahradiť zoznam disciplín a ich popisy. Súčasný zoznam je ukážkový.",
+    "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti.",
+    "items": [
+      {
+        "name": "Precision Rifle (PRS)",
+        "description": "Presná streľba z rôznych polôh a opôr na kovové terče na meniace sa vzdialenosti."
+      },
+      {
+        "name": "F-Class",
+        "description": "Presná streľba v ľahu z opory na veľké vzdialenosti."
+      },
+      {
+        "name": "Benchrest",
+        "description": "Streľba od stola s dôrazom na maximálnu presnosť a opakovateľnosť."
+      },
+      {
+        "name": "Tréningy a školenia",
+        "description": "Kurzy pre tých, ktorí chcú so streľbou na veľké vzdialenosti začať alebo sa v nej zlepšiť."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
     "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."

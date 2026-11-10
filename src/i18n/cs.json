@@ -36,6 +36,49 @@
     "location": "Poloha a příjezd",
     "accommodation": "Ubytování a atrakce"
   },
+  "about": {
+    "todo": "TODO(vlastník): nahradit popis střelnice a dráhy 1000 m a fotografii (src/assets/photos/). Současné texty a ilustrace jsou zástupné.",
+    "eyebrow": "Dráha 1000 m",
+    "lead": "Steel Valley Long Range je střelnice určená pro střelbu na dlouhé vzdálenosti: dráha o délce 1000 metrů a terčové pole s kovovými terči.",
+    "body": "Terčové pole je široké 160 metrů a po celém obvodu je obklopeno valy. Kovové terče rozmístěné v různých vzdálenostech umožňují trénink i soutěže na celé délce dráhy.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "délka střelecké dráhy"
+      },
+      {
+        "value": "160 m",
+        "label": "šířka terčového pole"
+      },
+      {
+        "value": "Ocel",
+        "label": "kovové terče v terčovém poli"
+      }
+    ],
+    "imageAlt": "Zástupná ilustrace: střelecká dráha mezi zemními valy s kovovými terči v terčovém poli"
+  },
+  "disciplines": {
+    "todo": "TODO(vlastník): nahradit seznam disciplín a jejich popisy. Současný seznam je ukázkový.",
+    "intro": "Dráha 1000 m a kovové terče umožňují provozovat různé disciplíny střelby na dlouhé vzdálenosti.",
+    "items": [
+      {
+        "name": "Precision Rifle (PRS)",
+        "description": "Přesná střelba z různých poloh a opor na kovové terče na proměnlivé vzdálenosti."
+      },
+      {
+        "name": "F-Class",
+        "description": "Přesná střelba vleže z opory na dlouhé vzdálenosti."
+      },
+      {
+        "name": "Benchrest",
+        "description": "Střelba od stolu s důrazem na maximální přesnost a opakovatelnost."
+      },
+      {
+        "name": "Tréninky a školení",
+        "description": "Kurzy pro ty, kdo chtějí se střelbou na dlouhé vzdálenosti začít nebo se v ní zlepšit."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Obsah této sekce bude doplněn v další fázi.",
     "footer": "Zápatí: kontaktní údaje a mapa stránek se připravují."

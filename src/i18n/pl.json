@@ -36,6 +36,49 @@
     "location": "Lokalizacja i dojazd",
     "accommodation": "Noclegi i atrakcje"
   },
+  "about": {
+    "todo": "TODO(właściciel): podmień opis obiektu i osi 1000 m oraz zdjęcie (src/assets/photos/). Obecne teksty i ilustracja są zastępcze.",
+    "eyebrow": "Oś 1000 m",
+    "lead": "Steel Valley Long Range to strzelnica zaprojektowana z myślą o strzelectwie długodystansowym: oś o długości 1000 metrów i przedpole z celami metalowymi.",
+    "body": "Przedpole ma 160 metrów szerokości i jest otoczone wałami na całym obwodzie. Cele metalowe rozmieszczone w różnych odległościach pozwalają trenować i rozgrywać zawody na pełnym dystansie osi.",
+    "facts": [
+      {
+        "value": "1000 m",
+        "label": "długość osi strzeleckiej"
+      },
+      {
+        "value": "160 m",
+        "label": "szerokość przedpola"
+      },
+      {
+        "value": "Stal",
+        "label": "cele metalowe na przedpolu"
+      }
+    ],
+    "imageAlt": "Ilustracja zastępcza: oś strzelecka między wałami ziemnymi z celami metalowymi na przedpolu"
+  },
+  "disciplines": {
+    "todo": "TODO(właściciel): podmień listę dyscyplin i ich opisy. Obecna lista jest przykładowa.",
+    "intro": "Oś 1000 m i cele metalowe pozwalają uprawiać różne dyscypliny strzelectwa długodystansowego.",
+    "items": [
+      {
+        "name": "Precision Rifle (PRS)",
+        "description": "Strzelanie precyzyjne z różnych postaw i podpór do celów metalowych na zmiennych dystansach."
+      },
+      {
+        "name": "F-Class",
+        "description": "Precyzyjne strzelanie z pozycji leżącej z podpórki na dalekich dystansach."
+      },
+      {
+        "name": "Benchrest",
+        "description": "Strzelanie ze stołu z naciskiem na maksymalną precyzję i powtarzalność."
+      },
+      {
+        "name": "Treningi i szkolenia",
+        "description": "Zajęcia dla osób, które chcą zacząć lub rozwijać strzelanie długodystansowe."
+      }
+    ]
+  },
   "placeholder": {
     "section": "Treść tej sekcji powstanie w kolejnym etapie.",
     "footer": "Stopka: dane kontaktowe i mapa strony w przygotowaniu."
