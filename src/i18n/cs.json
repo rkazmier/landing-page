@@ -139,8 +139,20 @@
     "mapHint": "Kliknutím na mapu naplánujete trasu v Mapách Google.",
     "attribution": "přispěvatelé OpenStreetMap"
   },
-  "placeholder": {
-    "section": "Obsah této sekce bude doplněn v další fázi.",
-    "footer": "Zápatí: kontaktní údaje a mapa stránek se připravují."
+  "footer": {
+    "keyInfoTitle": "Klíčové informace",
+    "contactTitle": "Kontakt",
+    "sitemapTitle": "Mapa stránek",
+    "sectionsLabel": "Sekce stránky",
+    "languagesLabel": "Jazyky",
+    "hoursLabel": "Otevírací doba",
+    "hours": "Denně (po–ne), {opens}–{closes}",
+    "offerLabel": "Nabídka",
+    "offer": "Střelnice pro dlouhé vzdálenosti: střelecká osa 1000 m a 160 m široká plocha s kovovými terči.",
+    "phoneLabel": "Telefon",
+    "contactNote": "Kontaktujte nás telefonicky.",
+    "companyLabel": "Údaje o firmě",
+    "privacyPolicy": "Zásady ochrany osobních údajů",
+    "legalNotice": "Právní informace"
   }
 }

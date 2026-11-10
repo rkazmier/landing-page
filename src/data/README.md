@@ -7,6 +7,7 @@ Każdy plik `<nazwa>.json` ma obok schemat `<nazwa>.schema.json`. Poprawność s
 |---|---|
 | `targets.json` | cele metalowe na przedpolu (FR-5, ADR 0003) |
 | `accommodation.json` | noclegi i atrakcje w pobliżu (FR-7) |
+| `footer.json` | dane firmy i linki prawne w stopce (FR-8) — wpisy opcjonalne |
 
 ## `targets.json` — cele metalowe
 
@@ -54,3 +55,28 @@ Tablica obiektów, jeden obiekt = jeden cel.
   { "label": "P1", "shape": "rectangle", "distance_m": 400, "offset_right_m": 80, "size_cm": { "width": 50, "height": 100 } }
 ]
 ```
+
+## `footer.json` — dane stopki dostarczane później
+
+Obiekt; **każdy wpis jest opcjonalny**. Brak wpisu oznacza, że stopka nie pokazuje danej pozycji
+(bez pustych sekcji i martwych linków). Obecnie plik jest pusty (`{}`).
+
+| Pole | Znaczenie |
+|---|---|
+| `company.name` | pełna nazwa firmy (wymagana, jeśli jest `company`) |
+| `company.lines` | kolejne wiersze danych firmy, np. adres siedziby, NIP, REGON |
+| `privacyPolicyUrl` | adres polityki prywatności: `https://…` albo ścieżka w serwisie od `/` |
+| `legalNoticeUrl` | adres informacji prawnej: `https://…` albo ścieżka w serwisie od `/` |
+
+Telefon, adres, współrzędne i godziny otwarcia są w `src/site.ts`, a teksty stopki w `src/i18n/`.
+
+### Przykład
+
+```json
+{
+  "company": { "name": "Przykładowa Firma sp. z o.o.", "lines": ["ul. Przykładowa 1, 00-000 Miasto", "NIP 000-000-00-00"] },
+  "privacyPolicyUrl": "https://example.com/polityka-prywatnosci",
+  "legalNoticeUrl": "/informacja-prawna/"
+}
+```
+

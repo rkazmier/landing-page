@@ -139,8 +139,20 @@
     "mapHint": "Kliknutím na mapu naplánujete trasu v Mapách Google.",
     "attribution": "prispievatelia OpenStreetMap"
   },
-  "placeholder": {
-    "section": "Obsah tejto sekcie pribudne v ďalšej fáze.",
-    "footer": "Päta: kontaktné údaje a mapa stránky sa pripravujú."
+  "footer": {
+    "keyInfoTitle": "Kľúčové informácie",
+    "contactTitle": "Kontakt",
+    "sitemapTitle": "Mapa stránky",
+    "sectionsLabel": "Sekcie stránky",
+    "languagesLabel": "Jazyky",
+    "hoursLabel": "Otváracie hodiny",
+    "hours": "Denne (po–ne), {opens}–{closes}",
+    "offerLabel": "Ponuka",
+    "offer": "Strelnica na dlhé vzdialenosti: strelecká os 1000 m a 160 m široká plocha s kovovými terčmi.",
+    "phoneLabel": "Telefón",
+    "contactNote": "Kontaktujte nás telefonicky.",
+    "companyLabel": "Údaje o firme",
+    "privacyPolicy": "Zásady ochrany osobných údajov",
+    "legalNotice": "Právne informácie"
   }
 }

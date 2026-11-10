@@ -139,8 +139,20 @@
     "mapHint": "Kliknij mapę, aby wyznaczyć trasę w Mapach Google.",
     "attribution": "autorzy OpenStreetMap"
   },
-  "placeholder": {
-    "section": "Treść tej sekcji powstanie w kolejnym etapie.",
-    "footer": "Stopka: dane kontaktowe i mapa strony w przygotowaniu."
+  "footer": {
+    "keyInfoTitle": "Kluczowe informacje",
+    "contactTitle": "Kontakt",
+    "sitemapTitle": "Mapa strony",
+    "sectionsLabel": "Sekcje strony",
+    "languagesLabel": "Wersje językowe",
+    "hoursLabel": "Godziny otwarcia",
+    "hours": "Codziennie (pon.–niedz.), {opens}–{closes}",
+    "offerLabel": "Oferta",
+    "offer": "Strzelnica długodystansowa: oś strzelecka 1000 m i przedpole o szerokości 160 m z celami metalowymi.",
+    "phoneLabel": "Telefon",
+    "contactNote": "Zapraszamy do kontaktu telefonicznego.",
+    "companyLabel": "Dane firmy",
+    "privacyPolicy": "Polityka prywatności",
+    "legalNotice": "Informacja prawna"
   }
 }

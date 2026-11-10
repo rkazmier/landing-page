@@ -1,0 +1,259 @@
+---
+/**
+ * Treść stopki (FR-8, FR-9, Z10) — osobna sekcja na końcu każdej wersji językowej.
+ *
+ * - Kluczowe informacje: nazwa, adres, współrzędne, godziny otwarcia, skrót oferty.
+ * - Kontakt: wyłącznie telefon (tekst + link tel:), bez formularza i e-maila.
+ * - Mapa strony: linki do sekcji (te same co w nawigacji) i do 6 wersji językowych.
+ * - Dane firmy, polityka prywatności, informacja prawna: src/data/footer.json (wpisy opcjonalne).
+ *   Pozycji bez danych nie pokazujemy — żadnych pustych sekcji ani martwych linków.
+ * - Dane obiektu: src/site.ts; teksty: klucz `footer` w src/i18n/<kod>.json.
+ */
+import footerData from '../data/footer.json';
+import { brand } from '../brand';
+import { languageNames, localePath, locales, t, type Locale } from '../i18n';
+import { addressText, coordinatesText, displayTime, phoneHref, site } from '../site';
+import { withBase } from '../utils/url';
+import type { NavItem } from '../types';
+
+interface Props {
+  locale: Locale;
+  nav: NavItem[];
+}
+
+interface FooterData {
+  company?: { name: string; lines?: string[] };
+  privacyPolicyUrl?: string;
+  legalNoticeUrl?: string;
+}
+
+const { locale, nav } = Astro.props;
+const d = t(locale);
+const f = d.footer;
+const data = footerData as FooterData;
+
+const hours = f.hours
+  .replace('{opens}', displayTime(site.openingHours.opens))
+  .replace('{closes}', displayTime(site.openingHours.closes));
+
+const href = (url: string) => (url.startsWith('/') ? withBase(url) : url);
+const legalLinks = [
+  { url: data.privacyPolicyUrl, label: f.privacyPolicy },
+  { url: data.legalNoticeUrl, label: f.legalNotice },
+].filter((link): link is { url: string; label: string } => Boolean(link.url));
+const external = (url: string) => url.startsWith('https://');
+const year = new Date().getFullYear();
+---
+<div class="footer-grid">
+  <section class="footer-col" aria-labelledby="footer-info-title">
+    <h2 id="footer-info-title" class="footer-title">{f.keyInfoTitle}</h2>
+    <p class="footer-name">{brand.name}</p>
+    <dl class="footer-facts">
+      <div>
+        <dt>{d.location.addressLabel}</dt>
+        <dd>{addressText}</dd>
+      </div>
+      <div>
+        <dt>{d.location.coordinatesLabel}</dt>
+        <dd class="coords">{coordinatesText}</dd>
+      </div>
+      <div>
+        <dt>{f.hoursLabel}</dt>
+        <dd>{hours}</dd>
+      </div>
+      <div>
+        <dt>{f.offerLabel}</dt>
+        <dd>{f.offer}</dd>
+      </div>
+    </dl>
+  </section>
+
+  <section class="footer-col" aria-labelledby="footer-contact-title">
+    <h2 id="footer-contact-title" class="footer-title">{f.contactTitle}</h2>
+    <p class="footer-note">{f.contactNote}</p>
+    <p class="footer-phone">
+      <span class="visually-hidden">{f.phoneLabel}: </span>
+      <a href={phoneHref}>{site.phone.display.replaceAll(" ", "\u00a0")}</a>
+    </p>
+  </section>
+
+  <nav class="footer-col" aria-labelledby="footer-sitemap-title">
+    <h2 id="footer-sitemap-title" class="footer-title">{f.sitemapTitle}</h2>
+    <h3 class="footer-subtitle">{f.sectionsLabel}</h3>
+    <ul class="footer-links">
+      {nav.map((item) => (
+        <li><a href={item.href}>{item.label}</a></li>
+      ))}
+    </ul>
+    <h3 class="footer-subtitle">{f.languagesLabel}</h3>
+    <ul class="footer-links footer-langs">
+      {locales.map((code) => (
+        <li>
+          <a
+            href={localePath(code)}
+            hreflang={code}
+            lang={code}
+            aria-current={code === locale ? 'page' : undefined}
+          >{languageNames[code]}</a>
+        </li>
+      ))}
+    </ul>
+  </nav>
+</div>
+
+<div class="footer-bottom">
+  {data.company && (
+    <div class="footer-company">
+      <span class="visually-hidden">{f.companyLabel}: </span>
+      <span>{data.company.name}</span>
+      {data.company.lines?.map((line) => <span>{line}</span>)}
+    </div>
+  )}
+  <p class="footer-copy">© {year} {brand.name}</p>
+  {legalLinks.length > 0 && (
+    <ul class="footer-legal">
+      {legalLinks.map((link) => (
+        <li>
+          <a href={href(link.url)} rel={external(link.url) ? 'noopener noreferrer' : undefined}>{link.label}</a>
+        </li>
+      ))}
+    </ul>
+  )}
+</div>
+
+<style>
+  .footer-grid {
+    display: grid;
+    gap: var(--space-7);
+  }
+
+  .footer-title {
+    margin: 0 0 var(--space-4);
+    color: var(--color-on-dark);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-strong);
+    letter-spacing: var(--tracking-wide);
+    text-transform: uppercase;
+  }
+
+  .footer-subtitle {
+    margin: var(--space-4) 0 var(--space-2);
+    color: var(--color-on-dark);
+    font-size: var(--text-sm);
+    font-weight: var(--font-weight-strong);
+    opacity: 0.8;
+  }
+
+  .footer-subtitle:first-of-type {
+    margin-top: 0;
+  }
+
+  .footer-name {
+    margin: 0 0 var(--space-4);
+    font-family: var(--font-heading);
+    font-size: var(--text-lg);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .footer-facts {
+    display: grid;
+    gap: var(--space-3);
+    margin: 0;
+  }
+
+  .footer-facts dt {
+    font-size: var(--text-sm);
+    opacity: 0.8;
+  }
+
+  .footer-facts dd {
+    margin: 0;
+  }
+
+  .coords {
+    font-variant-numeric: tabular-nums;
+    overflow-wrap: anywhere;
+  }
+
+  .footer-note {
+    margin: 0 0 var(--space-3);
+  }
+
+  .footer-phone {
+    margin: 0;
+    font-size: var(--text-h3);
+    font-weight: var(--font-weight-strong);
+  }
+
+  .footer-phone a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .footer-links {
+    display: grid;
+    gap: var(--space-1);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .footer-links a,
+  .footer-legal a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+  }
+
+  .footer-langs {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-langs a[aria-current='page'] {
+    font-weight: var(--font-weight-strong);
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2) var(--space-6);
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: var(--border-width) solid color-mix(in srgb, var(--color-on-dark) 25%, transparent);
+    font-size: var(--text-sm);
+  }
+
+  .footer-company {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-4);
+  }
+
+  .footer-copy {
+    margin: 0;
+  }
+
+  .footer-legal {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @media (min-width: 40em) {
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (min-width: 64em) {
+    .footer-grid {
+      grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr);
+    }
+  }
+</style>
