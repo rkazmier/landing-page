@@ -87,6 +87,39 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(owner): the targets in src/data/targets.json are samples – replace them with the real data.",
+    "intro": "A simplified plan of the range showing the layout of the steel targets. The firing line is at the bottom; the targets lie downrange.",
+    "svgTitle": "Range plan",
+    "svgDesc": "Range 160 m wide and 1000 m long, surrounded by a berm. Firing line at the bottom, right berm on the right. Number of targets on the plan: {count}. Full target details are in the table “{table}”.",
+    "firingLine": "Firing line",
+    "rightBerm": "Right berm",
+    "leftBerm": "Left berm",
+    "distanceAxis": "Distance from firing line [m]",
+    "offsetAxis": "Distance from right berm [m]",
+    "scaleNote": "Scales differ: the range width (160 m) is enlarged relative to its length (1000 m). Markers show the target shape, not its size – dimensions are given in the table.",
+    "legendTitle": "Legend",
+    "shapes": {
+      "square": "square",
+      "circle": "circle",
+      "rhombus": "rhombus",
+      "rectangle": "rectangle",
+      "silhouette": "silhouette",
+      "bust": "bust",
+      "other": "other"
+    },
+    "tableCaption": "Targets on the range",
+    "colLabel": "Label",
+    "colShape": "Shape",
+    "colDistance": "Distance from firing line",
+    "colOffset": "Distance from right berm",
+    "colSize": "Size",
+    "sizeSide": "side {v} cm",
+    "sizeDiameter": "diameter {v} cm",
+    "sizeHeight": "height {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (W × H)",
+    "sizeOther": "{name}, {w} × {h} cm (W × H)"
+  },
   "accommodation": {
     "todo": "TODO(owner): check the general description and the list in src/data/accommodation.json; add website links for the accommodation.",
     "intro": "Within 50 km of the range there are hotels and inns as well as places worth visiting in northern Masovia and the Kurpie region.",

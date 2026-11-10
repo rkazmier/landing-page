@@ -87,6 +87,39 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(vlastník): terče v src/data/targets.json jsou ukázkové – nahraďte je skutečnými daty.",
+    "intro": "Zjednodušený plán střeliště s rozmístěním kovových terčů. Palebná čára je dole, terče leží ve směru střelby.",
+    "svgTitle": "Plán střeliště",
+    "svgDesc": "Plocha široká 160 m a dlouhá 1000 m, obklopená valem. Palebná čára dole, pravý val vpravo. Počet terčů v plánu: {count}. Všechny údaje o terčích jsou v tabulce „{table}“.",
+    "firingLine": "Palebná čára",
+    "rightBerm": "Pravý val",
+    "leftBerm": "Levý val",
+    "distanceAxis": "Vzdálenost od palebné čáry [m]",
+    "offsetAxis": "Vzdálenost od pravého valu [m]",
+    "scaleNote": "Měřítka se liší: šířka plochy (160 m) je v plánu zvětšena oproti délce (1000 m). Značky ukazují tvar terče, ne jeho velikost – rozměry jsou uvedeny v tabulce.",
+    "legendTitle": "Legenda",
+    "shapes": {
+      "square": "čtverec",
+      "circle": "kruh",
+      "rhombus": "kosočtverec",
+      "rectangle": "obdélník",
+      "silhouette": "silueta",
+      "bust": "busta",
+      "other": "jiný"
+    },
+    "tableCaption": "Terče na střelišti",
+    "colLabel": "Označení",
+    "colShape": "Tvar",
+    "colDistance": "Vzdálenost od palebné čáry",
+    "colOffset": "Vzdálenost od pravého valu",
+    "colSize": "Velikost",
+    "sizeSide": "strana {v} cm",
+    "sizeDiameter": "průměr {v} cm",
+    "sizeHeight": "výška {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (š × v)",
+    "sizeOther": "{name}, {w} × {h} cm (š × v)"
+  },
   "accommodation": {
     "todo": "TODO(vlastník): zkontrolovat obecný popis a seznam v src/data/accommodation.json; doplnit odkazy na weby ubytování.",
     "intro": "V okruhu 50 km od střelnice najdete hotely a hostince i místa, která stojí za návštěvu na severním Mazovsku a v regionu Kurpie.",

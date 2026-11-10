@@ -1,0 +1,28 @@
+---
+/**
+ * Znacznik kształtu celu (plan przedpola i legenda, Z07).
+ * Rysowany wokół punktu (0, 0) w polu ok. 16 × 16 jednostek; skalę ustawia `size`.
+ * Kształty różnią się obrysem, nie kolorem (czytelne w czerni i bieli — Z08).
+ * Romb = kwadrat obrócony o 45° (ADR 0003).
+ */
+import type { Shape } from '../utils/rangePlan';
+
+interface Props {
+  shape: Shape;
+  size?: number;
+}
+
+const { shape, size = 16 } = Astro.props;
+const k = size / 16;
+---
+<g class="target-shape" transform={`scale(${k})`}>
+  {shape === 'square' && <rect x="-6.5" y="-6.5" width="13" height="13" />}
+  {shape === 'circle' && <circle r="7.5" />}
+  {shape === 'rhombus' && <rect x="-5.5" y="-5.5" width="11" height="11" transform="rotate(45)" />}
+  {shape === 'rectangle' && <rect x="-4.5" y="-8" width="9" height="16" />}
+  {shape === 'silhouette' && (
+    <path d="M0 -8.5a2.6 2.6 0 1 1 0 5.2a2.6 2.6 0 1 1 0-5.2Z M-4.2 -2.4h8.4v10.4h-8.4Z" />
+  )}
+  {shape === 'bust' && <path d="M0 -8a3.6 3.6 0 1 1 0 7.2a3.6 3.6 0 1 1 0-7.2Z M-8 7.5c0-5 3.2-7 8-7s8 2 8 7Z" />}
+  {shape === 'other' && <path d="M0 -8L8 7H-8Z" />}
+</g>

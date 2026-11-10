@@ -87,6 +87,39 @@
       }
     ]
   },
+  "plan": {
+    "todo": "TODO(właściciel): cele w src/data/targets.json są przykładowe – podmień je na właściwe dane.",
+    "intro": "Uproszczony plan przedpola z rozmieszczeniem celów metalowych. Linia strzału jest na dole planu, cele leżą w kierunku strzału.",
+    "svgTitle": "Plan przedpola",
+    "svgDesc": "Przedpole o szerokości 160 m i długości 1000 m, otoczone wałem. Linia strzału na dole, prawy wał po prawej stronie. Liczba celów na planie: {count}. Pełne dane celów są w tabeli „{table}”.",
+    "firingLine": "Linia strzału",
+    "rightBerm": "Prawy wał",
+    "leftBerm": "Lewy wał",
+    "distanceAxis": "Odległość od linii strzału [m]",
+    "offsetAxis": "Odległość od prawego wału [m]",
+    "scaleNote": "Skale są różne: szerokość przedpola (160 m) jest na planie powiększona względem długości (1000 m). Znaczniki pokazują kształt celu, nie jego wielkość – wymiary podano w tabeli.",
+    "legendTitle": "Legenda",
+    "shapes": {
+      "square": "kwadrat",
+      "circle": "koło",
+      "rhombus": "romb",
+      "rectangle": "prostokąt",
+      "silhouette": "sylwetka",
+      "bust": "popiersie",
+      "other": "inny"
+    },
+    "tableCaption": "Cele na przedpolu",
+    "colLabel": "Oznaczenie",
+    "colShape": "Kształt",
+    "colDistance": "Odległość od linii strzału",
+    "colOffset": "Odległość od prawego wału",
+    "colSize": "Rozmiar",
+    "sizeSide": "bok {v} cm",
+    "sizeDiameter": "średnica {v} cm",
+    "sizeHeight": "wysokość {v} cm",
+    "sizeWidthHeight": "{w} × {h} cm (szer. × wys.)",
+    "sizeOther": "{name}, {w} × {h} cm (szer. × wys.)"
+  },
   "accommodation": {
     "todo": "TODO(właściciel): sprawdź opis ogólny i listę obiektów w src/data/accommodation.json; uzupełnij linki do stron noclegów.",
     "intro": "W promieniu 50 km od strzelnicy znajdują się hotele i gospody oraz miejsca warte odwiedzenia na północnym Mazowszu i Kurpiach.",
