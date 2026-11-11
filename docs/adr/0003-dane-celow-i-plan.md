@@ -1,7 +1,7 @@
 # ADR 0003: Dane o celach w `targets.json` i plan generowany z pliku
 
 - **Status:** Przyjęta (decyzja właściciela z 2026-11-09)
-- **Data:** 2026-11-09 (aktualizacja 2026-11-10: wymagane pole `label`, decyzja właściciela przy Z06, Issue #12; aktualizacja 2026-11-10: „linia otwarcia ognia”, czterokolumnowa tabela, brak opisu osi x na planie, decyzja właściciela przy Z07, Issue #13)
+- **Data:** 2026-11-09 (aktualizacja 2026-11-10: wymagane pole `label`, decyzja właściciela przy Z06, Issue #12; aktualizacja 2026-11-10: „linia otwarcia ognia”, czterokolumnowa tabela, brak opisu osi x na planie, decyzja właściciela przy Z07, Issue #13; aktualizacja 2026-11-11: grupowanie celów z tą samą literą na planie, decyzja właściciela)
 
 ## Kontekst
 Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego pliku danych, wyświetlany jako uproszczona grafika i dawać się przejrzyście wydrukować.
@@ -24,7 +24,8 @@ Plan przedpola z rozmieszczeniem celów metalowych ma być generowany z osobnego
   - format: jedna wielka litera alfabetu łacińskiego A–Z (bez polskich znaków) i numer kolejnego celu z tą literą, np. `K1`, `A1`, `A2`; wzorzec `^[A-Z][1-9][0-9]*$`;
   - dla tej samej litery numery rosną od 1 bez przerw, w kolejności występowania celów w pliku (`A1`, `A2`, `A3`…); litery mogą się przeplatać (np. `K1`, `O1`, `K2`);
   - powtórzenie oznaczenia, przeskok numeru (np. `A1`, `A3`) lub zła kolejność (np. `A2` przed `A1`) to błąd walidacji; reguły numeracji sprawdza `scripts/validate-data.mjs` (wzorzec może być też w schemacie JSON);
-  - `label` jest pokazywane jako etykieta przy znaczniku celu na planie SVG (czytelna także na wydruku) i w kolumnie „Oznaczenie” tabeli HTML; wartość nie jest tłumaczona (decyzja właściciela z 2026-11-10);
+  - `label` jest pokazywane w kolumnie „Oznaczenie” tabeli HTML; wartość nie jest tłumaczona (decyzja właściciela z 2026-11-10);
+  - na planie SVG cele z tą samą literą tworzą grupę stojącą fizycznie obok siebie: znaczniki grupy są rysowane w rzędzie, a litera (np. `S` dla `S1`, `S2`, `S3`) jest wypisana **raz**, po lewej stronie rzędu (czytelna także na wydruku); dystans i położenie grupy są czytane z pierwszego celu grupy w pliku (decyzja właściciela z 2026-11-11);
   - litery dobiera właściciel dowolnie. W danych przykładowych przyjęto konwencję: `K` – kwadrat, `O` – koło, `R` – romb, `P` – prostokąt, `S` – sylwetka, `B` – popiersie, `I` – inny. To tylko konwencja przykładu, walidacja nie wiąże litery z `shape`.
 - Kształty i sposób zapisu rozmiaru (ustalone przez właściciela):
 
@@ -48,7 +49,7 @@ Przykład (wartości przykładowe):
 ```
 - Plan jako SVG i tabela HTML są generowane w czasie budowania z tego samego pliku (zależnie od [ADR 0001](0001-generator-astro.md)).
 - Plan i tabela (decyzja właściciela z 2026-11-10):
-  - cel jest rysowany w miejscu wynikającym z `offset_right_m` (x) i `distance_m` (y);
+  - grupa celów (ta sama litera `label`) jest rysowana w miejscu wynikającym z `offset_right_m` (x) i `distance_m` (y) pierwszego celu grupy; gdy grupy na siebie nachodzą, plan przesuwa grupę w poziomie do najbliższego wolnego miejsca (decyzja właściciela z 2026-11-11);
   - plan nie ma podziałki ani opisu osi x (odległości od prawego wału) i nie ma podpisu o różnych skalach; skale pozioma i pionowa mogą się różnić bez obowiązku opisu;
   - tabela HTML ma kolumny: „Oznaczenie” (`label`), „Kształt” (`shape`), „Odległość” (`distance_m`, odległość od linii otwarcia ognia, w metrach), „Rozmiar” (`size_cm`, z jednostką); bez kolumny położenia ani odległości od prawego wału.
 - Struktura pliku jest walidowana schematem JSON w CI, a reguły numeracji `label` skryptem `scripts/validate-data.mjs`; polecenie `npm run validate:data` (alias `npm run check:data`).
