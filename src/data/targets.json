@@ -29,8 +29,8 @@
   { "label": "L1", "shape": "square", "distance_m": 850, "offset_right_m": 10, "size_cm": 55 },
   { "label": "X1", "shape": "square", "distance_m": 900, "offset_right_m": 20, "size_cm": 55 },
   { "label": "F1", "shape": "square", "distance_m": 1000, "offset_right_m": 5, "size_cm": 65 },
-  { "label": "P1", "shape": "rectangle", "distance_m": 400, "offset_right_m": 80, "size_cm": { "width": 50, "height": 100 } },
-  { "label": "S1", "shape": "silhouette", "distance_m": 980, "offset_right_m": 30, "size_cm": 180 },
-  { "label": "B1", "shape": "bust", "distance_m": 730, "offset_right_m": 120, "size_cm": 50 },
-  { "label": "I1", "shape": "other", "distance_m": 550, "offset_right_m": 140, "size_cm": { "name": "Cel przykładowy", "width": 60, "height": 60 } }
+  { "label": "A1", "shape": "rectangle", "distance_m": 400, "offset_right_m": 80, "size_cm": { "width": 50, "height": 100 } },
+  { "label": "Y1", "shape": "silhouette", "distance_m": 980, "offset_right_m": 30, "size_cm": 180 },
+  { "label": "M1", "shape": "bust", "distance_m": 730, "offset_right_m": 120, "size_cm": 50 },
+  { "label": "Z1", "shape": "other", "distance_m": 550, "offset_right_m": 140, "size_cm": { "name": "Cel przykładowy", "width": 60, "height": 60 } }
 ]
