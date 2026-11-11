@@ -9,7 +9,11 @@
     "validate:html": "html-validate \"dist/**/*.html\"",
     "check:i18n": "node scripts/check-i18n.mjs",
     "check:data": "node scripts/validate-data.mjs",
-    "validate:data": "node scripts/validate-data.mjs"
+    "validate:data": "node scripts/validate-data.mjs",
+    "check:external": "node scripts/check-external.mjs",
+    "check:js": "node scripts/check-js.mjs",
+    "lighthouse": "npx --yes @lhci/cli@0.16.0 autorun",
+    "lighthouse:summary": "node scripts/lighthouse-summary.mjs"
   },
   "dependencies": {
     "astro": "^7.4.8"
