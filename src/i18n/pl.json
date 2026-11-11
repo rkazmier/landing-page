@@ -154,5 +154,10 @@
     "companyLabel": "Dane firmy",
     "privacyPolicy": "Polityka prywatności",
     "legalNotice": "Informacja prawna"
+  },
+  "notFound": {
+    "title": "Nie znaleziono strony",
+    "message": "Strona o tym adresie nie istnieje. Przejdź na stronę główną.",
+    "link": "Strona główna po polsku"
   }
 }

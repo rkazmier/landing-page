@@ -154,5 +154,10 @@
     "companyLabel": "Company details",
     "privacyPolicy": "Privacy policy",
     "legalNotice": "Legal notice"
+  },
+  "notFound": {
+    "title": "Page not found",
+    "message": "There is no page at this address. Go to the home page.",
+    "link": "Home page in English"
   }
 }

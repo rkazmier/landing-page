@@ -154,5 +154,10 @@
     "companyLabel": "Įmonės duomenys",
     "privacyPolicy": "Privatumo politika",
     "legalNotice": "Teisinė informacija"
+  },
+  "notFound": {
+    "title": "Puslapis nerastas",
+    "message": "Šiuo adresu puslapio nėra. Eikite į pagrindinį puslapį.",
+    "link": "Pagrindinis puslapis lietuviškai"
   }
 }

@@ -1,7 +1,6 @@
 /**
  * Dane obiektu w jednym miejscu (adres, współrzędne, telefon, godziny otwarcia, nawigacja).
- * Używane w sekcji „Lokalizacja i dojazd” (Z09) i w stopce (Z10); dane strukturalne (Z11)
- * powinny korzystać z tych samych wartości.
+ * Używane w sekcji „Lokalizacja i dojazd” (Z09), w stopce (Z10) i w danych strukturalnych JSON-LD (Z11, src/seo.ts).
  */
 export const site = {
   address: {

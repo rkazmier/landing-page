@@ -1,0 +1,71 @@
+---
+/**
+ * Strona 404 (Z11, NFR-2). GitHub Pages serwuje ją dla nieistniejących adresów.
+ * Nie wiadomo, w jakim języku jest osoba, więc strona prowadzi do wszystkich wersji językowych.
+ * Nagłówek i <html lang> — wersja domyślna; komunikaty pozostałych wersji mają własny atrybut `lang`.
+ * Strona nie jest indeksowana (noindex) i nie trafia do sitemap.xml.
+ */
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { brand } from '../brand';
+import { defaultLocale, languageNames, localePath, locales, t } from '../i18n';
+
+const d = t(defaultLocale);
+---
+<BaseLayout
+  locale={defaultLocale}
+  title={`404 – ${d.notFound.title} – ${brand.name}`}
+  description={d.notFound.message}
+  nav={[]}
+  indexable={false}
+>
+  <section class="not-found" aria-labelledby="not-found-title">
+    <div class="container">
+      <p class="eyebrow">404</p>
+      <h1 id="not-found-title">{d.notFound.title}</h1>
+      <ul class="not-found-list">
+        {locales.map((code) => {
+          const text = t(code).notFound;
+          return (
+            <li lang={code}>
+              <p class="not-found-message">{text.message}</p>
+              <a href={localePath(code)} hreflang={code}>
+                {text.link}<span class="visually-hidden"> ({languageNames[code]})</span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding-block: var(--space-8) var(--space-section);
+  }
+
+  .not-found-list {
+    display: grid;
+    gap: var(--space-5);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .not-found-message {
+    margin-bottom: var(--space-2);
+  }
+
+  .not-found-list a {
+    display: inline-flex;
+    align-items: center;
+    min-height: var(--tap-target);
+    font-weight: var(--font-weight-strong);
+  }
+
+  @media (min-width: 48em) {
+    .not-found-list {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>
