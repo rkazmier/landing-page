@@ -11,7 +11,7 @@ Uproszczony plan przedpola i tabela celów, generowane w czasie budowania z `tar
 - [ ] Cel leży w miejscu `offset_right_m` (oś x, od prawego wału) i `distance_m` (oś y, od linii otwarcia ognia)
 - [ ] Plan nie ma podziałki ani opisu osi x (odległości od prawego wału) i nie ma podpisu o różnych skalach (decyzja właściciela z 2026-11-10)
 - [ ] Siedem odrębnych znaczników kształtu (romb jako kwadrat obrócony o 45°) z czytelnym minimalnym rozmiarem; legenda
-- [ ] Przy każdym znaczniku celu na planie SVG jest etykieta z jego `label` (np. `K1`) jako tekst SVG; etykieta nie zasłania innych etykiet ani znaczników, jest czytelna na ekranie 375 px i na wydruku w czerni i bieli (Z08)
+- [ ] Cele z tą samą literą `label` są na planie SVG grupą: znaczniki w rzędzie obok siebie, a litera (np. `S` dla `S1`–`S3`) jest wypisana raz, jako tekst SVG po lewej stronie grupy; dystans i położenie grupy pochodzą z pierwszego celu grupy; grupy i litery nie zasłaniają się nawzajem, są czytelne na ekranie 375 px i na wydruku w czerni i bieli (Z08) — zmiana właściciela z 2026-11-11
 - [ ] Skale pozioma i pionowa mogą się różnić; nie trzeba tego opisywać przy planie
 - [ ] Plan zorientowany tak, by pasował do wąskich ekranów (oś strzału w pionie); brak poziomego przewijania strony na 320 px
 - [ ] Tabela HTML z tymi samymi danymi ma dokładnie cztery kolumny w kolejności: „Oznaczenie” (`label`), „Kształt”, „Odległość” (`distance_m` w metrach, odległość od linii otwarcia ognia), „Rozmiar” (z jednostką); bez kolumny położenia ani odległości od prawego wału; nagłówki przetłumaczone na 6 języków, wartość `label` bez tłumaczenia

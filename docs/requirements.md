@@ -49,7 +49,7 @@
   - [ ] Tło planu: przedpole o szerokości 160 m, otoczone wałem po całym obwodzie; prawy wał to x = 0, lewy x = 160 m
   - [ ] Dodanie, usunięcie lub zmiana celu wymaga edycji wyłącznie `targets.json`
   - [ ] Te same dane są pokazane jako tabela HTML (dostępność, indeksowanie) z dokładnie czterema kolumnami w kolejności: „Oznaczenie” (`label`), „Kształt”, „Odległość” (`distance_m`, odległość od linii otwarcia ognia), „Rozmiar”; tabela nie ma kolumny położenia ani odległości od prawego wału (decyzja właściciela z 2026-11-10)
-  - [ ] Przy każdym znaczniku celu na planie jest etykieta z jego `label`, czytelna także na wydruku w czerni i bieli
+  - [ ] Cele z tą samą literą `label` (np. `S1`, `S2`, `S3`) są na planie grupą: znaczniki w rzędzie obok siebie, litera (`S`) wypisana raz, po lewej stronie grupy, czytelna także na wydruku w czerni i bieli; dystans i położenie grupy pochodzą z pierwszego celu grupy (decyzja właściciela z 2026-11-11)
   - [ ] Każdy kształt (kwadrat, koło, romb, prostokąt, sylwetka, popiersie, inny) ma odrębny znacznik na planie i w legendzie; znaczniki mają czytelny minimalny rozmiar, a rzeczywiste wymiary są w tabeli
   - [ ] Plan ma tekstowy opis alternatywny; informacje nie są przekazywane samym kolorem
   - [ ] CI waliduje strukturę pliku; błędny plik (brak pola, zły typ, wartość spoza zakresu, w tym `offset_right_m` poza 0–160 m) powoduje czerwone CI

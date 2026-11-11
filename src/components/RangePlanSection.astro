@@ -8,7 +8,9 @@
  * - Oś strzału w pionie (linia otwarcia ognia na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
  *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
  * - Tabela: oznaczenie, kształt, odległość, rozmiar.
- * - Kształty odróżnia obrys, nie kolor; przy każdym celu etykieta `label` (np. K1), nietłumaczona.
+ * - Kształty odróżnia obrys, nie kolor. Cele z tą samą literą `label` (np. S1, S2, S3) to grupa stojąca
+ *   obok siebie: rząd znaczników na dystansie i w miejscu pierwszego celu, litera (S) raz po lewej
+ *   (decyzja właściciela z 2026-11-11). Pełne oznaczenia są w tabeli; wartości nietłumaczone.
  * - Wydruk (FR-6, Z08): przycisk „Drukuj plan” dodaje do <html> klasę `print-plan` i otwiera okno
  *   drukowania — wtedy drukowana jest tylko ta sekcja (reguły w src/styles/base.css i poniżej).
  *   Na wydruku: tytuł, plan (60 mm) i tabela; bez wstępu i legendy.
@@ -26,8 +28,7 @@ import {
   RANGE_LENGTH_M,
   RANGE_WIDTH_M,
   layout as L,
-  placeTargets,
-  xOf,
+  placeGroups,
   yOf,
   type Target,
 } from '../utils/rangePlan';
@@ -51,7 +52,7 @@ const targets = targetsData as Target[];
 // Napis linii otwarcia ognia leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
 const firingLabel = { x: L.fieldX + L.fieldW / 2, y: L.fieldY + L.fieldH - 5 };
 const firingBox = { x: L.fieldX + 20, y: firingLabel.y - 10, w: L.fieldW - 40, h: 13 };
-const placed = placeTargets(targets, [firingBox]);
+const groups = placeGroups(targets, [firingBox]);
 
 const yTicks = Array.from({ length: RANGE_LENGTH_M / 100 + 1 }, (_, i) => i * 100);
 
@@ -153,18 +154,20 @@ const bermMid = L.fieldY + L.fieldH / 2;
         <text class="firing-label" x={firingLabel.x} y={firingLabel.y} text-anchor="middle">{p.firingLine}</text>
 
         <!-- Cele -->
-        {placed.map((target) => (
+        {groups.map((group) => (
           <g class="target">
-            <g transform={`translate(${target.cx} ${target.cy})`}>
-              <TargetShape shape={target.shape} size={MARKER} />
-            </g>
+            {group.targets.map((target) => (
+              <g transform={`translate(${target.cx} ${target.cy})`}>
+                <TargetShape shape={target.shape} size={MARKER} />
+              </g>
+            ))}
             <text
               class="target-label"
-              x={target.lx}
-              y={target.ly}
-              text-anchor={target.anchor}
+              x={group.lx}
+              y={group.ly}
+              text-anchor="end"
               font-size={LABEL_FONT}
-            >{target.label}</text>
+            >{group.letter}</text>
           </g>
         ))}
       </svg>
