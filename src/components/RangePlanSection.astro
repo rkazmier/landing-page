@@ -13,7 +13,9 @@
  *   (decyzja właściciela z 2026-11-11). Pełne oznaczenia są w tabeli; wartości nietłumaczone.
  * - Wydruk (FR-6, Z08): przycisk „Drukuj plan” dodaje do <html> klasę `print-plan` i otwiera okno
  *   drukowania — wtedy drukowana jest tylko ta sekcja (reguły w src/styles/base.css i poniżej).
- *   Na wydruku: tytuł, plan (60 mm) i tabela; bez wstępu i legendy.
+ *   Na wydruku: plan (60 mm) i tabela; bez tytułu sekcji, wstępu i legendy, marginesy strony 0.
+ *   W tabeli na wydruku oznaczenie, sam symbol kształtu (bez nazwy) i odległość są w jednej kolumnie
+ *   (decyzja właściciela z 2026-11-11) — osobna komórka `.print-only`, na ekranie ukryta.
  *   Przycisk jest ukryty bez JavaScriptu; skrypt poniżej to jedyny JavaScript tej funkcji.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
@@ -191,17 +193,27 @@ const bermMid = L.fieldY + L.fieldH / 2;
           <caption id={captionId}>{p.tableCaption}</caption>
           <thead>
             <tr>
-              <th scope="col">{p.colLabel}</th>
-              <th scope="col">{p.colShape}</th>
-              <th scope="col">{p.colDistance}</th>
+              <th scope="col" class="print-only">{p.colLabel}</th>
+              <th scope="col" class="screen-only">{p.colLabel}</th>
+              <th scope="col" class="screen-only">{p.colShape}</th>
+              <th scope="col" class="screen-only">{p.colDistance}</th>
               <th scope="col">{p.colSize}</th>
             </tr>
           </thead>
           <tbody>
             {targets.map((target) => (
               <tr>
-                <th scope="row" class="label-cell">{target.label}</th>
-                <td>
+                <th scope="row" class="label-cell print-only">
+                  <span class="combined-cell">
+                    <span>{target.label}</span>
+                    <svg class="legend-icon" viewBox="-10 -10 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+                      <TargetShape shape={target.shape} size={16} />
+                    </svg>
+                    <span class="num">{n(target.distance_m)} m</span>
+                  </span>
+                </th>
+                <th scope="row" class="label-cell screen-only">{target.label}</th>
+                <td class="screen-only">
                   <span class="shape-cell">
                     <svg class="legend-icon" viewBox="-10 -10 20 20" width="16" height="16" aria-hidden="true" focusable="false">
                       <TargetShape shape={target.shape} size={16} />
@@ -209,7 +221,7 @@ const bermMid = L.fieldY + L.fieldH / 2;
                     {p.shapes[target.shape]}
                   </span>
                 </td>
-                <td class="num">{n(target.distance_m)} m</td>
+                <td class="num screen-only">{n(target.distance_m)} m</td>
                 <td>{sizeText(target)}</td>
               </tr>
             ))}
@@ -434,7 +446,12 @@ const bermMid = L.fieldY + L.fieldH / 2;
     white-space: nowrap;
   }
 
-  .shape-cell {
+  .targets-table .print-only {
+    display: none;
+  }
+
+  .shape-cell,
+  .combined-cell {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
@@ -455,7 +472,7 @@ const bermMid = L.fieldY + L.fieldH / 2;
       display: block;
     }
 
-    /* Na wydruku bez wstępu i legendy (decyzja właściciela) */
+    /* Na wydruku bez tytułu sekcji, wstępu i legendy (decyzja właściciela) */
     .plan-intro,
     .plan-side h3,
     .legend {
@@ -466,7 +483,10 @@ const bermMid = L.fieldY + L.fieldH / 2;
       grid-template-columns: 60mm minmax(0, 1fr);
       align-items: start;
       gap: 6mm;
-      margin-top: 4mm;
+      margin-top: 0;
+    }
+
+    .plan-figure {
       break-inside: avoid;
     }
 
@@ -529,13 +549,39 @@ const bermMid = L.fieldY + L.fieldH / 2;
 
     .targets-table th,
     .targets-table td {
-      padding: 1.5mm 2mm;
+      padding: 1.2mm 2mm;
       border: 0.3mm solid #000;
       color: #000;
     }
 
     .targets-table tr {
       break-inside: avoid;
+    }
+
+    /* Oznaczenie, symbol i odległość w jednej kolumnie (decyzja właściciela z 2026-11-11) */
+    .targets-table .screen-only {
+      display: none;
+    }
+
+    .targets-table .print-only {
+      display: table-cell;
+    }
+
+    /* Kolumny wyrównane: oznaczenie | symbol | odległość (do prawej) */
+    .combined-cell {
+      display: grid;
+      grid-template-columns: 2.6em 4mm 4.5em;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .combined-cell .num {
+      text-align: right;
+    }
+
+    .combined-cell .legend-icon {
+      width: 4mm;
+      height: 4mm;
     }
   }
 </style>
