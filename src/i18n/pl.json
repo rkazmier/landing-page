@@ -27,7 +27,7 @@
   },
   "hero": {
     "eyebrow": "Strzelnica długodystansowa",
-    "lead": "Oś strzelecka 1000 m dla strzelców dalekodystansowych z całej Europy. Strona w budowie."
+    "lead": "Oś strzelecka 1000 m dla strzelców dalekodystansowych z całej Europy."
   },
   "sections": {
     "about": "O obiekcie",
@@ -40,25 +40,25 @@
     "todo": "TODO(właściciel): podmień opis obiektu i osi 1000 m oraz zdjęcie (src/assets/photos/). Obecne teksty i ilustracja są zastępcze.",
     "eyebrow": "Oś 1000 m",
     "lead": "Steel Valley Long Range to strzelnica zaprojektowana z myślą o strzelectwie długodystansowym: oś o długości 1000 metrów i przedpole z celami metalowymi.",
-    "body": "Przedpole ma 160 metrów szerokości i jest otoczone wałami na całym obwodzie. Cele metalowe rozmieszczone w różnych odległościach pozwalają trenować i rozgrywać zawody na pełnym dystansie osi.",
+    "body": "Cele metalowe rozmieszczone w różnych odległościach pozwalają trenować i rozgrywać zawody na pełnym dystansie osi. Do dyspozycji jest także dodatkowa oś 100 metrów. W przyszłości dostępne będą również tarcze elektroniczne.",
     "facts": [
       {
         "value": "1000 m",
         "label": "długość osi strzeleckiej"
       },
       {
-        "value": "160 m",
-        "label": "szerokość przedpola"
+        "value": "100 m",
+        "label": "oś zerowania"
       },
       {
         "value": "Stal",
-        "label": "cele metalowe na przedpolu"
+        "label": "na całym przedpolu"
       }
     ],
     "imageAlt": "Ilustracja zastępcza: oś strzelecka między wałami ziemnymi z celami metalowymi na przedpolu"
   },
   "disciplines": {
-    "intro": "Oś 1000 m i cele metalowe pozwalają uprawiać różne dyscypliny strzelectwa długodystansowego.",
+    "intro": "Oś 1000 m i cele metalowe pozwalają uprawiać różne dyscypliny strzelectwa długodystansowego. Wkrótce dostępne będą również cel ruchomy oraz tarcze elektroniczne.",
     "items": [
       {
         "id": "prs",
@@ -92,7 +92,7 @@
     "intro": "Uproszczony plan przedpola z rozmieszczeniem celów metalowych. Linia otwarcia ognia jest na dole planu, cele leżą w kierunku strzału.",
     "printButton": "Drukuj plan",
     "svgTitle": "Plan przedpola",
-    "svgDesc": "Przedpole o szerokości 160 m i długości 1000 m, otoczone wałem. Linia otwarcia ognia na dole, prawy wał po prawej stronie. Liczba celów na planie: {count}. Pełne dane celów są w tabeli „{table}”.",
+    "svgDesc": "Przedpole o długości 1000 m, otoczone wałem. Linia otwarcia ognia na dole, prawy wał po prawej stronie. Liczba celów na planie: {count}. Pełne dane celów są w tabeli „{table}”.",
     "firingLine": "Linia otwarcia ognia",
     "rightBerm": "Prawy wał",
     "leftBerm": "Lewy wał",
@@ -133,7 +133,7 @@
     "addressLabel": "Adres",
     "coordinatesLabel": "Współrzędne GPS",
     "routeTitle": "Najlepszy dojazd",
-    "route": "Jedyna droga dojazdowa do strzelnicy prowadzi przez Łanięta – zarówno od strony wschodniej (od drogi krajowej nr 57), jak i od strony zachodniej.",
+    "route": "Jedyna droga dojazdowa do strzelnicy prowadzi przez Łanięta.",
     "mapLegend": "Granatową linią zaznaczono jedyną drogę dojazdową do strzelnicy – przez Łanięta, od drogi krajowej nr 57.",
     "mapAlt": "Nawiguj do Steel Valley Long Range w Mapach Google",
     "mapHint": "Kliknij mapę, aby wyznaczyć trasę w Mapach Google.",
@@ -148,7 +148,7 @@
     "hoursLabel": "Godziny otwarcia",
     "hours": "Codziennie (pon.–niedz.), {opens}–{closes}",
     "offerLabel": "Oferta",
-    "offer": "Strzelnica długodystansowa: oś strzelecka 1000 m i przedpole o szerokości 160 m z celami metalowymi.",
+    "offer": "Strzelnica długodystansowa: oś strzelecka 1000 m i przedpole z celami metalowymi.",
     "phoneLabel": "Telefon",
     "contactNote": "Zapraszamy do kontaktu telefonicznego.",
     "companyLabel": "Dane firmy",

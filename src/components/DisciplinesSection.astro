@@ -22,9 +22,8 @@ const WIDE = new Set(['nrl-hunter']);
 <Section id={id} title={d.sections.disciplines}>
   <p class="intro">{d.disciplines.intro}</p>
   <ul class="disciplines">
-    {d.disciplines.items.map((item, index) => (
+    {d.disciplines.items.map((item) => (
       <li class:list={['discipline', { 'discipline--wide': WIDE.has(item.id) }]}>
-        <span class="discipline-number" aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
         <h3>{item.name}</h3>
         <p>{item.description}</p>
       </li>
@@ -51,15 +50,6 @@ const WIDE = new Set(['nrl-hunter']);
     background: var(--color-surface);
     border: var(--border-width) solid var(--color-border);
     border-radius: var(--radius-lg);
-  }
-
-  .discipline-number {
-    display: block;
-    margin-bottom: var(--space-3);
-    color: var(--color-text-muted);
-    font-size: var(--text-sm);
-    font-weight: var(--font-weight-strong);
-    letter-spacing: var(--tracking-wide);
   }
 
   .discipline h3 {
