@@ -26,3 +26,36 @@ jobs:
         run: npm run build
       - name: Validate HTML
         run: npm run validate:html
+      - name: Check external resources
+        run: npm run check:external
+      - name: Check JavaScript
+        run: npm run check:js
+
+  # Lighthouse (mobile) dla 6 wersji językowych, próg ≥ 91 w 4 kategoriach (Z12, lighthouserc.cjs)
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build for local audit
+        run: npm run build
+        env:
+          SITE_URL: http://localhost:9000
+          SITE_BASE: /
+      - name: Lighthouse CI
+        run: npm run lighthouse
+      - name: Summary
+        if: always()
+        run: npm run lighthouse:summary
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-raporty
+          path: .lhci/raporty
+          if-no-files-found: ignore
