@@ -154,5 +154,10 @@
     "companyLabel": "Údaje o firme",
     "privacyPolicy": "Zásady ochrany osobných údajov",
     "legalNotice": "Právne informácie"
+  },
+  "notFound": {
+    "title": "Stránka sa nenašla",
+    "message": "Na tejto adrese sa nenachádza žiadna stránka. Prejdite na hlavnú stránku.",
+    "link": "Hlavná stránka po slovensky"
   }
 }

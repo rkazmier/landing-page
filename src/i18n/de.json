@@ -154,5 +154,10 @@
     "companyLabel": "Firmenangaben",
     "privacyPolicy": "Datenschutzerklärung",
     "legalNotice": "Impressum"
+  },
+  "notFound": {
+    "title": "Seite nicht gefunden",
+    "message": "Unter dieser Adresse gibt es keine Seite. Zur Startseite.",
+    "link": "Startseite auf Deutsch"
   }
 }

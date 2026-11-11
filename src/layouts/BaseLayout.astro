@@ -1,6 +1,7 @@
 ---
 /**
- * Układ bazowy: <head> (z hreflang), baner językowy, link „przejdź do treści",
+ * Układ bazowy: <head> (hreflang, canonical, meta SEO, Open Graph, Twitter Cards, JSON-LD — Z11),
+ * baner językowy, link „przejdź do treści",
  * nagłówek z przełącznikiem języka, <main>, miejsce na stopkę.
  * Wszystkie teksty interfejsu pochodzą ze słownika danej wersji (src/i18n/).
  */
@@ -10,6 +11,8 @@ import LanguageBanner from '../components/LanguageBanner.astro';
 import { defaultLocale, localePath, locales, t, type Locale } from '../i18n';
 import type { NavItem } from '../types';
 import { withBase } from '../utils/url';
+import { keywords, ogLocales, structuredData } from '../seo';
+import { brand } from '../brand';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
@@ -20,17 +23,26 @@ interface Props {
   nav: NavItem[];
   /** Kotwica stopki (cel linku „Kontakt" w nawigacji) */
   footerId?: string;
+  /**
+   * Strona indeksowana (domyślnie tak). `false` — np. strona 404: `noindex`,
+   * bez canonical, hreflang, Open Graph i danych strukturalnych.
+   */
+  indexable?: boolean;
 }
 
-const { locale, title, description, nav, footerId = 'kontakt' } = Astro.props;
+const { locale, title, description, nav, footerId = 'kontakt', indexable = true } = Astro.props;
 const ui = t(locale).ui;
 
-// Adresy bezwzględne odpowiedników językowych (hreflang), z jednej konfiguracji `site` + `base`
+// Adresy bezwzględne z jednej konfiguracji `site` + `base` (astro.config.mjs)
 const absolute = (path: string) => new URL(path, Astro.site).href;
+const canonical = absolute(localePath(locale));
 const alternates = [
   ...locales.map((code) => ({ hreflang: code, href: absolute(localePath(code)) })),
   { hreflang: 'x-default', href: absolute(localePath(defaultLocale)) },
 ];
+const jsonLd = JSON.stringify(
+  structuredData({ url: canonical, homeUrl: absolute(localePath(defaultLocale)), description }),
+).replace(/</g, '\\u003c');
 ---
 <!DOCTYPE html>
 <html lang={locale}>
@@ -39,13 +51,34 @@ const alternates = [
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {indexable ? (
+      <Fragment>
+        <meta name="keywords" content={keywords.join(', ')} />
+        <link rel="canonical" href={canonical} />
+        {alternates.map((alt) => (
+          <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
+        ))}
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content={brand.name} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:url" content={canonical} />
+        <meta property="og:locale" content={ogLocales[locale]} />
+        {locales.filter((code) => code !== locale).map((code) => (
+          <meta property="og:locale:alternate" content={ogLocales[code]} />
+        ))}
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <script type="application/ld+json" set:html={jsonLd} />
+      </Fragment>
+    ) : (
+      <meta name="robots" content="noindex" />
+    )}
     <meta name="color-scheme" content="light" />
     <link rel="icon" href={withBase('favicon.ico')} sizes="32x32" />
     <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
     <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
-    {alternates.map((alt) => (
-      <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
-    ))}
     <Fonts />
   </head>
   <body>
@@ -62,11 +95,13 @@ const alternates = [
     <main id="tresc" tabindex="-1">
       <slot />
     </main>
-    <footer id={footerId} class="site-footer">
-      <div class="container">
-        <slot name="footer" />
-      </div>
-    </footer>
+    {Astro.slots.has('footer') && (
+      <footer id={footerId} class="site-footer">
+        <div class="container">
+          <slot name="footer" />
+        </div>
+      </footer>
+    )}
   </body>
 </html>
 
