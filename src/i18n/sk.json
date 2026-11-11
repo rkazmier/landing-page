@@ -27,7 +27,7 @@
   },
   "hero": {
     "eyebrow": "Strelnica na veľké vzdialenosti",
-    "lead": "Strelecká dráha 1000 m pre strelcov na veľké vzdialenosti z celej Európy. Web vo výstavbe."
+    "lead": "Strelecká dráha 1000 m pre strelcov na veľké vzdialenosti z celej Európy."
   },
   "sections": {
     "about": "O strelnici",
@@ -40,25 +40,25 @@
     "todo": "TODO(vlastník): nahradiť popis strelnice a dráhy 1000 m a fotografiu (src/assets/photos/). Súčasné texty a ilustrácia sú zástupné.",
     "eyebrow": "Dráha 1000 m",
     "lead": "Steel Valley Long Range je strelnica určená na streľbu na veľké vzdialenosti: dráha s dĺžkou 1000 metrov a terčové pole s kovovými terčmi.",
-    "body": "Terčové pole je široké 160 metrov a po celom obvode ho obklopujú valy. Kovové terče rozmiestnené v rôznych vzdialenostiach umožňujú tréning aj súťaže na celej dĺžke dráhy.",
+    "body": "Kovové terče rozmiestnené v rôznych vzdialenostiach umožňujú tréning aj súťaže na celej dĺžke dráhy. K dispozícii je aj doplnková dráha 100 metrov. V budúcnosti budú k dispozícii aj elektronické terče.",
     "facts": [
       {
         "value": "1000 m",
         "label": "dĺžka streleckej dráhy"
       },
       {
-        "value": "160 m",
-        "label": "šírka terčového poľa"
+        "value": "100 m",
+        "label": "nastreľovacia dráha"
       },
       {
         "value": "Oceľ",
-        "label": "kovové terče v terčovom poli"
+        "label": "v celom terčovom poli"
       }
     ],
     "imageAlt": "Zástupná ilustrácia: strelecká dráha medzi zemnými valmi s kovovými terčmi v terčovom poli"
   },
   "disciplines": {
-    "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti.",
+    "intro": "Dráha 1000 m a kovové terče umožňujú venovať sa rôznym disciplínam streľby na veľké vzdialenosti. Čoskoro bude k dispozícii aj pohyblivý terč a elektronické terče.",
     "items": [
       {
         "id": "prs",
@@ -133,7 +133,7 @@
     "addressLabel": "Adresa",
     "coordinatesLabel": "Súradnice GPS",
     "routeTitle": "Najlepší príjazd",
-    "route": "Jediná príjazdová cesta k strelnici vedie cez Łanięta – či už prichádzate od východu (od štátnej cesty č. 57), alebo od západu.",
+    "route": "Jediná príjazdová cesta k strelnici vedie cez Łanięta.",
     "mapLegend": "Tmavomodrá čiara vyznačuje jedinú príjazdovú cestu k strelnici – cez Łanięta, od štátnej cesty č. 57.",
     "mapAlt": "Navigovať do Steel Valley Long Range v Mapách Google",
     "mapHint": "Kliknutím na mapu naplánujete trasu v Mapách Google.",

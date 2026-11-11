@@ -27,7 +27,7 @@
   },
   "hero": {
     "eyebrow": "Ilgų nuotolių šaudykla",
-    "lead": "1000 m šaudymo linija ilgų nuotolių šauliams iš visos Europos. Svetainė kuriama."
+    "lead": "1000 m šaudymo linija ilgų nuotolių šauliams iš visos Europos."
   },
   "sections": {
     "about": "Apie objektą",
@@ -40,25 +40,25 @@
     "todo": "TODO(savininkas): pakeisti objekto ir 1000 m linijos aprašymą bei nuotrauką (src/assets/photos/). Dabartiniai tekstai ir iliustracija yra laikini.",
     "eyebrow": "1000 m linija",
     "lead": "Steel Valley Long Range – šaudykla, skirta šaudymui ilgais nuotoliais: 1000 metrų šaudymo linija ir taikinių laukas su metaliniais taikiniais.",
-    "body": "Taikinių laukas yra 160 metrų pločio ir visu perimetru apjuostas pylimais. Skirtingais atstumais išdėstyti metaliniai taikiniai leidžia treniruotis ir rengti varžybas visu linijos ilgiu.",
+    "body": "Skirtingais atstumais išdėstyti metaliniai taikiniai leidžia treniruotis ir rengti varžybas visu linijos ilgiu. Taip pat yra papildoma 100 metrų linija. Ateityje bus galima naudotis ir elektroniniais taikiniais.",
     "facts": [
       {
         "value": "1000 m",
         "label": "šaudymo linijos ilgis"
       },
       {
-        "value": "160 m",
-        "label": "taikinių lauko plotis"
+        "value": "100 m",
+        "label": "nusitaikymo linija"
       },
       {
         "value": "Plienas",
-        "label": "metaliniai taikiniai lauke"
+        "label": "visame taikinių lauke"
       }
     ],
     "imageAlt": "Laikina iliustracija: šaudymo linija tarp žemės pylimų su metaliniais taikiniais taikinių lauke"
   },
   "disciplines": {
-    "intro": "1000 m linija ir metaliniai taikiniai leidžia užsiimti įvairiomis šaudymo ilgais nuotoliais disciplinomis.",
+    "intro": "1000 m linija ir metaliniai taikiniai leidžia užsiimti įvairiomis šaudymo ilgais nuotoliais disciplinomis. Netrukus bus galima naudotis ir judančiu taikiniu bei elektroniniais taikiniais.",
     "items": [
       {
         "id": "prs",
@@ -133,7 +133,7 @@
     "addressLabel": "Adresas",
     "coordinatesLabel": "GPS koordinatės",
     "routeTitle": "Kaip geriausia atvykti",
-    "route": "Vienintelis privažiavimas prie šaudyklos eina per Łanięta – tiek atvykstant iš rytų (nuo 57-ojo nacionalinio kelio), tiek iš vakarų.",
+    "route": "Vienintelis privažiavimas prie šaudyklos eina per Łanięta.",
     "mapLegend": "Tamsiai mėlyna linija pažymėtas vienintelis privažiavimas prie šaudyklos – per Łanięta, nuo 57-ojo nacionalinio kelio.",
     "mapAlt": "Naviguoti į Steel Valley Long Range „Google“ žemėlapiuose",
     "mapHint": "Spustelėkite žemėlapį, kad suplanuotumėte maršrutą „Google“ žemėlapiuose.",

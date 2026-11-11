@@ -8,9 +8,11 @@
  * - Dane firmy, polityka prywatności, informacja prawna: src/data/footer.json (wpisy opcjonalne).
  *   Pozycji bez danych nie pokazujemy — żadnych pustych sekcji ani martwych linków.
  * - Dane obiektu: src/site.ts; teksty: klucz `footer` w src/i18n/<kod>.json.
+ * - Duży znak graficzny (wersja na ciemne tło) pod telefonem — dekoracyjny, nazwa marki jest obok w tekście.
  */
 import footerData from '../data/footer.json';
 import { brand } from '../brand';
+import footerMark from '../assets/logo/steel-valley-znak.svg';
 import { languageNames, localePath, locales, t, type Locale } from '../i18n';
 import { addressText, coordinatesText, displayTime, phoneHref, site } from '../site';
 import { withBase } from '../utils/url';
@@ -75,6 +77,15 @@ const year = new Date().getFullYear();
       <span class="visually-hidden">{f.phoneLabel}: </span>
       <a href={phoneHref}>{site.phone.display.replaceAll(" ", "\u00a0")}</a>
     </p>
+    <img
+      class="footer-mark"
+      src={footerMark.src}
+      width={footerMark.width}
+      height={footerMark.height}
+      alt=""
+      loading="lazy"
+      decoding="async"
+    />
   </section>
 
   <nav class="footer-col" aria-labelledby="footer-sitemap-title">
@@ -192,6 +203,13 @@ const year = new Date().getFullYear();
     font-variant-numeric: tabular-nums;
   }
 
+  .footer-mark {
+    display: block;
+    width: auto;
+    height: 9rem;
+    margin-top: var(--space-6);
+  }
+
   .footer-links {
     display: grid;
     gap: var(--space-1);
@@ -252,6 +270,11 @@ const year = new Date().getFullYear();
   }
 
   @media (min-width: 64em) {
+    .footer-mark {
+      height: 13rem;
+      margin-top: var(--space-7);
+    }
+
     .footer-grid {
       grid-template-columns: minmax(0, 3fr) minmax(0, 2fr) minmax(0, 3fr);
     }

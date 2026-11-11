@@ -27,7 +27,7 @@
   },
   "hero": {
     "eyebrow": "Long-range shooting range",
-    "lead": "A 1000 m shooting lane for long-range shooters from all over Europe. Website under construction."
+    "lead": "A 1000 m shooting lane for long-range shooters from all over Europe."
   },
   "sections": {
     "about": "About the range",
@@ -40,25 +40,25 @@
     "todo": "TODO(owner): replace the description of the range and the 1000 m lane, and the photo (src/assets/photos/). Current texts and illustration are placeholders.",
     "eyebrow": "1000 m lane",
     "lead": "Steel Valley Long Range is a shooting range built for long-range shooting: a 1000-metre lane and a target field with steel targets.",
-    "body": "The target field is 160 metres wide and surrounded by berms along its entire perimeter. Steel targets placed at various distances allow training and competitions over the full length of the lane.",
+    "body": "Steel targets placed at various distances allow training and competitions over the full length of the lane. An additional 100-metre lane is also available. Electronic targets will be available in the future as well.",
     "facts": [
       {
         "value": "1000 m",
         "label": "shooting lane length"
       },
       {
-        "value": "160 m",
-        "label": "target field width"
+        "value": "100 m",
+        "label": "zeroing lane"
       },
       {
         "value": "Steel",
-        "label": "steel targets in the field"
+        "label": "across the entire target field"
       }
     ],
     "imageAlt": "Placeholder illustration: a shooting lane between earth berms with steel targets in the target field"
   },
   "disciplines": {
-    "intro": "The 1000 m lane and steel targets support a range of long-range shooting disciplines.",
+    "intro": "The 1000 m lane and steel targets support a range of long-range shooting disciplines. A moving target and electronic targets will also be available soon.",
     "items": [
       {
         "id": "prs",
@@ -133,7 +133,7 @@
     "addressLabel": "Address",
     "coordinatesLabel": "GPS coordinates",
     "routeTitle": "Best way to get here",
-    "route": "The only access road to the range runs through Łanięta – whether you come from the east (from national road 57) or from the west.",
+    "route": "The only access road to the range runs through Łanięta.",
     "mapLegend": "The navy line marks the only access road to the range – through Łanięta, from national road 57.",
     "mapAlt": "Navigate to Steel Valley Long Range in Google Maps",
     "mapHint": "Click the map to plan your route in Google Maps.",
