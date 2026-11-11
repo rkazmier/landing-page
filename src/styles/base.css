@@ -172,12 +172,12 @@ a:hover {
 /* ---- Wydruk (FR-6, Z08) ----
  * Zawsze: bez nawigacji, banera językowego, przycisków i stopki; czarny tekst na białym tle.
  * Przycisk „Drukuj plan” dodaje klasę `print-plan` do <html> — wtedy drukowany jest tylko plan
- * przedpola z legendą i tabelą (style samego planu: RangePlanSection.astro).
+ * przedpola z tabelą (style samego planu: RangePlanSection.astro).
  */
 @media print {
   @page {
     size: A4;
-    margin: 12mm 50mm 12mm 12mm; /* prawy margines 5 cm (decyzja właściciela) */
+    margin: 0; /* domyślne marginesy 0 (decyzja właściciela z 2026-11-11) */
   }
 
   html {
@@ -215,9 +215,9 @@ a:hover {
     padding-block: 0 !important;
   }
 
-  html.print-plan h2 {
-    margin-bottom: 2mm;
-    font-size: 16pt;
+  /* Bez tytułu „Plan przedpola” na wydruku (decyzja właściciela z 2026-11-11) */
+  html.print-plan #plan-przedpola h2 {
+    display: none;
   }
 }
 

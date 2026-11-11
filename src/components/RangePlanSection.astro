@@ -4,7 +4,8 @@
  *
  * - Plan (SVG) i tabela powstają w czasie budowania z src/data/targets.json — bez JavaScriptu
  *   w przeglądarce. Dodanie, usunięcie lub zmiana celu = edycja wyłącznie targets.json.
- * - Geometria i układ etykiet: src/utils/rangePlan.ts; znaczniki kształtów: TargetShape.astro.
+ * - Geometria i układ etykiet: src/utils/rangePlan.ts; rysunek: RangePlanSvg.astro (osobny egzemplarz
+ *   na ekran i na wydruk); znaczniki kształtów: TargetShape.astro.
  * - Oś strzału w pionie (linia otwarcia ognia na dole), prawy wał (x = 0) po prawej, lewy (160 m) po lewej.
  *   Skale pozioma i pionowa są różne; bez podziałki i opisu osi X (decyzja właściciela).
  * - Tabela: oznaczenie, kształt, odległość, rozmiar.
@@ -13,25 +14,18 @@
  *   (decyzja właściciela z 2026-11-11). Pełne oznaczenia są w tabeli; wartości nietłumaczone.
  * - Wydruk (FR-6, Z08): przycisk „Drukuj plan” dodaje do <html> klasę `print-plan` i otwiera okno
  *   drukowania — wtedy drukowana jest tylko ta sekcja (reguły w src/styles/base.css i poniżej).
- *   Na wydruku: tytuł, plan (60 mm) i tabela; bez wstępu i legendy.
+ *   Na wydruku: plan (60 mm szerokości, rozciągnięty w pionie na całą stronę) i tabela; bez tytułu sekcji, wstępu i legendy, marginesy strony 0.
+ *   W tabeli na wydruku oznaczenie, sam symbol kształtu (bez nazwy) i odległość są w jednej kolumnie
+ *   (decyzja właściciela z 2026-11-11) — osobna komórka `.print-only`, na ekranie ukryta.
  *   Przycisk jest ukryty bez JavaScriptu; skrypt poniżej to jedyny JavaScript tej funkcji.
  * - Teksty: klucz `plan` w src/i18n/<kod>.json.
  */
 import Section from './Section.astro';
 import TargetShape from './TargetShape.astro';
+import RangePlanSvg from './RangePlanSvg.astro';
 import targetsData from '../data/targets.json';
 import { t, type Locale } from '../i18n';
-import {
-  SHAPES,
-  MARKER,
-  LABEL_FONT,
-  RANGE_LENGTH_M,
-  RANGE_WIDTH_M,
-  layout as L,
-  placeGroups,
-  yOf,
-  type Target,
-} from '../utils/rangePlan';
+import { SHAPES, type Target } from '../utils/rangePlan';
 
 interface Props {
   locale: Locale;
@@ -49,13 +43,6 @@ const n = (value: number) => num.format(value);
 
 const targets = targetsData as Target[];
 
-// Napis linii otwarcia ognia leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
-const firingLabel = { x: L.fieldX + L.fieldW / 2, y: L.fieldY + L.fieldH - 5 };
-const firingBox = { x: L.fieldX + 20, y: firingLabel.y - 10, w: L.fieldW - 40, h: 13 };
-const groups = placeGroups(targets, [firingBox]);
-
-const yTicks = Array.from({ length: RANGE_LENGTH_M / 100 + 1 }, (_, i) => i * 100);
-
 function sizeText(target: Target): string {
   const s = target.size_cm;
   if (typeof s === 'number') {
@@ -67,10 +54,7 @@ function sizeText(target: Target): string {
   return fill(p.sizeWidthHeight, { w: n(s.width), h: n(s.height) });
 }
 
-const titleId = `${id}-svg-title`;
-const descId = `${id}-svg-desc`;
 const captionId = `${id}-table-caption`;
-const bermMid = L.fieldY + L.fieldH / 2;
 ---
 <Section id={id} title={d.sections.plan} tone="alt">
   <div class="plan-head">
@@ -85,92 +69,8 @@ const bermMid = L.fieldY + L.fieldH / 2;
 
   <div class="plan">
     <figure class="plan-figure">
-      <svg
-        class="plan-svg"
-        viewBox={`0 0 ${L.width} ${L.height}`}
-        width={L.width}
-        height={L.height}
-        role="img"
-        aria-labelledby={`${titleId} ${descId}`}
-      >
-        <title id={titleId}>{p.svgTitle}</title>
-        <desc id={descId}>
-          {fill(p.svgDesc, { count: targets.length, table: p.tableCaption })}
-        </desc>
-        <defs>
-          <pattern id={`${id}-berm`} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-            <line x1="0" y1="0" x2="0" y2="6" class="berm-hatch" />
-          </pattern>
-        </defs>
-
-        <!-- Wał po obwodzie i przedpole -->
-        <rect
-          class="berm"
-          x={L.fieldX - L.berm}
-          y={L.fieldY - L.berm}
-          width={L.fieldW + 2 * L.berm}
-          height={L.fieldH + 2 * L.berm}
-          fill={`url(#${id}-berm)`}
-        />
-        <rect class="field" x={L.fieldX} y={L.fieldY} width={L.fieldW} height={L.fieldH} />
-
-        <!-- Siatka i podziałka odległości (co 100 m) -->
-        {yTicks.map((m) => (
-          <g>
-            {m > 0 && m < RANGE_LENGTH_M && (
-              <line class="grid" x1={L.fieldX} x2={L.fieldX + L.fieldW} y1={yOf(m)} y2={yOf(m)} />
-            )}
-            <text class="tick" x={L.fieldX - L.berm - 4} y={yOf(m) + 3.5} text-anchor="end">{m}</text>
-          </g>
-        ))}
-        <text
-          class="axis-title"
-          transform={`translate(10 ${bermMid}) rotate(-90)`}
-          text-anchor="middle"
-        >{p.distanceAxis}</text>
-
-        <!-- Opisy wałów (w pasie wału) -->
-        <text
-          class="berm-label"
-          transform={`translate(${L.fieldX - L.berm / 2} ${bermMid}) rotate(-90)`}
-          text-anchor="middle"
-          dominant-baseline="central"
-        >{p.leftBerm}</text>
-        <text
-          class="berm-label"
-          transform={`translate(${L.fieldX + L.fieldW + L.berm / 2} ${bermMid}) rotate(90)`}
-          text-anchor="middle"
-          dominant-baseline="central"
-        >{p.rightBerm}</text>
-
-        <!-- Linia otwarcia ognia -->
-        <line
-          class="firing-line"
-          x1={L.fieldX}
-          x2={L.fieldX + L.fieldW}
-          y1={L.fieldY + L.fieldH}
-          y2={L.fieldY + L.fieldH}
-        />
-        <text class="firing-label" x={firingLabel.x} y={firingLabel.y} text-anchor="middle">{p.firingLine}</text>
-
-        <!-- Cele -->
-        {groups.map((group) => (
-          <g class="target">
-            {group.targets.map((target) => (
-              <g transform={`translate(${target.cx} ${target.cy})`}>
-                <TargetShape shape={target.shape} size={MARKER} />
-              </g>
-            ))}
-            <text
-              class="target-label"
-              x={group.lx}
-              y={group.ly}
-              text-anchor="end"
-              font-size={LABEL_FONT}
-            >{group.letter}</text>
-          </g>
-        ))}
-      </svg>
+      <RangePlanSvg id={id} locale={locale} class="plan-svg--screen" />
+      <RangePlanSvg id={id} locale={locale} print class="plan-svg--print" />
     </figure>
 
     <div class="plan-side">
@@ -191,17 +91,27 @@ const bermMid = L.fieldY + L.fieldH / 2;
           <caption id={captionId}>{p.tableCaption}</caption>
           <thead>
             <tr>
-              <th scope="col">{p.colLabel}</th>
-              <th scope="col">{p.colShape}</th>
-              <th scope="col">{p.colDistance}</th>
+              <th scope="col" class="print-only">{p.colLabel}</th>
+              <th scope="col" class="screen-only">{p.colLabel}</th>
+              <th scope="col" class="screen-only">{p.colShape}</th>
+              <th scope="col" class="screen-only">{p.colDistance}</th>
               <th scope="col">{p.colSize}</th>
             </tr>
           </thead>
           <tbody>
             {targets.map((target) => (
               <tr>
-                <th scope="row" class="label-cell">{target.label}</th>
-                <td>
+                <th scope="row" class="label-cell print-only">
+                  <span class="combined-cell">
+                    <span>{target.label}</span>
+                    <svg class="legend-icon" viewBox="-10 -10 20 20" width="16" height="16" aria-hidden="true" focusable="false">
+                      <TargetShape shape={target.shape} size={16} />
+                    </svg>
+                    <span class="num">{n(target.distance_m)} m</span>
+                  </span>
+                </th>
+                <th scope="row" class="label-cell screen-only">{target.label}</th>
+                <td class="screen-only">
                   <span class="shape-cell">
                     <svg class="legend-icon" viewBox="-10 -10 20 20" width="16" height="16" aria-hidden="true" focusable="false">
                       <TargetShape shape={target.shape} size={16} />
@@ -209,7 +119,7 @@ const bermMid = L.fieldY + L.fieldH / 2;
                     {p.shapes[target.shape]}
                   </span>
                 </td>
-                <td class="num">{n(target.distance_m)} m</td>
+                <td class="num screen-only">{n(target.distance_m)} m</td>
                 <td>{sizeText(target)}</td>
               </tr>
             ))}
@@ -286,81 +196,16 @@ const bermMid = L.fieldY + L.fieldH / 2;
     min-width: 0;
   }
 
-  .plan-svg {
+  .plan-figure :global(.plan-svg) {
     display: block;
     width: 100%;
     max-width: 24rem;
     height: auto;
     margin-inline: auto;
-    font-family: var(--font-body);
   }
 
-  .plan-svg .berm {
-    stroke: var(--color-text-muted);
-    stroke-width: 1;
-  }
-
-  .plan-svg :global(.berm-hatch) {
-    stroke: var(--color-border);
-    stroke-width: 2;
-  }
-
-  .plan-svg .field {
-    fill: var(--color-surface);
-    stroke: var(--color-text-muted);
-    stroke-width: 1;
-  }
-
-  .plan-svg .grid {
-    stroke: var(--color-border);
-    stroke-width: 1;
-    stroke-dasharray: 3 3;
-  }
-
-  .plan-svg .tick,
-  .plan-svg .axis-title {
-    fill: var(--color-text-muted);
-    font-size: 10px;
-  }
-
-  .plan-svg .tick {
-    font-variant-numeric: tabular-nums;
-  }
-
-  .plan-svg .berm-label {
-    fill: var(--color-text);
-    font-size: 9px;
-    font-weight: var(--font-weight-strong);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .plan-svg .firing-line {
-    stroke: var(--color-text);
-    stroke-width: 3;
-  }
-
-  .plan-svg .firing-label {
-    fill: var(--color-text);
-    font-size: 10px;
-    font-weight: var(--font-weight-strong);
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-  }
-
-  .plan-svg .target :global(.target-shape) {
-    fill: var(--color-accent);
-    stroke: var(--color-surface);
-    stroke-width: 1.2;
-  }
-
-  .plan-svg .target-label {
-    fill: var(--color-text);
-    font-weight: var(--font-weight-strong);
-    paint-order: stroke;
-    stroke: var(--color-surface);
-    stroke-width: 3px;
-    stroke-linejoin: round;
+  .plan-figure :global(.plan-svg--print) {
+    display: none;
   }
 
   .plan-side {
@@ -434,7 +279,12 @@ const bermMid = L.fieldY + L.fieldH / 2;
     white-space: nowrap;
   }
 
-  .shape-cell {
+  .targets-table .print-only {
+    display: none;
+  }
+
+  .shape-cell,
+  .combined-cell {
     display: inline-flex;
     align-items: center;
     gap: var(--space-2);
@@ -455,7 +305,7 @@ const bermMid = L.fieldY + L.fieldH / 2;
       display: block;
     }
 
-    /* Na wydruku bez wstępu i legendy (decyzja właściciela) */
+    /* Na wydruku bez tytułu sekcji, wstępu i legendy (decyzja właściciela) */
     .plan-intro,
     .plan-side h3,
     .legend {
@@ -466,51 +316,28 @@ const bermMid = L.fieldY + L.fieldH / 2;
       grid-template-columns: 60mm minmax(0, 1fr);
       align-items: start;
       gap: 6mm;
-      margin-top: 4mm;
+      margin-top: 0;
+    }
+
+    .plan-figure {
       break-inside: avoid;
     }
 
-    .plan-svg {
+    /* Na wydruku osobny rysunek: 60 mm szerokości, rozciągnięty w pionie na całą stronę (FIELD_H_PRINT) */
+    .plan-figure :global(.plan-svg--screen) {
+      display: none;
+    }
+
+    .plan-figure :global(.plan-svg--print) {
+      display: block;
       width: 60mm;
+      height: auto;
       max-width: none;
       margin: 0;
     }
 
-    .plan-svg .field {
-      stroke: #000;
-    }
-
-    .plan-svg .berm {
-      stroke: #000;
-    }
-
-    .plan-svg :global(.berm-hatch) {
-      stroke: #888;
-    }
-
-    .plan-svg .grid {
-      stroke: #999;
-    }
-
-    .plan-svg .tick,
-    .plan-svg .axis-title,
-    .plan-svg .berm-label,
-    .plan-svg .firing-label,
-    .plan-svg .target-label {
-      fill: #000;
-    }
-
-    .plan-svg .firing-line {
-      stroke: #000;
-    }
-
-    .plan-svg .target :global(.target-shape),
     .targets-table .legend-icon {
       fill: #000;
-    }
-
-    .plan-svg .target-label {
-      stroke: #fff;
     }
 
     .table-wrap {
@@ -529,13 +356,39 @@ const bermMid = L.fieldY + L.fieldH / 2;
 
     .targets-table th,
     .targets-table td {
-      padding: 1.5mm 2mm;
+      padding: 1.2mm 2mm;
       border: 0.3mm solid #000;
       color: #000;
     }
 
     .targets-table tr {
       break-inside: avoid;
+    }
+
+    /* Oznaczenie, symbol i odległość w jednej kolumnie (decyzja właściciela z 2026-11-11) */
+    .targets-table .screen-only {
+      display: none;
+    }
+
+    .targets-table .print-only {
+      display: table-cell;
+    }
+
+    /* Kolumny wyrównane: oznaczenie | symbol | odległość (do prawej) */
+    .combined-cell {
+      display: grid;
+      grid-template-columns: 2.6em 4mm 4.5em;
+      align-items: center;
+      gap: 2mm;
+    }
+
+    .combined-cell .num {
+      text-align: right;
+    }
+
+    .combined-cell .legend-icon {
+      width: 4mm;
+      height: 4mm;
     }
   }
 </style>

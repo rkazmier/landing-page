@@ -1,0 +1,254 @@
+---
+/**
+ * Rysunek planu przedpola (SVG) — FR-5, Z07; wydruk FR-6, Z08.
+ *
+ * Renderowany dwa razy przez RangePlanSection.astro:
+ * - ekranowy (role="img", tytuł i opis) — wysokość pola FIELD_H_SCREEN,
+ * - wydrukowy (`print`, aria-hidden, na ekranie ukryty) — wysokość pola FIELD_H_PRINT, tak aby przy
+ *   szerokości 60 mm rysunek zajął całą wysokość strony A4 (decyzja właściciela z 2026-11-11).
+ *   Rozciągane jest samo pole; znaczniki i napisy mają ten sam rozmiar co na ekranie.
+ */
+import TargetShape from './TargetShape.astro';
+import targetsData from '../data/targets.json';
+import { t, type Locale } from '../i18n';
+import {
+  MARKER,
+  LABEL_FONT,
+  RANGE_LENGTH_M,
+  FIELD_H_PRINT,
+  FIELD_H_SCREEN,
+  planGeometry,
+  type Target,
+} from '../utils/rangePlan';
+
+interface Props {
+  locale: Locale;
+  id: string;
+  print?: boolean;
+  class?: string;
+}
+
+const { locale, id, print = false, class: className } = Astro.props;
+const p = t(locale).plan;
+
+const fill = (text: string, values: Record<string, string | number>) =>
+  text.replace(/\{(\w+)\}/g, (_, key) => String(values[key] ?? ''));
+
+const targets = targetsData as Target[];
+const { layout: L, yOf, placeGroups } = planGeometry(print ? FIELD_H_PRINT : FIELD_H_SCREEN);
+
+// Napis linii otwarcia ognia leży w polu tuż nad linią — rezerwujemy jego miejsce przed etykietami celów
+const firingLabel = { x: L.fieldX + L.fieldW / 2, y: L.fieldY + L.fieldH - 5 };
+const firingBox = { x: L.fieldX + 20, y: firingLabel.y - 10, w: L.fieldW - 40, h: 13 };
+const groups = placeGroups(targets, [firingBox]);
+
+const yTicks = Array.from({ length: RANGE_LENGTH_M / 100 + 1 }, (_, i) => i * 100);
+
+const titleId = `${id}-svg-title`;
+const descId = `${id}-svg-desc`;
+const patternId = `${id}-berm${print ? '-print' : ''}`;
+const bermMid = L.fieldY + L.fieldH / 2;
+const a11y = print
+  ? { 'aria-hidden': 'true', focusable: 'false' }
+  : { role: 'img', 'aria-labelledby': `${titleId} ${descId}` };
+---
+<svg
+  class:list={['plan-svg', className]}
+  viewBox={`0 0 ${L.width} ${L.height}`}
+  width={L.width}
+  height={L.height}
+  {...a11y}
+>
+  {!print && <title id={titleId}>{p.svgTitle}</title>}
+  {!print && (
+    <desc id={descId}>
+      {fill(p.svgDesc, { count: targets.length, table: p.tableCaption })}
+    </desc>
+  )}
+  <defs>
+    <pattern id={patternId} width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
+      <line x1="0" y1="0" x2="0" y2="6" class="berm-hatch" />
+    </pattern>
+  </defs>
+
+  <!-- Wał po obwodzie i przedpole -->
+  <rect
+    class="berm"
+    x={L.fieldX - L.berm}
+    y={L.fieldY - L.berm}
+    width={L.fieldW + 2 * L.berm}
+    height={L.fieldH + 2 * L.berm}
+    fill={`url(#${patternId})`}
+  />
+  <rect class="field" x={L.fieldX} y={L.fieldY} width={L.fieldW} height={L.fieldH} />
+
+  <!-- Siatka i podziałka odległości (co 100 m) -->
+  {yTicks.map((m) => (
+    <g>
+      {m > 0 && m < RANGE_LENGTH_M && (
+        <line class="grid" x1={L.fieldX} x2={L.fieldX + L.fieldW} y1={yOf(m)} y2={yOf(m)} />
+      )}
+      <text class="tick" x={L.fieldX - L.berm - 4} y={yOf(m) + 3.5} text-anchor="end">{m}</text>
+    </g>
+  ))}
+  <text
+    class="axis-title"
+    transform={`translate(10 ${bermMid}) rotate(-90)`}
+    text-anchor="middle"
+  >{p.distanceAxis}</text>
+
+  <!-- Opisy wałów (w pasie wału) -->
+  <text
+    class="berm-label"
+    transform={`translate(${L.fieldX - L.berm / 2} ${bermMid}) rotate(-90)`}
+    text-anchor="middle"
+    dominant-baseline="central"
+  >{p.leftBerm}</text>
+  <text
+    class="berm-label"
+    transform={`translate(${L.fieldX + L.fieldW + L.berm / 2} ${bermMid}) rotate(90)`}
+    text-anchor="middle"
+    dominant-baseline="central"
+  >{p.rightBerm}</text>
+
+  <!-- Linia otwarcia ognia -->
+  <line
+    class="firing-line"
+    x1={L.fieldX}
+    x2={L.fieldX + L.fieldW}
+    y1={L.fieldY + L.fieldH}
+    y2={L.fieldY + L.fieldH}
+  />
+  <text class="firing-label" x={firingLabel.x} y={firingLabel.y} text-anchor="middle">{p.firingLine}</text>
+
+  <!-- Cele -->
+  {groups.map((group) => (
+    <g class="target">
+      {group.targets.map((target) => (
+        <g transform={`translate(${target.cx} ${target.cy})`}>
+          <TargetShape shape={target.shape} size={MARKER} />
+        </g>
+      ))}
+      <text
+        class="target-label"
+        x={group.lx}
+        y={group.ly}
+        text-anchor="end"
+        font-size={LABEL_FONT}
+      >{group.letter}</text>
+    </g>
+  ))}
+</svg>
+
+<style>
+  .plan-svg {
+    font-family: var(--font-body);
+  }
+
+  .plan-svg .berm {
+    stroke: var(--color-text-muted);
+    stroke-width: 1;
+  }
+
+  .plan-svg :global(.berm-hatch) {
+    stroke: var(--color-border);
+    stroke-width: 2;
+  }
+
+  .plan-svg .field {
+    fill: var(--color-surface);
+    stroke: var(--color-text-muted);
+    stroke-width: 1;
+  }
+
+  .plan-svg .grid {
+    stroke: var(--color-border);
+    stroke-width: 1;
+    stroke-dasharray: 3 3;
+  }
+
+  .plan-svg .tick,
+  .plan-svg .axis-title {
+    fill: var(--color-text-muted);
+    font-size: 10px;
+  }
+
+  .plan-svg .tick {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .plan-svg .berm-label {
+    fill: var(--color-text);
+    font-size: 9px;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan-svg .firing-line {
+    stroke: var(--color-text);
+    stroke-width: 3;
+  }
+
+  .plan-svg .firing-label {
+    fill: var(--color-text);
+    font-size: 10px;
+    font-weight: var(--font-weight-strong);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .plan-svg .target :global(.target-shape) {
+    fill: var(--color-accent);
+    stroke: var(--color-surface);
+    stroke-width: 1.2;
+  }
+
+  .plan-svg .target-label {
+    fill: var(--color-text);
+    font-weight: var(--font-weight-strong);
+    paint-order: stroke;
+    stroke: var(--color-surface);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+  }
+
+  /* ---- Wydruk (Z08): czerń i biel — kształty i wzory zamiast kolorów ---- */
+  @media print {
+    .plan-svg .field {
+      stroke: #000;
+    }
+
+    .plan-svg .berm {
+      stroke: #000;
+    }
+
+    .plan-svg :global(.berm-hatch) {
+      stroke: #888;
+    }
+
+    .plan-svg .grid {
+      stroke: #999;
+    }
+
+    .plan-svg .tick,
+    .plan-svg .axis-title,
+    .plan-svg .berm-label,
+    .plan-svg .firing-label,
+    .plan-svg .target-label {
+      fill: #000;
+    }
+
+    .plan-svg .firing-line {
+      stroke: #000;
+    }
+
+    .plan-svg .target :global(.target-shape) {
+      fill: #000;
+    }
+
+    .plan-svg .target-label {
+      stroke: #fff;
+    }
+  }
+</style>
