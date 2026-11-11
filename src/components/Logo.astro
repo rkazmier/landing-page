@@ -1,28 +1,41 @@
 ---
 /**
- * Logo: obraz z src/brand.ts albo (domyślnie) logotyp tekstowy.
+ * Logo: znak graficzny z src/brand.ts (opcjonalnie z logotypem tekstowym obok)
+ * albo — gdy `brand.logo` jest puste — sam logotyp tekstowy.
  */
 import { brand } from '../brand';
-import { withBase } from '../utils/url';
+
+const logo = brand.logo;
+const showWordmark = !logo || logo.withWordmark;
 ---
-{brand.logo ? (
-  <img
-    class="logo-img"
-    src={withBase(brand.logo.src)}
-    width={brand.logo.width}
-    height={brand.logo.height}
-    alt={brand.name}
-  />
-) : (
-  <span class="wordmark">
-    <span class="wordmark-primary">{brand.wordmark.primary}</span>
-    {' '}
-    <span class="wordmark-secondary">{brand.wordmark.secondary}</span>
-  </span>
-)}
+<span class="logo">
+  {logo && (
+    <img
+      class="logo-mark"
+      src={logo.mark.src}
+      width={logo.mark.width}
+      height={logo.mark.height}
+      alt={showWordmark ? '' : brand.name}
+    />
+  )}
+  {showWordmark && (
+    <span class="wordmark">
+      <span class="wordmark-primary">{brand.wordmark.primary}</span>
+      {' '}
+      <span class="wordmark-secondary">{brand.wordmark.secondary}</span>
+    </span>
+  )}
+</span>
 
 <style>
-  .logo-img {
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-3);
+  }
+
+  .logo-mark {
+    display: block;
     height: 2.5rem;
     width: auto;
   }

@@ -9,6 +9,7 @@ import Header from '../components/Header.astro';
 import LanguageBanner from '../components/LanguageBanner.astro';
 import { defaultLocale, localePath, locales, t, type Locale } from '../i18n';
 import type { NavItem } from '../types';
+import { withBase } from '../utils/url';
 import '../styles/tokens.css';
 import '../styles/base.css';
 
@@ -39,6 +40,9 @@ const alternates = [
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="color-scheme" content="light" />
+    <link rel="icon" href={withBase('favicon.ico')} sizes="32x32" />
+    <link rel="icon" href={withBase('favicon.svg')} type="image/svg+xml" />
+    <link rel="apple-touch-icon" href={withBase('apple-touch-icon.png')} />
     {alternates.map((alt) => (
       <link rel="alternate" hreflang={alt.hreflang} href={alt.href} />
     ))}
