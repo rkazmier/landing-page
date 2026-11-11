@@ -9,7 +9,7 @@ Pilnować, by wynik Lighthouse pozostawał powyżej 90 w każdej wersji językow
 - [ ] Workflow uruchamia Lighthouse (mobile) dla każdej z 6 wersji na zbudowanej stronie
 - [ ] Próg powyżej 90 w czterech kategoriach (Performance, Accessibility, Best Practices, SEO); spadek poniżej progu daje czerwone CI
 - [ ] Automatyczna kontrola, że zbudowane HTML i CSS nie ładują zasobów z zewnętrznych domen (poza zwykłymi linkami `<a>`)
-- [ ] JavaScript tylko dla banera językowego i przycisku wydruku
+- [ ] JavaScript tylko dla banera językowego, przycisku wydruku, menu na telefonie i zamykania listy języków (NFR-1)
 - [ ] Poprawione problemy znalezione przez audyt
 - [ ] W opisie PR raport z wynikami dla 6 wersji
 

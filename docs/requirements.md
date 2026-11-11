@@ -95,7 +95,7 @@
 - [ ] Lighthouse (mobile) powyżej 90 w każdej z czterech kategorii, osobno dla każdej wersji językowej
 - [ ] Brak zewnętrznych zasobów (fonty, skrypty, mapy); fonty hostowane lokalnie i w podzbiorze znaków
 - [ ] Obrazy w nowoczesnych formatach, z wymiarami; `loading="lazy"` poniżej pierwszego ekranu
-- [ ] Treść i plan nie wymagają JavaScriptu; JS tylko dla banera językowego i przycisku wydruku
+- [ ] Treść i plan nie wymagają JavaScriptu; JS tylko dla banera językowego, przycisku wydruku oraz jako ulepszenie nawigacji: zwijane menu na telefonie i zamykanie listy języków (Esc, kliknięcie obok). Bez JS nawigacja i przełącznik języka nadal działają (decyzja właściciela, Z12)
 
 ### NFR-2 — SEO (Must)
 - [ ] `title` i `meta description` w każdej wersji zgodnie z [seo-teksty.md](seo-teksty.md); polskie wartości dokładnie jak podał właściciel
