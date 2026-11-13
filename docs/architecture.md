@@ -5,8 +5,8 @@
 ## Stack
 - **Astro** ([ADR 0001](adr/0001-generator-astro.md), przyjęty): generator stron statycznych; wynik budowania to zwykłe pliki HTML/CSS z minimalnym JavaScriptem
 - Hosting: GitHub Pages, wdrożenie przez GitHub Actions (krok budowania przed publikacją)
-- Adres obecny: `https://rkazmier.github.io/landing-page/`
-- Adres docelowy: `https://steel-valley.pl/` (domena w GoDaddy, konfiguracja później)
+- Adres: `https://steel-valley.pl/` (domena w GoDaddy, podpięta w Z13 — instrukcja: `docs/domena.md`)
+- Wcześniej: `https://rkazmier.github.io/landing-page/` (po podpięciu domeny GitHub przekierowuje go na nowy adres)
 
 ## Dlaczego nie czysty HTML
 Sześć wersji językowych oznaczałoby sześć ręcznie utrzymywanych kopii, a plan przedpola rysowany z pliku danych musiałby powstawać w przeglądarce (JavaScript), co pogarsza SEO, wydajność i wydruk. Generator rysuje plan i tabelę w czasie budowania.
@@ -36,7 +36,7 @@ Szczegóły w [ADR 0003](adr/0003-dane-celow-i-plan.md): `targets.json` (każdy 
 Statyczny obraz jako link do nawigacji w Mapach Google ([ADR 0004](adr/0004-mapa-statyczna.md)).
 
 ## Adres witryny i ścieżka bazowa
-Adres witryny i ścieżka bazowa pochodzą z jednej konfiguracji (`site` i `base`). Do czasu podpięcia domeny `base` to `/landing-page`, po podpięciu `steel-valley.pl` zmienia się na `/`. Linki wewnętrzne buduje się z tej konfiguracji, nigdy na sztywno.
+Adres witryny i ścieżka bazowa pochodzą z jednej konfiguracji (`site` i `base`). Od podpięcia `steel-valley.pl` (Z13) `site` to `https://steel-valley.pl`, a `base` to `/` (wcześniej `/landing-page`). Linki wewnętrzne buduje się z tej konfiguracji, nigdy na sztywno.
 
 ## Wdrożenie
 Scalenie PR do `main` uruchamia `deploy.yml`: instalacja zależności, budowanie, publikacja katalogu wynikowego na Pages. Wymaga **Settings → Pages → Source: GitHub Actions**. Podpięcie domeny własnej: wpisy DNS w GoDaddy i pole „Custom domain" w ustawieniach Pages (osobne zadanie, później).

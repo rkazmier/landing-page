@@ -1,10 +1,10 @@
 import { defineConfig } from 'astro/config';
 
 // Adres witryny i ścieżka bazowa w jednym miejscu (docs/architecture.md).
-// Do czasu podpięcia domeny strona działa pod podkatalogiem GitHub Pages.
-// Zadanie Z13 zmieni to na https://steel-valley.pl i '/'.
-const SITE = process.env.SITE_URL ?? 'https://rkazmier.github.io';
-const BASE = process.env.SITE_BASE ?? '/landing-page';
+// Strona działa pod własną domeną steel-valley.pl (Z13, instrukcja: docs/domena.md).
+// Zmienne SITE_URL / SITE_BASE służą tylko do buildów pomocniczych (np. Lighthouse w CI).
+const SITE = process.env.SITE_URL ?? 'https://steel-valley.pl';
+const BASE = process.env.SITE_BASE ?? '/';
 
 export default defineConfig({
   site: SITE,
