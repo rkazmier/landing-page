@@ -25,6 +25,10 @@
     "accommodation": "Noclegi i atrakcje",
     "contact": "Kontakt"
   },
+  "construction": {
+    "title": "Strzelnica w budowie",
+    "text": "Obiekt jest obecnie w budowie i nie przyjmuje jeszcze strzelców. Termin otwarcia podamy na tej stronie."
+  },
   "hero": {
     "eyebrow": "Strzelnica długodystansowa",
     "lead": "Oś strzelecka 1000 m dla strzelców dalekodystansowych z całej Europy."

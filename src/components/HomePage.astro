@@ -11,6 +11,7 @@ import AccommodationSection from './AccommodationSection.astro';
 import LocationSection from './LocationSection.astro';
 import RangePlanSection from './RangePlanSection.astro';
 import SiteFooter from './SiteFooter.astro';
+import ConstructionNotice from './ConstructionNotice.astro';
 import { brand } from '../brand';
 import { t, type Locale } from '../i18n';
 
@@ -32,6 +33,8 @@ const nav = [
 ];
 ---
 <BaseLayout locale={locale} title={d.meta.title} description={d.meta.description} nav={nav}>
+  <ConstructionNotice locale={locale} />
+
   <section class="hero" aria-labelledby="hero-title">
     <div class="container">
       <p class="eyebrow">{d.hero.eyebrow}</p>
