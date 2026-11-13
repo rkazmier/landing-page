@@ -25,6 +25,10 @@
     "accommodation": "Unterkünfte & Ausflugsziele",
     "contact": "Kontakt"
   },
+  "construction": {
+    "title": "Schießanlage im Bau",
+    "text": "Die Anlage befindet sich derzeit im Bau und ist für Schützen noch nicht geöffnet. Den Eröffnungstermin geben wir auf dieser Seite bekannt."
+  },
   "hero": {
     "eyebrow": "Langdistanz-Schießanlage",
     "lead": "Eine 1000-m-Schießbahn für Langdistanzschützen aus ganz Europa."

@@ -25,6 +25,10 @@
     "accommodation": "Ubytování a atrakce",
     "contact": "Kontakt"
   },
+  "construction": {
+    "title": "Střelnice ve výstavbě",
+    "text": "Areál je momentálně ve výstavbě a pro střelce zatím není otevřen. Termín otevření zveřejníme na této stránce."
+  },
   "hero": {
     "eyebrow": "Střelnice na dlouhé vzdálenosti",
     "lead": "Střelecká dráha 1000 m pro střelce na dlouhé vzdálenosti z celé Evropy."

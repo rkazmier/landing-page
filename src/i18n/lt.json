@@ -25,6 +25,10 @@
     "accommodation": "Nakvynė ir lankytinos vietos",
     "contact": "Kontaktai"
   },
+  "construction": {
+    "title": "Šaudykla statoma",
+    "text": "Objektas šiuo metu statomas ir šauliams dar neatidarytas. Atidarymo datą paskelbsime šiame puslapyje."
+  },
   "hero": {
     "eyebrow": "Ilgų nuotolių šaudykla",
     "lead": "1000 m šaudymo linija ilgų nuotolių šauliams iš visos Europos."

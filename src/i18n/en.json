@@ -25,6 +25,10 @@
     "accommodation": "Accommodation & attractions",
     "contact": "Contact"
   },
+  "construction": {
+    "title": "Range under construction",
+    "text": "The facility is currently under construction and is not yet open to shooters. We will announce the opening date on this page."
+  },
   "hero": {
     "eyebrow": "Long-range shooting range",
     "lead": "A 1000 m shooting lane for long-range shooters from all over Europe."

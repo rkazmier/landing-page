@@ -9,6 +9,7 @@
  *   --color-text-muted na --color-bg / --color-surface / --color-surface-alt
  *   --color-accent na --color-bg / --color-surface (tekst linków, focus)
  *   --color-on-dark na --color-dark
+ *   --color-on-danger na --color-danger (komunikat „w budowie”)
  */
 
 :root {
@@ -24,6 +25,8 @@
   --color-highlight: #a57a2c;   /* mosiądz: tylko akcenty dekoracyjne (linie), nie tekst */
   --color-dark: #1b2329;        /* ciemne tło (stopka) */
   --color-on-dark: #eef0f1;     /* tekst na ciemnym tle */
+  --color-danger: #b3191e;      /* czerwień ostrzegawcza: komunikat „strzelnica w budowie” */
+  --color-on-danger: #ffffff;   /* tekst na czerwonym tle */
   --color-header-bg: color-mix(in srgb, var(--color-bg) 94%, transparent);
 
   /* ---- Fonty ---- */
