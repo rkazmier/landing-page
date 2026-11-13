@@ -2,9 +2,8 @@
  * robots.txt (Z11, NFR-2): zezwala na indeksowanie i wskazuje sitemap.xml.
  * Adres sitemap z jednej konfiguracji `site` + `base` (astro.config.mjs).
  *
- * Uwaga: wyszukiwarki czytają robots.txt tylko z katalogu głównego domeny. Pod adresem
- * podkatalogu GitHub Pages (…/landing-page/robots.txt) plik zacznie działać po podpięciu
- * domeny steel-valley.pl (Z13) — wtedy trafi pod https://steel-valley.pl/robots.txt.
+ * Wyszukiwarki czytają robots.txt tylko z katalogu głównego domeny — od Z13 plik leży
+ * pod https://steel-valley.pl/robots.txt.
  */
 import type { APIRoute } from 'astro';
 import { withBase } from '../utils/url';
