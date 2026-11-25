@@ -23,7 +23,9 @@
     "plan": "Taikinių lauko planas",
     "location": "Kaip atvykti",
     "accommodation": "Nakvynė ir lankytinos vietos",
-    "contact": "Kontaktai"
+    "contact": "Kontaktai",
+    "calendar": "Kalendorius",
+    "offer": "Pasiūlymas"
   },
   "construction": {
     "title": "Šaudykla statoma",
@@ -149,8 +151,6 @@
     "sitemapTitle": "Svetainės žemėlapis",
     "sectionsLabel": "Puslapio skyriai",
     "languagesLabel": "Kalbos",
-    "hoursLabel": "Darbo laikas",
-    "hours": "Kasdien (pr–sk), {opens}–{closes}",
     "offerLabel": "Pasiūlymas",
     "offer": "Tolimojo šaudymo šaudykla: 1000 m šaudymo kryptis ir laukas su metaliniais taikiniais.",
     "phoneLabel": "Telefonas",

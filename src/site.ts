@@ -25,6 +25,12 @@ export const site = {
   },
 } as const;
 
+/** Linki zewnętrzne w nagłówku */
+export const links = {
+  calendar: 'https://events.steel-valley.pl/',
+  offer: 'https://events.steel-valley.pl/oferta/',
+} as const;
+
 /** Link tel: do telefonu obiektu */
 export const phoneHref = `tel:${site.phone.e164}`;
 
