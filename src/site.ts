@@ -3,6 +3,11 @@
  * Używane w sekcji „Lokalizacja i dojazd” (Z09), w stopce (Z10) i w danych strukturalnych JSON-LD (Z11, src/seo.ts).
  */
 export const site = {
+  /**
+   * Obiekt w budowie (Z16, #47). Gdy `true`: na stronie głównej widać komunikat „strzelnica w budowie”,
+   * a JSON-LD nie zawiera godzin otwarcia (`openingHoursSpecification`). Po otwarciu ustaw `false`.
+   */
+  underConstruction: true,
   address: {
     locality: 'Morawy Wielkie',
     postalCode: '06-316',

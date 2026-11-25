@@ -69,13 +69,18 @@ export function structuredData({ url, homeUrl, description }: StructuredDataInpu
       latitude: site.geo.latitude,
       longitude: site.geo.longitude,
     },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: site.openingHours.days.map((day) => `https://schema.org/${dayNames[day]}`),
-        opens: site.openingHours.opens,
-        closes: site.openingHours.closes,
-      },
-    ],
+    // Z16 (#47): w czasie budowy nie publikujemy godzin — Google nie pokaże obiektu jako czynnego
+    ...(site.underConstruction
+      ? {}
+      : {
+          openingHoursSpecification: [
+            {
+              '@type': 'OpeningHoursSpecification',
+              dayOfWeek: site.openingHours.days.map((day) => `https://schema.org/${dayNames[day]}`),
+              opens: site.openingHours.opens,
+              closes: site.openingHours.closes,
+            },
+          ],
+        }),
   };
 }
