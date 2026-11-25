@@ -23,7 +23,9 @@
     "plan": "Plan przedpola",
     "location": "Dojazd",
     "accommodation": "Noclegi i atrakcje",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "calendar": "Kalendarz",
+    "offer": "Oferta"
   },
   "construction": {
     "title": "Strzelnica w budowie",
@@ -149,8 +151,6 @@
     "sitemapTitle": "Mapa strony",
     "sectionsLabel": "Sekcje strony",
     "languagesLabel": "Wersje językowe",
-    "hoursLabel": "Godziny otwarcia",
-    "hours": "Codziennie (pon.–niedz.), {opens}–{closes}",
     "offerLabel": "Oferta",
     "offer": "Strzelnica długodystansowa: oś strzelecka 1000 m i przedpole z celami metalowymi.",
     "phoneLabel": "Telefon",

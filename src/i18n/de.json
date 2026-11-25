@@ -23,7 +23,9 @@
     "plan": "Zielfeldplan",
     "location": "Anfahrt",
     "accommodation": "Unterkünfte & Ausflugsziele",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "calendar": "Kalender",
+    "offer": "Angebot"
   },
   "construction": {
     "title": "Schießanlage im Bau",
@@ -149,8 +151,6 @@
     "sitemapTitle": "Seitenübersicht",
     "sectionsLabel": "Abschnitte der Seite",
     "languagesLabel": "Sprachen",
-    "hoursLabel": "Öffnungszeiten",
-    "hours": "Täglich (Mo–So), {opens}–{closes}",
     "offerLabel": "Angebot",
     "offer": "Langdistanz-Schießstand: 1000 m lange Schießbahn und ein Gelände mit Stahlzielen.",
     "phoneLabel": "Telefon",

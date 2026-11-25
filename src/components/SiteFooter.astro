@@ -2,7 +2,7 @@
 /**
  * Treść stopki (FR-8, FR-9, Z10) — osobna sekcja na końcu każdej wersji językowej.
  *
- * - Kluczowe informacje: nazwa, adres, współrzędne, godziny otwarcia, skrót oferty.
+ * - Kluczowe informacje: nazwa, adres, współrzędne, skrót oferty.
  * - Kontakt: wyłącznie telefon (tekst + link tel:), bez formularza i e-maila.
  * - Mapa strony: linki do sekcji (te same co w nawigacji) i do 6 wersji językowych.
  * - Dane firmy, polityka prywatności, informacja prawna: src/data/footer.json (wpisy opcjonalne).
@@ -14,7 +14,7 @@ import footerData from '../data/footer.json';
 import { brand } from '../brand';
 import footerMark from '../assets/logo/steel-valley-znak.svg';
 import { languageNames, localePath, locales, t, type Locale } from '../i18n';
-import { addressText, coordinatesText, displayTime, phoneHref, site } from '../site';
+import { addressText, coordinatesText, phoneHref, site } from '../site';
 import { withBase } from '../utils/url';
 import type { NavItem } from '../types';
 
@@ -33,10 +33,6 @@ const { locale, nav } = Astro.props;
 const d = t(locale);
 const f = d.footer;
 const data = footerData as FooterData;
-
-const hours = f.hours
-  .replace('{opens}', displayTime(site.openingHours.opens))
-  .replace('{closes}', displayTime(site.openingHours.closes));
 
 const href = (url: string) => (url.startsWith('/') ? withBase(url) : url);
 const legalLinks = [
@@ -58,10 +54,6 @@ const year = new Date().getFullYear();
       <div>
         <dt>{d.location.coordinatesLabel}</dt>
         <dd class="coords">{coordinatesText}</dd>
-      </div>
-      <div>
-        <dt>{f.hoursLabel}</dt>
-        <dd>{hours}</dd>
       </div>
       <div>
         <dt>{f.offerLabel}</dt>

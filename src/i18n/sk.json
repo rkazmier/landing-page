@@ -23,7 +23,9 @@
     "plan": "Plán terčového poľa",
     "location": "Príjazd",
     "accommodation": "Ubytovanie a atrakcie",
-    "contact": "Kontakt"
+    "contact": "Kontakt",
+    "calendar": "Kalendár",
+    "offer": "Ponuka"
   },
   "construction": {
     "title": "Strelnica vo výstavbe",
@@ -149,8 +151,6 @@
     "sitemapTitle": "Mapa stránky",
     "sectionsLabel": "Sekcie stránky",
     "languagesLabel": "Jazyky",
-    "hoursLabel": "Otváracie hodiny",
-    "hours": "Denne (po–ne), {opens}–{closes}",
     "offerLabel": "Ponuka",
     "offer": "Strelnica na dlhé vzdialenosti: strelecká os 1000 m a plocha s kovovými terčmi.",
     "phoneLabel": "Telefón",

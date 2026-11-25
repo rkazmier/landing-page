@@ -23,7 +23,9 @@
     "plan": "Range layout",
     "location": "Getting here",
     "accommodation": "Accommodation & attractions",
-    "contact": "Contact"
+    "contact": "Contact",
+    "calendar": "Calendar",
+    "offer": "Offer"
   },
   "construction": {
     "title": "Range under construction",
@@ -149,8 +151,6 @@
     "sitemapTitle": "Site map",
     "sectionsLabel": "Page sections",
     "languagesLabel": "Languages",
-    "hoursLabel": "Opening hours",
-    "hours": "Every day (Mon–Sun), {opens}–{closes}",
     "offerLabel": "What we offer",
     "offer": "Long-range shooting range: a 1000 m shooting lane and a range with steel targets.",
     "phoneLabel": "Phone",
