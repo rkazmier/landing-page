@@ -5,7 +5,6 @@
  * Treści sekcji: Z04–Z10 (Z04: AboutSection, DisciplinesSection; Z05: AccommodationSection; Z07: RangePlanSection; Z09: LocationSection; Z10: SiteFooter).
  */
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { site } from '../site';
 import AboutSection from './AboutSection.astro';
 import DisciplinesSection from './DisciplinesSection.astro';
 import AccommodationSection from './AccommodationSection.astro';
@@ -34,7 +33,7 @@ const nav = [
 ];
 ---
 <BaseLayout locale={locale} title={d.meta.title} description={d.meta.description} nav={nav}>
-  {site.underConstruction && <ConstructionNotice locale={locale} />}
+  <ConstructionNotice locale={locale} />
 
   <section class="hero" aria-labelledby="hero-title">
     <div class="container">

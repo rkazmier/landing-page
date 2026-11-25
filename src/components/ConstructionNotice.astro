@@ -2,9 +2,11 @@
 /**
  * Komunikat „strzelnica w budowie” (Issue #44).
  * Wyraźny, czerwony pas na górze strony głównej, przed sekcją hero.
+ * Widoczny tylko, gdy `site.underConstruction` jest włączone (Z16, #47).
  * Teksty: src/i18n/<kod>.json → `construction`. Kolory: --color-danger / --color-on-danger.
  */
 import { t, type Locale } from '../i18n';
+import { site } from '../site';
 
 interface Props {
   locale: Locale;
@@ -13,6 +15,7 @@ interface Props {
 const { locale } = Astro.props;
 const c = t(locale).construction;
 ---
+{site.underConstruction && (
 <aside class="construction-notice" role="note" aria-labelledby="construction-title">
   <div class="container construction-notice-inner">
     <svg class="construction-notice-icon" viewBox="0 0 24 24" width="28" height="28" aria-hidden="true" focusable="false">
@@ -26,6 +29,7 @@ const c = t(locale).construction;
     </div>
   </div>
 </aside>
+)}
 
 <style>
   .construction-notice {
